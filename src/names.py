@@ -1,10 +1,9 @@
 """Anonymise display names by collapsing space-separated names to
 ``FirstName LastInitial``.
 
-Single-word handles (e.g. ``harryg``) are left untouched. When two players
-share the same first name, the last-name prefix is extended until each
-short form is unique (e.g. ``Sam Mitchell`` / ``Sam Milburn`` →
-``Sam Mit`` / ``Sam Mil``).
+Single-word handles are left untouched. When two players share the same
+first name, the last-name prefix is extended until each short form is
+unique (e.g. ``Pat Brown`` / ``Pat Briggs`` → ``Pat Bro`` / ``Pat Bri``).
 """
 
 from __future__ import annotations
