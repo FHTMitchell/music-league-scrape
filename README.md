@@ -5,9 +5,9 @@ into a polars-friendly parquet file.
 
 ## Requirements
 
-- [uv](https://docs.astral.sh/uv/) — manages the Python env and pinned deps
-  (polars, httpx, selectolax, tenacity, pytest) from `pyproject.toml`.
-  Install once with `curl -LsSf https://astral.sh/uv/install.sh | sh`.
+- [uv](https://docs.astral.sh/uv/) — manages the Python env and deps from
+  `pyproject.toml`. Install once with
+  `curl -LsSf https://astral.sh/uv/install.sh | sh`.
 - A logged-in browser session on https://app.musicleague.com/ (used once to
   export `auth.curl` — see below).
 
@@ -15,12 +15,18 @@ into a polars-friendly parquet file.
 
 ## Output
 
-Two files, one row per (league, round, song):
+Five files in `out/`:
 
-- `out/music_league.parquet` — full schema below
-- `out/music_league.csv` — convenience subset: `round_time, league, round, player, song, artist, score`
+| file                         | produced by                  | what it is                                                        |
+| ---------------------------- | ---------------------------- | ----------------------------------------------------------------- |
+| `out/music_league.parquet`   | `python -m src.scrape`       | one row per (league, round, song); full schema below              |
+| `out/music_league.csv`       | `python -m src.scrape`       | subset: `round_time, league, round, player, song, artist, score`  |
+| `out/analysis.md`            | `python -m src.analyze`      | markdown analysis report                                          |
+| `out/analysis.html`          | `python -m src.analyze`      | self-contained HTML render of the same                            |
+| `out/songs.html`             | `python -m src.songs_page`   | every song embedded inline + JS title-search box                  |
 
-Both are sorted by `round_time, player`.
+Parquet/CSV are sorted by `round_time, player`. `songs.html` is sorted
+newest first.
 
 
 | column            | type                                       |
@@ -43,16 +49,26 @@ the sum of explicit voter rows — this is the **forfeit bucket** (Music League
 discards votes from players who missed the voting deadline). With the bucket
 present, `sum(votes.votes) == score` always holds.
 
+### Anonymisation
+
+Names that look like real first+last (a space, no brackets) are collapsed to
+`FirstName LastInitial` at write time. When two players share a first name, the
+last-name prefix is extended until each short form is unique
+(`Jane Doe` / `Jane Dean` → `Jane Do` / `Jane De`). Single-word handles and
+bracketed placeholders (e.g. `[Left the league]`) are left alone. The transform
+is idempotent — re-running on already-anonymised data is a no-op.
+Implementation: `src/names.py::anonymise_dataframe`, applied inside
+`src/scrape.py` before parquet/CSV are written.
+
 ## Usage
 
 ```bash
-uv run --extra dev pytest tests/ -v            # parser tests (offline, against webpages/ fixtures)
-uv run python -m src.scrape                    # full scrape, writes out/music_league.parquet
-uv run python -m src.scrape --league <league_id>   # restrict to one or more leagues (repeat)
-uv run python -m src.scrape --sleep 1.0            # be nicer to the server
-uv run python -m src.scrape --debug                # verbose logging + dump every fetched HTML to debug/
-uv run python -m src.analyze                   # build out/analysis.{md,html} from out/music_league.parquet
-uv run python -m src.songs_page                # build out/songs.html (every song + JS title filter)
+uv run --extra dev pytest tests/ -v        # offline tests against webpages/ fixtures
+uv run python -m src.scrape                # full scrape (default 0.5s sleep between requests)
+uv run python -m src.scrape --league <id>  # restrict to one or more leagues (repeatable)
+uv run python -m src.scrape --debug        # verbose logs + dump every fetched HTML to debug/
+uv run python -m src.analyze               # build out/analysis.{md,html}
+uv run python -m src.songs_page            # build out/songs.html
 ```
 
 Requires `./auth.curl` in the repo root (gitignored). See below.
@@ -102,19 +118,3 @@ The scraper extracts the `Cookie:` and other headers; everything else is
 ignored. **Treat `auth.curl` like a password** — it's a session cookie that
 grants access to your Music League account. It's already in `.gitignore`.
 
-## Layout
-
-```
-src/
-  auth.py    parse cURL export → headers + cookies
-  client.py  httpx client with retries; raises LoginRequired on session expiry
-  parse.py   selectolax-based HTML parsers (landing, league, round)
-  log.py     TeeLogger: stdout/stderr → console + scrape.log
-  scrape.py  CLI orchestrator
-tests/
-  test_parse.py   parser tests against webpages/ fixtures
-webpages/
-  landing.html, league.html, round.html — saved-from-browser fixtures
-out/
-  music_league.parquet — scraper output (gitignored)
-```
