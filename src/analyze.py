@@ -27,7 +27,6 @@ _DEFAULT_OUTPUT_HTML = Path("out/analysis.html")
 _DEFAULT_LOG = Path("logs/analyze.log")
 _TOP_N = 10
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
-_FAN_HATER_MIN_ROUNDS = 10  # min shared rounds for the per-player picks to be meaningful
 _LEFT_LEAGUE = "[Left the league]"  # placeholder Music League shows for departed users
 
 
@@ -333,7 +332,7 @@ def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
-    pairs = _pair_z_summary(df).filter(pl.col("shared_rounds") >= _FAN_HATER_MIN_ROUNDS)
+    pairs = _pair_z_summary(df)
     fans = (
         pairs.sort(["player", "avg_z"], descending=[False, True])
         .group_by("player", maintain_order=True)
@@ -359,12 +358,11 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
             "For each submitter, the voter whose votes land highest (fan) and lowest "
             "(hater) relative to that voter's own per-round vote distribution. Metric: "
             "mean z-score across shared rounds, where z = (vote - voter_round_mean) / "
-            "voter_round_std. Pairs are required to share at least "
-            f"{_FAN_HATER_MIN_ROUNDS} rounds so a single outlier vote can't crown a "
-            "fan/hater. Rounds where the voter gave every song the same vote are "
-            "dropped (z is undefined). fan_pts / hater_pts are the raw cumulative "
-            "points for context. See the 'Biggest Fans/Haters (everyone)' table at "
-            "the end of the report for the unfiltered pair-by-pair view."
+            "voter_round_std and unrated songs in a participated round count as 0. "
+            "Rounds where the voter gave every song the same vote are dropped (z is "
+            "undefined). fan_pts / hater_pts are the raw cumulative points for context. "
+            "See 'Biggest Fans/Haters (full table)' at the end of the report for the "
+            "unaggregated pair-by-pair view."
         ),
         table=table,
     )
@@ -373,13 +371,12 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
 def _section_all_fans_and_haters(df: pl.DataFrame) -> Section:
     table = _pair_z_summary(df).sort("avg_z", descending=True)
     return Section(
-        title="Biggest Fans/Haters (everyone)",
+        title="Biggest Fans/Haters (full table)",
         header=(
-            "Every (submitter, voter) pair sorted by mean z-score, descending. No "
-            "minimum-shared-rounds filter — pairs with shared_rounds=1 or 2 will "
-            "have wildly variable z-scores, so use shared_rounds as your confidence "
-            "guide. Top of the table = strongest net fan signal; bottom = strongest "
-            "net hater signal."
+            "Every (submitter, voter) pair sorted by mean z-score, descending. "
+            "shared_rounds is the count of rounds where both players participated "
+            "(implicit zero votes filled in for songs the voter didn't rate). Top of "
+            "the table = strongest net fan signal; bottom = strongest net hater signal."
         ),
         table=table,
     )
@@ -483,18 +480,25 @@ def _section_repeated_songs(df: pl.DataFrame) -> Section:
 
 
 def _explode_votes(df: pl.DataFrame) -> pl.DataFrame:
-    """One row per (song x voter); ``vote_count`` may be negative or null-keyed.
+    """One row per (song x voter), with implicit zero-votes filled in.
 
-    Voters whose display name is the ``[Left the league]`` placeholder are
-    dropped (the forfeit-bucket ``None`` voter is preserved).
+    Music League's HTML only lists voters who gave a non-zero vote on a song,
+    so the raw scrape misses the rounds where a voter participated but rated
+    a particular song 0. Without those rows the per-(voter, round) mean and
+    std are biased upward, the shared_rounds count understates real round
+    overlap, and a z-score-based fan/hater is too easy to mint.
 
-    Note: ``df.explode`` on an empty list produces a single all-null row, so
-    songs that received zero votes would otherwise show up as phantom
-    forfeits. Filter ``vote_count.is_not_null()`` to drop those artifacts —
-    real forfeit rows have a non-null vote_count even though the voter is
-    null.
+    This function rebuilds the full ballot:
+      - ``participants[round]`` = the union of non-null voters across every
+        song in that round (anyone who showed up at all).
+      - For each (round, voter), every song in that round becomes a row,
+        excluding the voter's own song (you cannot vote for yourself).
+      - vote_count is whatever the scrape recorded, else 0.
+
+    The forfeit-bucket ``None`` voter rows are passed through unchanged —
+    they are aggregate accounting, not ballots.
     """
-    return (
+    base = (
         df.select(["league", "round", "player", "score", "votes"])
         .explode("votes")
         .with_columns(
@@ -505,6 +509,23 @@ def _explode_votes(df: pl.DataFrame) -> pl.DataFrame:
         .filter(pl.col("vote_count").is_not_null())
         .filter((pl.col("voter") != _LEFT_LEAGUE) | pl.col("voter").is_null())
     )
+    forfeits = base.filter(pl.col("voter").is_null())
+    real = base.filter(pl.col("voter").is_not_null())
+
+    songs = df.select(["league", "round", "player", "score"]).unique()
+    participants = real.select(["league", "round", "voter"]).unique()
+    filled = (
+        participants.join(songs, on=["league", "round"], how="inner")
+        .filter(pl.col("voter") != pl.col("player"))
+        .join(
+            real.select(["league", "round", "player", "voter", "vote_count"]),
+            on=["league", "round", "player", "voter"],
+            how="left",
+        )
+        .with_columns(pl.col("vote_count").fill_null(0))
+        .select(["league", "round", "player", "score", "voter", "vote_count"])
+    )
+    return pl.concat([filled, forfeits], how="vertical")
 
 
 def _with_rank(df: pl.DataFrame) -> pl.DataFrame:
