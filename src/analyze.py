@@ -361,8 +361,8 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
             "voter_round_std and unrated songs in a participated round count as 0. "
             "Rounds where the voter gave every song the same vote are dropped (z is "
             "undefined). fan_pts / hater_pts are the raw cumulative points for context. "
-            "See 'Biggest Fans/Haters (full table)' at the end of the report for the "
-            "unaggregated pair-by-pair view."
+            "See 'Fan / Hater Scores' at the end of the report for the unaggregated "
+            "pair-by-pair view."
         ),
         table=table,
     )
@@ -371,7 +371,7 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
 def _section_all_fans_and_haters(df: pl.DataFrame) -> Section:
     table = _pair_z_summary(df).sort("avg_z", descending=True)
     return Section(
-        title="Biggest Fans/Haters (full table)",
+        title="Fan / Hater Scores",
         header=(
             "Every (submitter, voter) pair sorted by mean z-score, descending. "
             "shared_rounds is the count of rounds where both players participated "
