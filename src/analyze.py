@@ -14,7 +14,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import markdown
+import matplotlib.pyplot as plt
+import numpy as np
 import polars as pl
+from matplotlib.colors import TwoSlopeNorm
 from tabulate import tabulate
 
 from src.log import install as install_logger
@@ -24,6 +27,7 @@ logger = logging.getLogger(__name__)
 _DEFAULT_INPUT = Path("out/music_league.parquet")
 _DEFAULT_OUTPUT_MD = Path("out/analysis.md")
 _DEFAULT_OUTPUT_HTML = Path("out/analysis.html")
+_DEFAULT_HEATMAP = Path("out/fan_hater_heatmap.png")
 _DEFAULT_LOG = Path("logs/analyze.log")
 _TOP_N = 10
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
@@ -32,19 +36,28 @@ _LEFT_LEAGUE = "[Left the league]"  # placeholder Music League shows for departe
 
 @dataclass(frozen=True)
 class Section:
-    """One analysis block: ``## title``, optional intro ``header``, then a table."""
+    """One analysis block: ``## title``, optional intro ``header``, then a table.
+
+    An ``image`` may be supplied alongside or instead of a table; the image is
+    embedded as a markdown ``![title](path)`` link (relative path is fine when
+    the markdown and image sit in the same directory).
+    """
 
     title: str
     header: str | None
-    table: pl.DataFrame
-    rank: bool = True  # if True, prepend a 1-based 'rank' column
+    table: pl.DataFrame | None = None
+    rank: bool = True  # if True and table is set, prepend a 1-based 'rank' column
+    image: Path | None = None
 
     def to_md(self) -> str:
-        body = _with_rank(self.table) if self.rank else self.table
         parts = [f"## {self.title}"]
         if self.header:
             parts.append(f"_{self.header}_")
-        parts.append(_md_table(body))
+        if self.image is not None:
+            parts.append(f"![{self.title}]({self.image.name})")
+        if self.table is not None:
+            body = _with_rank(self.table) if self.rank else self.table
+            parts.append(_md_table(body))
         return "\n\n".join(parts)
 
 
@@ -53,6 +66,7 @@ class Args:
     parquet: Path
     md_out: Path
     html_out: Path
+    heatmap_out: Path
     log: Path
 
 
@@ -66,7 +80,10 @@ def main() -> None:
         )
 
     df = _load(args.parquet)
-    sections = _build_sections(df)
+    args.heatmap_out.parent.mkdir(parents=True, exist_ok=True)
+    _render_fan_hater_heatmap(df, args.heatmap_out)
+    logger.info("wrote heatmap to %s", args.heatmap_out)
+    sections = _build_sections(df, heatmap=args.heatmap_out)
     md_text = _compile_markdown(sections)
 
     args.md_out.parent.mkdir(parents=True, exist_ok=True)
@@ -93,7 +110,7 @@ def _load(parquet: Path) -> pl.DataFrame:
     return df
 
 
-def _build_sections(df: pl.DataFrame) -> list[Section]:
+def _build_sections(df: pl.DataFrame, *, heatmap: Path) -> list[Section]:
     return [
         _section_overview(df),
         _section_best_players(df),
@@ -101,14 +118,14 @@ def _build_sections(df: pl.DataFrame) -> list[Section]:
         _section_medal_table(df),
         _section_biggest_fans(df),
         _section_biggest_haters(df),
+        _section_fan_hater_heatmap(heatmap),
         # song-focused sections grouped together
         _section_top_songs(df),
         _section_bottom_songs(df),
+        _section_polarising_songs(df),
         _section_top_artists(df),
         _section_repeated_songs(df),
         _section_forfeits(df),
-        _section_round_winners(df),
-        _section_all_fans_and_haters(df),
     ]
 
 
@@ -122,9 +139,16 @@ def _parse_args() -> Args:
     p.add_argument("--parquet", type=Path, default=_DEFAULT_INPUT)
     p.add_argument("--md", dest="md_out", type=Path, default=_DEFAULT_OUTPUT_MD)
     p.add_argument("--html", dest="html_out", type=Path, default=_DEFAULT_OUTPUT_HTML)
+    p.add_argument("--heatmap", dest="heatmap_out", type=Path, default=_DEFAULT_HEATMAP)
     p.add_argument("--log", type=Path, default=_DEFAULT_LOG)
     ns = p.parse_args()
-    return Args(parquet=ns.parquet, md_out=ns.md_out, html_out=ns.html_out, log=ns.log)
+    return Args(
+        parquet=ns.parquet,
+        md_out=ns.md_out,
+        html_out=ns.html_out,
+        heatmap_out=ns.heatmap_out,
+        log=ns.log,
+    )
 
 
 def _section_overview(df: pl.DataFrame) -> Section:
@@ -237,25 +261,6 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
     )
 
 
-def _section_round_winners(df: pl.DataFrame) -> Section:
-    table = (
-        df.with_columns(pl.col("score").max().over(["league", "round"]).alias("_max"))
-        .filter(pl.col("score") == pl.col("_max"))
-        .select(["round_time", "league", "round", "score", "song", "artist", "player"])
-        .sort("round_time")
-        .rename({"round_time": "round_date"})
-    )
-    return Section(
-        title="Round Winners",
-        header=(
-            "Highest-scoring song from every round, in chronological order. "
-            "Ties surface as multiple rows."
-        ),
-        table=table,
-        rank=False,
-    )
-
-
 def _section_top_artists(df: pl.DataFrame) -> Section:
     table = (
         df.group_by("artist")
@@ -338,8 +343,7 @@ _FAN_HATER_HEADER = (
     "z = (vote - voter_round_mean) / voter_round_std and unrated songs in a "
     "participated round count as 0. Rounds where the voter gave every song the same "
     "vote are dropped (z is undefined). pts is the raw cumulative points for "
-    "context. See 'Fan / Hater Scores' at the end of the report for the "
-    "unaggregated pair-by-pair view."
+    "context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view."
 )
 
 
@@ -371,15 +375,96 @@ def _section_biggest_haters(df: pl.DataFrame) -> Section:
     return Section(title="Biggest Haters", header=_FAN_HATER_HEADER, table=table)
 
 
-def _section_all_fans_and_haters(df: pl.DataFrame) -> Section:
-    table = _pair_z_summary(df).sort("avg_z", descending=True)
+def _section_fan_hater_heatmap(image: Path) -> Section:
     return Section(
-        title="Fan / Hater Scores",
+        title="Fan / Hater Heatmap",
         header=(
-            "Every (submitter, voter) pair sorted by mean z-score, descending. "
-            "shared_rounds is the count of rounds where both players participated "
-            "(implicit zero votes filled in for songs the voter didn't rate). Top of "
-            "the table = strongest net fan signal; bottom = strongest net hater signal."
+            "Mean z-score per (submitter row, voter column) pair. Green = the voter "
+            "tends to give that submitter higher-than-average votes (fan); red = "
+            "lower-than-average (hater). Diagonal blank: nobody votes on their own "
+            "song. Names alphabetised on both axes."
+        ),
+        image=image,
+    )
+
+
+_POLARISING_MIN_RATERS = 4
+
+
+def _section_polarising_songs(df: pl.DataFrame) -> Section:
+    """Songs that genuinely split the room.
+
+    Per song we compute the population std of explicit (non-zero) votes, then
+    z-score it against the other songs' stds in the same round. The song must
+    have ``>=_POLARISING_MIN_RATERS`` explicit raters AND at least one positive
+    AND at least one negative explicit vote — a standout +N alone is a
+    consensus winner, not polarisation. Downvote-off leagues never qualify
+    (no way to express dislike).
+    """
+    explicit = (
+        _explode_votes(df).filter(pl.col("voter").is_not_null()).filter(pl.col("vote_count") != 0)
+    )
+    keys = ["league", "round", "player"]
+    song_stats = (
+        explicit.group_by(keys)
+        .agg(
+            pl.col("vote_count").std(ddof=0).alias("s"),
+            pl.len().alias("n_raters"),
+            (pl.col("vote_count") > 0).sum().alias("up_votes"),
+            (pl.col("vote_count") < 0).sum().alias("down_votes"),
+            pl.col("vote_count").filter(pl.col("vote_count") > 0).sum().alias("total_up"),
+            (-pl.col("vote_count").filter(pl.col("vote_count") < 0).sum()).alias("total_down"),
+        )
+        .filter(pl.col("n_raters") >= _POLARISING_MIN_RATERS)
+        .filter((pl.col("up_votes") >= 1) & (pl.col("down_votes") >= 1))
+    )
+    round_stats = (
+        song_stats.group_by(["league", "round"])
+        .agg(
+            pl.col("s").mean().alias("round_mean_std"),
+            pl.col("s").std(ddof=0).alias("round_std_of_std"),
+        )
+        .filter(pl.col("round_std_of_std") > 0)
+    )
+    songs = df.select([*keys, "song", "artist", "score"]).unique()
+    table = (
+        song_stats.join(round_stats, on=["league", "round"], how="inner")
+        .with_columns(
+            ((pl.col("s") - pl.col("round_mean_std")) / pl.col("round_std_of_std"))
+            .round(2)
+            .alias("z")
+        )
+        .join(songs, on=keys, how="inner")
+        .sort("z", descending=True)
+        .head(_TOP_N)
+        .select(
+            [
+                "z",
+                "score",
+                "total_up",
+                "total_down",
+                "up_votes",
+                "down_votes",
+                "song",
+                "artist",
+                "player",
+                "league",
+                "round",
+            ]
+        )
+    )
+    return Section(
+        title="Polarising Songs",
+        header=(
+            f"Top {_TOP_N} songs that genuinely split the room. Metric: per song, "
+            "the std of its explicit (non-zero) votes, z-scored against the other "
+            "songs' stds in the same round. Songs need at least "
+            f"{_POLARISING_MIN_RATERS} explicit raters AND at least one positive "
+            "AND at least one negative vote — a standout +N alone is a consensus "
+            "winner, not polarisation. Leagues without downvotes are excluded by "
+            "construction (no way to express dislike). total_up / total_down are "
+            "the sums of positive / |negative| points; up_votes / down_votes are "
+            "the head-counts."
         ),
         table=table,
     )
@@ -539,6 +624,52 @@ def _md_table(df: pl.DataFrame) -> str:
     if df.height == 0:
         return "_(no rows)_"
     return tabulate(df.iter_rows(), headers=df.columns, tablefmt="github")
+
+
+def _render_fan_hater_heatmap(df: pl.DataFrame, out_path: Path) -> None:
+    """Save a square avg-z heatmap (submitter rows x voter cols) to ``out_path``.
+
+    Cells are annotated with their z-score; the diagonal is blank (no
+    self-voting). Names are alphabetised on both axes. Diverging colormap
+    (RdYlGn) is centred on 0 so positive z stays green and negative red
+    regardless of the data range.
+    """
+    pairs = _pair_z_summary(df)
+    names = sorted({*df["player"].to_list(), *pairs["voter"].to_list()})
+    n = len(names)
+    idx = {name: i for i, name in enumerate(names)}
+
+    matrix = np.full((n, n), np.nan)
+    for row in pairs.iter_rows(named=True):
+        matrix[idx[row["player"]], idx[row["voter"]]] = row["avg_z"]
+
+    finite = matrix[~np.isnan(matrix)]
+    bound = float(np.nanmax(np.abs(finite))) if finite.size else 1.0
+    norm = TwoSlopeNorm(vmin=-bound, vcenter=0.0, vmax=bound)
+
+    fig, ax = plt.subplots(figsize=(0.7 * n + 2, 0.7 * n + 2))
+    img = ax.imshow(matrix, cmap="RdYlGn", norm=norm, aspect="equal")
+    ax.set_xticks(range(n), names, rotation=45, ha="right")
+    ax.set_yticks(range(n), names)
+    ax.set_xlabel("voter")
+    ax.set_ylabel("submitter")
+    ax.set_title("Fan / Hater heatmap (avg z-score)")
+
+    for i in range(n):
+        for j in range(n):
+            value = matrix[i, j]
+            if np.isnan(value):
+                continue
+            # White text on dark cells, black on light — pick by colormap luminance.
+            rgba = img.cmap(img.norm(value))
+            luminance = 0.2126 * rgba[0] + 0.7152 * rgba[1] + 0.0722 * rgba[2]
+            colour = "white" if luminance < 0.5 else "black"
+            ax.text(j, i, f"{value:.2f}", ha="center", va="center", color=colour, fontsize=8)
+
+    fig.colorbar(img, ax=ax, shrink=0.7, label="avg z-score")
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=120, bbox_inches="tight")
+    plt.close(fig)
 
 
 def _render_html(md_text: str) -> str:
