@@ -16,6 +16,9 @@ debug/
 logs/
 *.log
 
+# scratch references that aren't part of the project
+webpages/ignored/
+
 # python
 __pycache__/
 *.pyc
