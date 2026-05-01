@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Music League analysis</title>
+<style>
+ body {
+   font-family: system-ui, sans-serif;
+   max-width: 60rem;
+   margin: 2rem auto;
+   padding: 0 1rem;
+   line-height: 1.45;
+ }
+ h1, h2, h3 { border-bottom: 1px solid #ddd; padding-bottom: .25rem; }
+ table { border-collapse: collapse; margin: 1rem 0; }
+ th, td { border: 1px solid #ccc; padding: .35rem .6rem; text-align: left; }
+ th { background: #f4f4f4; }
+ tr:nth-child(even) { background: #fafafa; }
+ code { background: #f4f4f4; padding: .1rem .3rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>Music League analysis</h1>
+<h2>Overview</h2>
+<table>
+<thead>
+<tr>
+<th>metric</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leagues</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Rounds</td>
+<td>43</td>
+</tr>
+<tr>
+<td>Songs submitted</td>
+<td>520</td>
+</tr>
+<tr>
+<td>Distinct submitters</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Distinct voters</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<h2>Player Ranking</h2>
+<p><em>Players with at least 2 songs submitted, ranked by mean within-round z-score (score normalised against the other songs in the same round). avg_z &gt; 0 means the player typically beats the round average; total_score is the raw points sum.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>player</th>
+<th>avg_z</th>
+<th>total_z</th>
+<th>total_score</th>
+<th>songs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sam Mit</td>
+<td>0.39</td>
+<td>16.1</td>
+<td>226</td>
+<td>41</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Jimbabwe</td>
+<td>0.19</td>
+<td>6.28</td>
+<td>179</td>
+<td>33</td>
+</tr>
+<tr>
+<td>3</td>
+<td>harryg</td>
+<td>0.18</td>
+<td>7.91</td>
+<td>197</td>
+<td>43</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fred N</td>
+<td>0.17</td>
+<td>7.12</td>
+<td>192</td>
+<td>43</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Josh B</td>
+<td>0.12</td>
+<td>4.14</td>
+<td>131</td>
+<td>35</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fergus M</td>
+<td>0.11</td>
+<td>4.56</td>
+<td>169</td>
+<td>43</td>
+</tr>
+<tr>
+<td>7</td>
+<td>pollyannaw</td>
+<td>0.05</td>
+<td>0.88</td>
+<td>82</td>
+<td>18</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Joe</td>
+<td>-0.04</td>
+<td>-1.23</td>
+<td>107</td>
+<td>33</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Luke G</td>
+<td>-0.08</td>
+<td>-2.86</td>
+<td>125</td>
+<td>38</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Joshua W</td>
+<td>-0.16</td>
+<td>-6.4</td>
+<td>121</td>
+<td>41</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Peter L</td>
+<td>-0.21</td>
+<td>-7.7</td>
+<td>138</td>
+<td>37</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Solsti</td>
+<td>-0.23</td>
+<td>-7.28</td>
+<td>106</td>
+<td>31</td>
+</tr>
+<tr>
+<td>13</td>
+<td>MorbidlyObeseCat</td>
+<td>-0.24</td>
+<td>-10.3</td>
+<td>142</td>
+<td>43</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Sam Mil</td>
+<td>-0.27</td>
+<td>-11.1</td>
+<td>131</td>
+<td>41</td>
+</tr>
+</tbody>
+</table>
+<h2>League Winners</h2>
+<p><em>Player with the highest total score in each league.</em></p>
+<table>
+<thead>
+<tr>
+<th>league</th>
+<th>player</th>
+<th>total</th>
+<th>songs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic League</td>
+<td>Joe</td>
+<td>31</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Jamie is a soft boy</td>
+<td>Sam Mit</td>
+<td>101</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Montage League</td>
+<td>Josh B</td>
+<td>34</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Show me what you got</td>
+<td>Fred N</td>
+<td>75</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Song for the Season</td>
+<td>Fred N</td>
+<td>19</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2>Medal Ranking</h2>
+<p><em>Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Ties share the higher rank, so two songs tied for 1st both earn 3 medal points.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>player</th>
+<th>gold 🥇</th>
+<th>silver 🥈</th>
+<th>bronze 🥉</th>
+<th>medal_points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sam Mit</td>
+<td>10</td>
+<td>5</td>
+<td>5</td>
+<td>45</td>
+</tr>
+<tr>
+<td>2</td>
+<td>harryg</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>37</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fred N</td>
+<td>6</td>
+<td>5</td>
+<td>5</td>
+<td>33</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fergus M</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>32</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Joe</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>21</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Joshua W</td>
+<td>5</td>
+<td>0</td>
+<td>5</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Jimbabwe</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>20</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Josh B</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>19</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Luke G</td>
+<td>1</td>
+<td>7</td>
+<td>2</td>
+<td>19</td>
+</tr>
+<tr>
+<td>10</td>
+<td>MorbidlyObeseCat</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Sam Mil</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>18</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Peter L</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>13</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Solsti</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>14</td>
+<td>pollyannaw</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2>Biggest Fans/Haters</h2>
+<p><em>Voter whose votes for the player land highest (fan) and lowest (hater) relative to that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std. Rounds where the voter gave every song the same vote are dropped (z is undefined). fan_pts / hater_pts are the raw cumulative points for context.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>player</th>
+<th>biggest_fan</th>
+<th>fan_z</th>
+<th>fan_pts</th>
+<th>shared_rounds</th>
+<th>biggest_hater</th>
+<th>hater_z</th>
+<th>hater_pts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fred N</td>
+<td>pollyannaw</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>Fergus M</td>
+<td>-0.45</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Joshua W</td>
+<td>pollyannaw</td>
+<td>1.41</td>
+<td>7</td>
+<td>3</td>
+<td>Josh B</td>
+<td>-0.79</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Luke G</td>
+<td>pollyannaw</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>Joshua W</td>
+<td>-0.5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sam Mit</td>
+<td>Fergus M</td>
+<td>0.74</td>
+<td>23</td>
+<td>16</td>
+<td>pollyannaw</td>
+<td>-0.75</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Jimbabwe</td>
+<td>Sam Mit</td>
+<td>0.72</td>
+<td>18</td>
+<td>11</td>
+<td>pollyannaw</td>
+<td>-0.3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Peter L</td>
+<td>Josh B</td>
+<td>0.65</td>
+<td>16</td>
+<td>12</td>
+<td>Sam Mil</td>
+<td>-0.53</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Josh B</td>
+<td>pollyannaw</td>
+<td>0.5</td>
+<td>4</td>
+<td>2</td>
+<td>Joshua W</td>
+<td>-0.54</td>
+<td>5</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Solsti</td>
+<td>Sam Mil</td>
+<td>0.45</td>
+<td>18</td>
+<td>14</td>
+<td>Fred N</td>
+<td>-0.66</td>
+<td>2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Fergus M</td>
+<td>Sam Mit</td>
+<td>0.42</td>
+<td>12</td>
+<td>11</td>
+<td>Solsti</td>
+<td>-0.27</td>
+<td>4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>harryg</td>
+<td>Fred N</td>
+<td>0.41</td>
+<td>14</td>
+<td>12</td>
+<td>pollyannaw</td>
+<td>-0.5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>11</td>
+<td>pollyannaw</td>
+<td>Sam Mil</td>
+<td>0.33</td>
+<td>4</td>
+<td>3</td>
+<td>Peter L</td>
+<td>-1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Joe</td>
+<td>Peter L</td>
+<td>0.32</td>
+<td>11</td>
+<td>13</td>
+<td>Sam Mil</td>
+<td>-0.39</td>
+<td>1</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Sam Mil</td>
+<td>MorbidlyObeseCat</td>
+<td>0.29</td>
+<td>19</td>
+<td>18</td>
+<td>harryg</td>
+<td>-0.47</td>
+<td>2</td>
+</tr>
+<tr>
+<td>14</td>
+<td>MorbidlyObeseCat</td>
+<td>Peter L</td>
+<td>0.24</td>
+<td>12</td>
+<td>15</td>
+<td>Joe</td>
+<td>-0.41</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2>Over Performers</h2>
+<p><em>Top 10 songs ranked by how many standard deviations above the round average they scored — a 10 in a round averaging 4 outranks a 10 in a round averaging 8.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>z_in_round</th>
+<th>score</th>
+<th>round_avg</th>
+<th>song</th>
+<th>artist</th>
+<th>player</th>
+<th>league</th>
+<th>round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2.25</td>
+<td>14</td>
+<td>6</td>
+<td>Hurt</td>
+<td>Johnny Cash</td>
+<td>Sam Mil</td>
+<td>Show me what you got</td>
+<td>Covers</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.24</td>
+<td>14</td>
+<td>6</td>
+<td>Night On My Mind</td>
+<td>Sharky</td>
+<td>Jimbabwe</td>
+<td>Show me what you got</td>
+<td>Awesome Obscurity</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.24</td>
+<td>15</td>
+<td>4</td>
+<td>19-2000 - Soulchild Remix</td>
+<td>Gorillaz</td>
+<td>Sam Mit</td>
+<td>Jamie is a soft boy</td>
+<td>Best Remix</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.21</td>
+<td>7</td>
+<td>3</td>
+<td>Learn to Fly</td>
+<td>Foo Fighters</td>
+<td>Josh B</td>
+<td>Montage League</td>
+<td>Family time</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.19</td>
+<td>14</td>
+<td>6</td>
+<td>Hit the Road Jack</td>
+<td>Ray Charles</td>
+<td>Luke G</td>
+<td>Show me what you got</td>
+<td>Shorties</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.12</td>
+<td>6</td>
+<td>3</td>
+<td>Fat Lip</td>
+<td>Sum 41</td>
+<td>Josh B</td>
+<td>Montage League</td>
+<td>Pre-drinks</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.1</td>
+<td>7</td>
+<td>3</td>
+<td>Kiss and Run</td>
+<td>Quiet Houses</td>
+<td>Fergus M</td>
+<td>Basic League</td>
+<td>Verb</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2.08</td>
+<td>12</td>
+<td>6</td>
+<td>Jolene</td>
+<td>Dolly Parton</td>
+<td>Fergus M</td>
+<td>Show me what you got</td>
+<td>Name Check</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.07</td>
+<td>13</td>
+<td>4</td>
+<td>Free Bird</td>
+<td>Lynyrd Skynyrd</td>
+<td>Fergus M</td>
+<td>Jamie is a soft boy</td>
+<td>From the grave</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.07</td>
+<td>8</td>
+<td>3</td>
+<td>Von dutch</td>
+<td>Charli xcx</td>
+<td>pollyannaw</td>
+<td>Montage League</td>
+<td>At the gym</td>
+</tr>
+</tbody>
+</table>
+<h2>Under Performers</h2>
+<p><em>Top 10 songs ranked by how many standard deviations below the round average they scored. The score column is still the raw points; round_avg is the mean across all songs in that round.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>z_in_round</th>
+<th>score</th>
+<th>round_avg</th>
+<th>song</th>
+<th>artist</th>
+<th>player</th>
+<th>league</th>
+<th>round</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-2.82</td>
+<td>-12</td>
+<td>4</td>
+<td>Guitar Pick</td>
+<td>MEMI</td>
+<td>Joshua W</td>
+<td>Jamie is a soft boy</td>
+<td>Dirty foreigners</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-2.25</td>
+<td>-4</td>
+<td>2.09</td>
+<td>Your Heart Is a Muscle the Size of Your Fist</td>
+<td>Ramshackle Glory</td>
+<td>Fred N</td>
+<td>Basic League</td>
+<td>Body Part</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-2.17</td>
+<td>-1</td>
+<td>3</td>
+<td>Sheila</td>
+<td>Jamie T</td>
+<td>harryg</td>
+<td>Basic League</td>
+<td>Jamie’s round</td>
+</tr>
+<tr>
+<td>4</td>
+<td>-2.12</td>
+<td>0</td>
+<td>3</td>
+<td>Cigaro</td>
+<td>System Of A Down</td>
+<td>Sam Mil</td>
+<td>Montage League</td>
+<td>Pre-drinks</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-2.1</td>
+<td>-10</td>
+<td>4</td>
+<td>Hands Open</td>
+<td>Snow Patrol</td>
+<td>Luke G</td>
+<td>Jamie is a soft boy</td>
+<td>Song from a video game soundtrack.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-2.09</td>
+<td>-9</td>
+<td>4</td>
+<td>Into the West</td>
+<td>Annie Lennox</td>
+<td>Fergus M</td>
+<td>Jamie is a soft boy</td>
+<td>Worst (Best) songs to play at a funeral</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-2.04</td>
+<td>-5</td>
+<td>4</td>
+<td>21 Seconds</td>
+<td>So Solid Crew</td>
+<td>Josh B</td>
+<td>Jamie is a soft boy</td>
+<td>Bow Chicka Wow Wow</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-1.85</td>
+<td>-5</td>
+<td>4</td>
+<td>Angel Of Death</td>
+<td>Slayer</td>
+<td>Luke G</td>
+<td>Jamie is a soft boy</td>
+<td>Freebird!</td>
+</tr>
+<tr>
+<td>9</td>
+<td>-1.81</td>
+<td>-4</td>
+<td>4</td>
+<td>Nutshell</td>
+<td>Alice In Chains</td>
+<td>Joe</td>
+<td>Jamie is a soft boy</td>
+<td>You lot are fucking old</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-1.81</td>
+<td>-4</td>
+<td>4</td>
+<td>Saturday Night</td>
+<td>Whigfield</td>
+<td>Luke G</td>
+<td>Jamie is a soft boy</td>
+<td>You lot are fucking old</td>
+</tr>
+</tbody>
+</table>
+<h2>Most Played Artists</h2>
+<p><em>Top 10 artists by number of songs submitted across all rounds.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>artist</th>
+<th>plays</th>
+<th>total_score</th>
+<th>avg_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The Wombats</td>
+<td>12</td>
+<td>25</td>
+<td>2.08</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Green Day</td>
+<td>5</td>
+<td>27</td>
+<td>5.4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>System Of A Down</td>
+<td>5</td>
+<td>17</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Queen</td>
+<td>3</td>
+<td>27</td>
+<td>9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gorillaz</td>
+<td>3</td>
+<td>26</td>
+<td>8.67</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fall Out Boy</td>
+<td>3</td>
+<td>20</td>
+<td>6.67</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Offspring</td>
+<td>3</td>
+<td>19</td>
+<td>6.33</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kid Kapichi</td>
+<td>3</td>
+<td>18</td>
+<td>6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Muse</td>
+<td>3</td>
+<td>17</td>
+<td>5.67</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Eminem</td>
+<td>3</td>
+<td>16</td>
+<td>5.33</td>
+</tr>
+</tbody>
+</table>
+<h2>Repeats</h2>
+<p><em>Tracks (matched by Spotify track ID) submitted in more than one round, either by the same player or by different players.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>plays</th>
+<th>song</th>
+<th>artist</th>
+<th>players</th>
+<th>total_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>Snacky In My Packy</td>
+<td>Gabby's Dollhouse</td>
+<td>Fred N, harryg</td>
+<td>12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>Supermassive Black Hole</td>
+<td>Muse</td>
+<td>Joshua W, pollyannaw</td>
+<td>10</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>back to friends</td>
+<td>sombr</td>
+<td>MorbidlyObeseCat, pollyannaw</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>Invaders Must Die</td>
+<td>The Prodigy</td>
+<td>Sam Mit</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>Turn</td>
+<td>The Wombats</td>
+<td>Sam Mil</td>
+<td>4</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>Heat Waves</td>
+<td>Glass Animals</td>
+<td>Sam Mil, Solsti</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2</td>
+<td>Get Low</td>
+<td>Lil Jon &amp; The East Side Boyz</td>
+<td>Josh B, Solsti</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2>Forfeits</h2>
+<p><em>Points lost on a player's songs when voters in that round failed to cast a ballot. Music League discards votes given by anyone who missed the voting deadline.</em></p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>player</th>
+<th>songs_with_forfeit</th>
+<th>total_forfeit_points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>MorbidlyObeseCat</td>
+<td>1</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sam Mil</td>
+<td>2</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fergus M</td>
+<td>2</td>
+<td>-6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Josh B</td>
+<td>1</td>
+<td>-7</td>
+</tr>
+</tbody>
+</table>
+<h2>Round Winners</h2>
+<p><em>Highest-scoring song from every round, in chronological order. Ties surface as multiple rows.</em></p>
+<table>
+<thead>
+<tr>
+<th>round_date</th>
+<th>league</th>
+<th>round</th>
+<th>score</th>
+<th>song</th>
+<th>artist</th>
+<th>player</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-09-14 20:02:18+00:00</td>
+<td>Show me what you got</td>
+<td>Awesome Obscurity</td>
+<td>14</td>
+<td>Night On My Mind</td>
+<td>Sharky</td>
+<td>Jimbabwe</td>
+</tr>
+<tr>
+<td>2025-09-17 20:48:40+00:00</td>
+<td>Show me what you got</td>
+<td>New Hotness</td>
+<td>10</td>
+<td>Even In Arcadia</td>
+<td>Sleep Token</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2025-09-18 15:38:05+00:00</td>
+<td>Show me what you got</td>
+<td>Movie Soundtrack</td>
+<td>12</td>
+<td>Danger Zone - From "Top Gun" Original Soundtrack</td>
+<td>Kenny Loggins</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2025-09-19 17:21:51+00:00</td>
+<td>Show me what you got</td>
+<td>Thanks, Mum and Dad</td>
+<td>11</td>
+<td>Teenage Kicks</td>
+<td>The Undertones</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2025-09-20 23:39:39+00:00</td>
+<td>Show me what you got</td>
+<td>Duets</td>
+<td>17</td>
+<td>Under Pressure - Remastered 2011</td>
+<td>Queen</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2025-09-23 18:12:56+00:00</td>
+<td>Show me what you got</td>
+<td>Earworms</td>
+<td>11</td>
+<td>Snacky In My Packy</td>
+<td>Gabby's Dollhouse</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2025-09-26 08:27:49+00:00</td>
+<td>Show me what you got</td>
+<td>Crank It Up!</td>
+<td>12</td>
+<td>Everytime We Touch</td>
+<td>Cascada</td>
+<td>Solsti</td>
+</tr>
+<tr>
+<td>2025-09-28 21:37:35+00:00</td>
+<td>Show me what you got</td>
+<td>Name Check</td>
+<td>12</td>
+<td>Jolene</td>
+<td>Dolly Parton</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2025-09-29 20:29:20+00:00</td>
+<td>Show me what you got</td>
+<td>Covers</td>
+<td>14</td>
+<td>Hurt</td>
+<td>Johnny Cash</td>
+<td>Sam Mil</td>
+</tr>
+<tr>
+<td>2025-10-01 12:46:26+00:00</td>
+<td>Show me what you got</td>
+<td>Shorties</td>
+<td>14</td>
+<td>Hit the Road Jack</td>
+<td>Ray Charles</td>
+<td>Luke G</td>
+</tr>
+<tr>
+<td>2025-10-10 08:15:49+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>He did what?</td>
+<td>13</td>
+<td>Ignition - Remix</td>
+<td>R. Kelly</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2025-10-12 18:02:59+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Dirty foreigners</td>
+<td>13</td>
+<td>ZITTI E BUONI</td>
+<td>Måneskin</td>
+<td>Joe</td>
+</tr>
+<tr>
+<td>2025-10-17 10:49:19+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Deep Cuts</td>
+<td>16</td>
+<td>You're Crashing, But You're No Wave</td>
+<td>Fall Out Boy</td>
+<td>Jimbabwe</td>
+</tr>
+<tr>
+<td>2025-10-21 11:11:21+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>From the grave</td>
+<td>13</td>
+<td>Free Bird</td>
+<td>Lynyrd Skynyrd</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2025-10-22 19:34:29+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>A family affair</td>
+<td>12</td>
+<td>Teenagers</td>
+<td>My Chemical Romance</td>
+<td>Jimbabwe</td>
+</tr>
+<tr>
+<td>2025-10-25 10:23:16+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Freebird!</td>
+<td>11</td>
+<td>25 or 6 to 4 - 2002 Remaster</td>
+<td>Chicago</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2025-10-28 19:17:37+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Worst (Best) songs to play at a funeral</td>
+<td>14</td>
+<td>Zombie</td>
+<td>The Cranberries</td>
+<td>MorbidlyObeseCat</td>
+</tr>
+<tr>
+<td>2025-11-01 12:14:24+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Fight the Power</td>
+<td>11</td>
+<td>Wenceslas</td>
+<td>Gnome</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2025-11-05 00:39:46+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>You lot are fucking old</td>
+<td>11</td>
+<td>Kiss from a Rose</td>
+<td>Seal</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2025-11-06 18:48:01+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Bow Chicka Wow Wow</td>
+<td>10</td>
+<td>Theme From Shaft - Remastered 2009</td>
+<td>Isaac Hayes</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2025-11-06 18:48:01+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Bow Chicka Wow Wow</td>
+<td>10</td>
+<td>The Loophole</td>
+<td>Garfunkel and Oates</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2025-11-11 20:41:00+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Hottest record</td>
+<td>10</td>
+<td>Teenage Dream</td>
+<td>Katy Perry</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2025-11-11 20:41:00+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Hottest record</td>
+<td>10</td>
+<td>SUPERMODEL</td>
+<td>Måneskin</td>
+<td>Joshua W</td>
+</tr>
+<tr>
+<td>2025-11-16 18:38:37+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Best Remix</td>
+<td>15</td>
+<td>19-2000 - Soulchild Remix</td>
+<td>Gorillaz</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2025-11-21 16:43:03+00:00</td>
+<td>Jamie is a soft boy</td>
+<td>Song from a video game soundtrack.</td>
+<td>13</td>
+<td>The Rebel Path</td>
+<td>P.T. Adamczyk</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2026-01-04 16:20:34+00:00</td>
+<td>Montage League</td>
+<td>Waking up</td>
+<td>6</td>
+<td>Have A Nice Day</td>
+<td>Stereophonics</td>
+<td>MorbidlyObeseCat</td>
+</tr>
+<tr>
+<td>2026-01-07 20:09:23+00:00</td>
+<td>Montage League</td>
+<td>At the gym</td>
+<td>8</td>
+<td>Von dutch</td>
+<td>Charli xcx</td>
+<td>pollyannaw</td>
+</tr>
+<tr>
+<td>2026-01-10 14:19:22+00:00</td>
+<td>Montage League</td>
+<td>At work</td>
+<td>8</td>
+<td>Cold Reactor</td>
+<td>Everything Everything</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2026-01-13 16:05:51+00:00</td>
+<td>Montage League</td>
+<td>Family time</td>
+<td>7</td>
+<td>Learn to Fly</td>
+<td>Foo Fighters</td>
+<td>Josh B</td>
+</tr>
+<tr>
+<td>2026-01-16 20:15:26+00:00</td>
+<td>Montage League</td>
+<td>Making dinner</td>
+<td>6</td>
+<td>Jump in the Line</td>
+<td>Harry Belafonte</td>
+<td>Joshua W</td>
+</tr>
+<tr>
+<td>2026-01-16 20:15:26+00:00</td>
+<td>Montage League</td>
+<td>Making dinner</td>
+<td>6</td>
+<td>Deceptacon</td>
+<td>Le Tigre</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2026-01-20 19:32:43+00:00</td>
+<td>Montage League</td>
+<td>Pre-drinks</td>
+<td>6</td>
+<td>Fat Lip</td>
+<td>Sum 41</td>
+<td>Josh B</td>
+</tr>
+<tr>
+<td>2026-01-24 20:01:35+00:00</td>
+<td>Montage League</td>
+<td>In the club</td>
+<td>5</td>
+<td>Freed From Desire</td>
+<td>Gala</td>
+<td>Peter L</td>
+</tr>
+<tr>
+<td>2026-01-24 20:01:35+00:00</td>
+<td>Montage League</td>
+<td>In the club</td>
+<td>5</td>
+<td>Get Low</td>
+<td>Lil Jon &amp; The East Side Boyz</td>
+<td>Solsti</td>
+</tr>
+<tr>
+<td>2026-01-24 20:01:35+00:00</td>
+<td>Montage League</td>
+<td>In the club</td>
+<td>5</td>
+<td>We Are Your Friends - Justice Vs Simian</td>
+<td>Justice</td>
+<td>pollyannaw</td>
+</tr>
+<tr>
+<td>2026-01-27 21:15:41+00:00</td>
+<td>Montage League</td>
+<td>The morning after</td>
+<td>5</td>
+<td>back to friends</td>
+<td>sombr</td>
+<td>pollyannaw</td>
+</tr>
+<tr>
+<td>2026-02-04 19:35:48+00:00</td>
+<td>Song for the Season</td>
+<td>Spring</td>
+<td>5</td>
+<td>Cutting My Fingers Off</td>
+<td>Turnover</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2026-02-07 21:01:29+00:00</td>
+<td>Song for the Season</td>
+<td>Summer</td>
+<td>6</td>
+<td>Hertz</td>
+<td>Amyl and The Sniffers</td>
+<td>Joshua W</td>
+</tr>
+<tr>
+<td>2026-02-07 21:01:29+00:00</td>
+<td>Song for the Season</td>
+<td>Summer</td>
+<td>6</td>
+<td>Wild Flowers</td>
+<td>Frank Carter &amp; The Rattlesnakes</td>
+<td>harryg</td>
+</tr>
+<tr>
+<td>2026-02-11 13:01:06+00:00</td>
+<td>Song for the Season</td>
+<td>Autumn</td>
+<td>5</td>
+<td>The Boys Of Summer - Remastered 2024</td>
+<td>Don Henley</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2026-02-11 13:01:06+00:00</td>
+<td>Song for the Season</td>
+<td>Autumn</td>
+<td>5</td>
+<td>Spooky</td>
+<td>Dusty Springfield</td>
+<td>Joshua W</td>
+</tr>
+<tr>
+<td>2026-02-15 12:49:40+00:00</td>
+<td>Song for the Season</td>
+<td>Winter</td>
+<td>6</td>
+<td>The March of the Varangian Guard</td>
+<td>Turisas</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2026-02-15 12:49:40+00:00</td>
+<td>Song for the Season</td>
+<td>Winter</td>
+<td>6</td>
+<td>Winter 1 - 2022</td>
+<td>Max Richter</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2026-03-11 17:58:26+00:00</td>
+<td>Basic League</td>
+<td>Place</td>
+<td>6</td>
+<td>Walking in Memphis</td>
+<td>Marc Cohn</td>
+<td>Joe</td>
+</tr>
+<tr>
+<td>2026-03-11 17:58:26+00:00</td>
+<td>Basic League</td>
+<td>Place</td>
+<td>6</td>
+<td>Moving to New York</td>
+<td>The Wombats</td>
+<td>Sam Mil</td>
+</tr>
+<tr>
+<td>2026-03-17 00:02:31+00:00</td>
+<td>Basic League</td>
+<td>Name</td>
+<td>6</td>
+<td>Andrew in Drag</td>
+<td>The Magnetic Fields</td>
+<td>Fred N</td>
+</tr>
+<tr>
+<td>2026-03-21 15:02:23+00:00</td>
+<td>Basic League</td>
+<td>Animal</td>
+<td>9</td>
+<td>Joker And The Thief</td>
+<td>Wolfmother</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2026-03-21 15:02:23+00:00</td>
+<td>Basic League</td>
+<td>Animal</td>
+<td>9</td>
+<td>Sardines</td>
+<td>Kid Kapichi</td>
+<td>Joshua W</td>
+</tr>
+<tr>
+<td>2026-03-26 08:04:11+00:00</td>
+<td>Basic League</td>
+<td>Colour</td>
+<td>8</td>
+<td>(Don't Fear) The Reaper</td>
+<td>Blue Öyster Cult</td>
+<td>Joe</td>
+</tr>
+<tr>
+<td>2026-04-01 00:01:56+00:00</td>
+<td>Basic League</td>
+<td>Job</td>
+<td>7</td>
+<td>The Artist In The Ambulance</td>
+<td>Thrice</td>
+<td>Joe</td>
+</tr>
+<tr>
+<td>2026-04-06 00:02:40+00:00</td>
+<td>Basic League</td>
+<td>Body Part</td>
+<td>5</td>
+<td>(I Just) Died In Your Arms</td>
+<td>Cutting Crew</td>
+<td>Joe</td>
+</tr>
+<tr>
+<td>2026-04-06 00:02:40+00:00</td>
+<td>Basic League</td>
+<td>Body Part</td>
+<td>5</td>
+<td>This Must Be the Place (Naive Melody) - 2005 Remaster</td>
+<td>Talking Heads</td>
+<td>Sam Mit</td>
+</tr>
+<tr>
+<td>2026-04-09 18:03:06+00:00</td>
+<td>Basic League</td>
+<td>Verb</td>
+<td>7</td>
+<td>Kiss and Run</td>
+<td>Quiet Houses</td>
+<td>Fergus M</td>
+</tr>
+<tr>
+<td>2026-04-14 21:48:15+00:00</td>
+<td>Basic League</td>
+<td>Jamie’s round</td>
+<td>6</td>
+<td>Nightswimming</td>
+<td>R.E.M.</td>
+<td>Sam Mit</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
