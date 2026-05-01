@@ -58,32 +58,31 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 |      7 | Jimbabwe         |        3 |          3 |          5 |             20 |
 |      8 | Josh B           |        2 |          4 |          5 |             19 |
 |      9 | Luke G           |        1 |          7 |          2 |             19 |
-|     10 | MorbidlyObeseCat |        2 |          4 |          4 |             18 |
-|     11 | Sam Mil          |        2 |          4 |          4 |             18 |
+|     10 | Sam Mil          |        2 |          4 |          4 |             18 |
+|     11 | MorbidlyObeseCat |        2 |          4 |          4 |             18 |
 |     12 | Peter L          |        1 |          3 |          4 |             13 |
 |     13 | Solsti           |        2 |          2 |          2 |             12 |
 |     14 | pollyannaw       |        3 |          0 |          1 |             10 |
 
 ## Biggest Fans/Haters
 
-_Voter whose votes for the player land highest (fan) and lowest (hater) relative to that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std. Rounds where the voter gave every song the same vote are dropped (z is undefined). fan_pts / hater_pts are the raw cumulative points for context._
+_For each submitter, the voter whose votes land highest (fan) and lowest (hater) relative to that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std. Pairs are required to share at least 10 rounds so a single outlier vote can't crown a fan/hater. Rounds where the voter gave every song the same vote are dropped (z is undefined). fan_pts / hater_pts are the raw cumulative points for context. See the 'Biggest Fans/Haters (everyone)' table at the end of the report for the unfiltered pair-by-pair view._
 
-|   rank | player           | biggest_fan      |   fan_z |   fan_pts |   shared_rounds | biggest_hater   |   hater_z |   hater_pts |
-|--------|------------------|------------------|---------|-----------|-----------------|-----------------|-----------|-------------|
-|      1 | Fred N           | pollyannaw       |    2    |         2 |               1 | Fergus M        |     -0.45 |           5 |
-|      2 | Joshua W         | pollyannaw       |    1.41 |         7 |               3 | Josh B          |     -0.79 |          -4 |
-|      3 | Luke G           | pollyannaw       |    1    |         2 |               1 | Joshua W        |     -0.5  |           4 |
-|      4 | Sam Mit          | Fergus M         |    0.74 |        23 |              16 | pollyannaw      |     -0.75 |           2 |
-|      5 | Jimbabwe         | Sam Mit          |    0.72 |        18 |              11 | pollyannaw      |     -0.3  |           6 |
-|      6 | Peter L          | Josh B           |    0.65 |        16 |              12 | Sam Mil         |     -0.53 |           1 |
-|      7 | Josh B           | pollyannaw       |    0.5  |         4 |               2 | Joshua W        |     -0.54 |           5 |
-|      8 | Solsti           | Sam Mil          |    0.45 |        18 |              14 | Fred N          |     -0.66 |           2 |
-|      9 | Fergus M         | Sam Mit          |    0.42 |        12 |              11 | Solsti          |     -0.27 |           4 |
-|     10 | harryg           | Fred N           |    0.41 |        14 |              12 | pollyannaw      |     -0.5  |           7 |
-|     11 | pollyannaw       | Sam Mil          |    0.33 |         4 |               3 | Peter L         |     -1    |           3 |
-|     12 | Joe              | Peter L          |    0.32 |        11 |              13 | Sam Mil         |     -0.39 |           1 |
-|     13 | Sam Mil          | MorbidlyObeseCat |    0.29 |        19 |              18 | harryg          |     -0.47 |           2 |
-|     14 | MorbidlyObeseCat | Peter L          |    0.24 |        12 |              15 | Joe             |     -0.41 |           1 |
+|   rank | player           | biggest_fan      |   fan_z |   fan_pts |   shared_rounds | biggest_hater    |   hater_z |   hater_pts |
+|--------|------------------|------------------|---------|-----------|-----------------|------------------|-----------|-------------|
+|      1 | Fred N           | Jimbabwe         |    0.78 |        21 |              11 | Fergus M         |     -0.45 |           5 |
+|      2 | Sam Mit          | Fergus M         |    0.74 |        23 |              16 | Peter L          |     -0.32 |           6 |
+|      3 | Jimbabwe         | Sam Mit          |    0.72 |        18 |              11 | Josh B           |     -0.18 |           7 |
+|      4 | Peter L          | Josh B           |    0.65 |        16 |              12 | MorbidlyObeseCat |     -0.43 |           5 |
+|      5 | Solsti           | Sam Mil          |    0.45 |        18 |              14 | Fred N           |     -0.66 |           2 |
+|      6 | Fergus M         | Sam Mit          |    0.42 |        12 |              11 | Solsti           |     -0.27 |           4 |
+|      7 | harryg           | Fred N           |    0.41 |        14 |              12 | Luke G           |     -0.37 |           2 |
+|      8 | Josh B           | Sam Mil          |    0.39 |        20 |              19 | Joshua W         |     -0.54 |           5 |
+|      9 | Joe              | Peter L          |    0.32 |        11 |              13 | Sam Mil          |     -0.39 |           1 |
+|     10 | Sam Mil          | MorbidlyObeseCat |    0.29 |        19 |              18 | harryg           |     -0.47 |           2 |
+|     11 | Luke G           | Fred N           |    0.25 |        20 |              16 | Joshua W         |     -0.5  |           4 |
+|     12 | MorbidlyObeseCat | Peter L          |    0.24 |        12 |              15 | Joe              |     -0.41 |           1 |
+|     13 | Joshua W         | MorbidlyObeseCat |    0.16 |        16 |              16 | Sam Mil          |     -0.69 |          -1 |
 
 ## Over Performers
 
@@ -221,3 +220,190 @@ _Highest-scoring song from every round, in chronological order. Ties surface as 
 | 2026-04-06 00:02:40+00:00 | Basic League         | Body Part                               |       5 | This Must Be the Place (Naive Melody) - 2005 Remaster | Talking Heads                   | Sam Mit          |
 | 2026-04-09 18:03:06+00:00 | Basic League         | Verb                                    |       7 | Kiss and Run                                          | Quiet Houses                    | Fergus M         |
 | 2026-04-14 21:48:15+00:00 | Basic League         | Jamie’s round                           |       6 | Nightswimming                                         | R.E.M.                          | Sam Mit          |
+
+## Biggest Fans/Haters (everyone)
+
+_Every (submitter, voter) pair sorted by mean z-score, descending. No minimum-shared-rounds filter — pairs with shared_rounds=1 or 2 will have wildly variable z-scores, so use shared_rounds as your confidence guide. Top of the table = strongest net fan signal; bottom = strongest net hater signal._
+
+|   rank | player           | voter            |   avg_z |   total_points |   shared_rounds |
+|--------|------------------|------------------|---------|----------------|-----------------|
+|      1 | Fred N           | pollyannaw       |    2    |              2 |               1 |
+|      2 | Joshua W         | pollyannaw       |    1.41 |              7 |               3 |
+|      3 | Luke G           | pollyannaw       |    1    |              2 |               1 |
+|      4 | Fred N           | Jimbabwe         |    0.78 |             21 |              11 |
+|      5 | Sam Mit          | Fergus M         |    0.74 |             23 |              16 |
+|      6 | Jimbabwe         | Sam Mit          |    0.72 |             18 |              11 |
+|      7 | Peter L          | Josh B           |    0.65 |             16 |              12 |
+|      8 | Peter L          | Joshua W         |    0.64 |             16 |              11 |
+|      9 | Jimbabwe         | harryg           |    0.64 |             14 |              10 |
+|     10 | Sam Mit          | Luke G           |    0.64 |             26 |              16 |
+|     11 | Josh B           | pollyannaw       |    0.5  |              4 |               2 |
+|     12 | Jimbabwe         | Peter L          |    0.48 |             11 |              10 |
+|     13 | Solsti           | Sam Mil          |    0.45 |             18 |              14 |
+|     14 | Josh B           | MorbidlyObeseCat |    0.44 |             12 |               9 |
+|     15 | Jimbabwe         | Sam Mil          |    0.42 |             14 |              12 |
+|     16 | Fergus M         | Sam Mit          |    0.42 |             12 |              11 |
+|     17 | harryg           | Fred N           |    0.41 |             14 |              12 |
+|     18 | Josh B           | Sam Mil          |    0.39 |             20 |              19 |
+|     19 | Sam Mit          | Fred N           |    0.39 |             21 |              17 |
+|     20 | Jimbabwe         | MorbidlyObeseCat |    0.38 |             17 |              13 |
+|     21 | Fred N           | Joe              |    0.37 |             11 |              12 |
+|     22 | harryg           | Solsti           |    0.37 |             17 |              14 |
+|     23 | harryg           | Joe              |    0.36 |             12 |              13 |
+|     24 | pollyannaw       | Sam Mil          |    0.33 |              4 |               3 |
+|     25 | Joe              | Peter L          |    0.32 |             11 |              13 |
+|     26 | Sam Mit          | Josh B           |    0.31 |             17 |              15 |
+|     27 | Josh B           | Sam Mit          |    0.31 |             12 |              12 |
+|     28 | Fred N           | Peter L          |    0.3  |             15 |              15 |
+|     29 | Peter L          | harryg           |    0.3  |             19 |              18 |
+|     30 | Sam Mit          | Joe              |    0.3  |             10 |              11 |
+|     31 | Sam Mil          | MorbidlyObeseCat |    0.29 |             19 |              18 |
+|     32 | Jimbabwe         | Solsti           |    0.27 |             14 |              13 |
+|     33 | Sam Mit          | harryg           |    0.27 |             14 |              15 |
+|     34 | Josh B           | Jimbabwe         |    0.27 |              6 |               7 |
+|     35 | harryg           | Joshua W         |    0.27 |             15 |              14 |
+|     36 | Solsti           | Joshua W         |    0.26 |             14 |              12 |
+|     37 | pollyannaw       | Solsti           |    0.25 |              3 |               2 |
+|     38 | Luke G           | Fred N           |    0.25 |             20 |              16 |
+|     39 | Fergus M         | pollyannaw       |    0.25 |              9 |               6 |
+|     40 | Joe              | Fred N           |    0.25 |             12 |              13 |
+|     41 | pollyannaw       | Joshua W         |    0.25 |              4 |               2 |
+|     42 | MorbidlyObeseCat | Peter L          |    0.24 |             12 |              15 |
+|     43 | harryg           | Sam Mit          |    0.24 |             15 |              13 |
+|     44 | MorbidlyObeseCat | Fergus M         |    0.23 |              8 |              10 |
+|     45 | Sam Mit          | Solsti           |    0.21 |             10 |              11 |
+|     46 | Luke G           | Solsti           |    0.21 |             10 |              13 |
+|     47 | Jimbabwe         | Joe              |    0.2  |              8 |              12 |
+|     48 | Joe              | harryg           |    0.2  |             15 |              18 |
+|     49 | Peter L          | Fred N           |    0.19 |              7 |               9 |
+|     50 | harryg           | Jimbabwe         |    0.19 |             11 |              11 |
+|     51 | Sam Mit          | Jimbabwe         |    0.19 |             14 |              13 |
+|     52 | Jimbabwe         | Luke G           |    0.19 |              9 |              10 |
+|     53 | MorbidlyObeseCat | Sam Mil          |    0.18 |             10 |              15 |
+|     54 | Joe              | Luke G           |    0.17 |              7 |               9 |
+|     55 | harryg           | Fergus M         |    0.16 |             17 |              17 |
+|     56 | Joe              | Fergus M         |    0.16 |             10 |              14 |
+|     57 | Joe              | Sam Mit          |    0.16 |              5 |               8 |
+|     58 | Fergus M         | Josh B           |    0.16 |             19 |              19 |
+|     59 | Joshua W         | MorbidlyObeseCat |    0.16 |             16 |              16 |
+|     60 | Luke G           | Joe              |    0.15 |              8 |              13 |
+|     61 | Fred N           | Joshua W         |    0.14 |             13 |              14 |
+|     62 | Sam Mil          | Fergus M         |    0.14 |              6 |               8 |
+|     63 | Fred N           | Luke G           |    0.14 |             16 |              18 |
+|     64 | Joe              | MorbidlyObeseCat |    0.13 |             10 |              14 |
+|     65 | Joshua W         | Peter L          |    0.12 |             13 |              18 |
+|     66 | Sam Mil          | Joshua W         |    0.11 |             11 |              12 |
+|     67 | MorbidlyObeseCat | Luke G           |    0.11 |             14 |              14 |
+|     68 | Sam Mit          | Joshua W         |    0.09 |             10 |              13 |
+|     69 | Joshua W         | harryg           |    0.09 |             13 |              15 |
+|     70 | Sam Mil          | Peter L          |    0.09 |              7 |              13 |
+|     71 | Solsti           | Fergus M         |    0.08 |              7 |               9 |
+|     72 | Fred N           | Sam Mil          |    0.07 |             13 |              17 |
+|     73 | Luke G           | Sam Mit          |    0.06 |             13 |              16 |
+|     74 | Josh B           | harryg           |    0.06 |              9 |              13 |
+|     75 | Josh B           | Luke G           |    0.05 |              6 |              13 |
+|     76 | MorbidlyObeseCat | harryg           |    0.05 |              7 |              12 |
+|     77 | harryg           | MorbidlyObeseCat |    0.04 |             16 |              17 |
+|     78 | Fred N           | Josh B           |    0.04 |             10 |              12 |
+|     79 | Joe              | Josh B           |    0.04 |              3 |               5 |
+|     80 | Joshua W         | Joe              |    0.04 |              8 |              13 |
+|     81 | harryg           | Josh B           |    0.03 |              4 |               7 |
+|     82 | Joe              | Solsti           |    0.02 |              3 |               7 |
+|     83 | Fergus M         | MorbidlyObeseCat |    0.02 |             13 |              18 |
+|     84 | Fergus M         | Joe              |    0.02 |              5 |              10 |
+|     85 | MorbidlyObeseCat | Josh B           |    0.02 |              9 |              11 |
+|     86 | Fergus M         | Jimbabwe         |    0.01 |             12 |              16 |
+|     87 | MorbidlyObeseCat | Joshua W         |    0.01 |             13 |              14 |
+|     88 | pollyannaw       | Sam Mit          |    0    |              4 |               2 |
+|     89 | MorbidlyObeseCat | pollyannaw       |    0    |              7 |               5 |
+|     90 | Fergus M         | Sam Mil          |   -0    |             11 |              18 |
+|     91 | pollyannaw       | MorbidlyObeseCat |   -0.03 |              4 |               3 |
+|     92 | Joe              | Joshua W         |   -0.03 |              8 |              12 |
+|     93 | Sam Mil          | Fred N           |   -0.04 |             10 |              15 |
+|     94 | Peter L          | Sam Mit          |   -0.04 |             13 |              16 |
+|     95 | Peter L          | Fergus M         |   -0.04 |             11 |              14 |
+|     96 | Joshua W         | Jimbabwe         |   -0.05 |              7 |              10 |
+|     97 | Fergus M         | Joshua W         |   -0.06 |             13 |              15 |
+|     98 | Fergus M         | Luke G           |   -0.06 |              9 |              16 |
+|     99 | Fred N           | Solsti           |   -0.07 |             14 |              16 |
+|    100 | Jimbabwe         | Fred N           |   -0.08 |              6 |              10 |
+|    101 | Jimbabwe         | Fergus M         |   -0.08 |             10 |              14 |
+|    102 | Sam Mit          | Sam Mil          |   -0.09 |             10 |              13 |
+|    103 | Luke G           | Josh B           |   -0.09 |             10 |              15 |
+|    104 | Solsti           | harryg           |   -0.09 |              6 |              12 |
+|    105 | harryg           | Peter L          |   -0.1  |              6 |              14 |
+|    106 | MorbidlyObeseCat | Jimbabwe         |   -0.1  |             10 |              13 |
+|    107 | Solsti           | pollyannaw       |   -0.11 |              3 |               2 |
+|    108 | Josh B           | Solsti           |   -0.11 |              6 |               8 |
+|    109 | Joshua W         | Sam Mit          |   -0.12 |              8 |              14 |
+|    110 | Luke G           | Sam Mil          |   -0.12 |              9 |              15 |
+|    111 | Fergus M         | Peter L          |   -0.13 |              8 |              17 |
+|    112 | Fergus M         | harryg           |   -0.13 |              7 |              15 |
+|    113 | Fred N           | harryg           |   -0.13 |             11 |              15 |
+|    114 | Solsti           | Jimbabwe         |   -0.14 |              5 |              10 |
+|    115 | Sam Mit          | MorbidlyObeseCat |   -0.15 |             13 |              18 |
+|    116 | MorbidlyObeseCat | Fred N           |   -0.15 |              4 |              11 |
+|    117 | Josh B           | Peter L          |   -0.15 |              6 |              15 |
+|    118 | Sam Mil          | Luke G           |   -0.16 |              6 |              11 |
+|    119 | Solsti           | Josh B           |   -0.17 |              5 |               9 |
+|    120 | Sam Mil          | Solsti           |   -0.17 |             12 |              13 |
+|    121 | Peter L          | Solsti           |   -0.17 |              6 |               8 |
+|    122 | Joshua W         | Luke G           |   -0.18 |              5 |              11 |
+|    123 | Sam Mil          | Joe              |   -0.18 |              4 |              10 |
+|    124 | Jimbabwe         | Josh B           |   -0.18 |              7 |              11 |
+|    125 | Sam Mil          | Josh B           |   -0.18 |              6 |              17 |
+|    126 | Solsti           | MorbidlyObeseCat |   -0.19 |              4 |               7 |
+|    127 | Josh B           | Fergus M         |   -0.19 |              9 |              15 |
+|    128 | Fergus M         | Fred N           |   -0.21 |              5 |              12 |
+|    129 | Solsti           | Joe              |   -0.23 |              2 |               9 |
+|    130 | Sam Mil          | Jimbabwe         |   -0.23 |              6 |              13 |
+|    131 | MorbidlyObeseCat | Sam Mit          |   -0.23 |              8 |              13 |
+|    132 | Luke G           | Jimbabwe         |   -0.24 |              2 |               7 |
+|    133 | Solsti           | Luke G           |   -0.25 |              3 |              10 |
+|    134 | Joshua W         | Fred N           |   -0.25 |              7 |              10 |
+|    135 | Peter L          | Joe              |   -0.26 |              3 |              12 |
+|    136 | Luke G           | Peter L          |   -0.26 |              2 |              10 |
+|    137 | Fergus M         | Solsti           |   -0.27 |              4 |              11 |
+|    138 | pollyannaw       | harryg           |   -0.28 |             10 |               9 |
+|    139 | Joe              | Jimbabwe         |   -0.29 |              2 |              11 |
+|    140 | Jimbabwe         | Joshua W         |   -0.29 |              5 |               9 |
+|    141 | Jimbabwe         | pollyannaw       |   -0.3  |              6 |               5 |
+|    142 | MorbidlyObeseCat | Solsti           |   -0.31 |              2 |               6 |
+|    143 | Sam Mit          | Peter L          |   -0.32 |              6 |              14 |
+|    144 | Luke G           | Fergus M         |   -0.32 |              2 |              15 |
+|    145 | Fred N           | Sam Mit          |   -0.32 |              9 |              15 |
+|    146 | Peter L          | Jimbabwe         |   -0.33 |              3 |              11 |
+|    147 | harryg           | Sam Mil          |   -0.34 |              4 |              13 |
+|    148 | Fred N           | MorbidlyObeseCat |   -0.35 |              6 |              13 |
+|    149 | Peter L          | Luke G           |   -0.36 |              7 |              15 |
+|    150 | harryg           | Luke G           |   -0.37 |              2 |              14 |
+|    151 | Peter L          | pollyannaw       |   -0.38 |              5 |               4 |
+|    152 | Sam Mil          | Sam Mit          |   -0.38 |              3 |              17 |
+|    153 | Joe              | Sam Mil          |   -0.39 |              1 |              12 |
+|    154 | Sam Mil          | pollyannaw       |   -0.4  |              6 |               5 |
+|    155 | Joshua W         | Fergus M         |   -0.4  |              1 |              11 |
+|    156 | Josh B           | Fred N           |   -0.41 |              3 |              10 |
+|    157 | MorbidlyObeseCat | Joe              |   -0.41 |              1 |              10 |
+|    158 | Luke G           | MorbidlyObeseCat |   -0.41 |              4 |              14 |
+|    159 | Solsti           | Peter L          |   -0.41 |              2 |              11 |
+|    160 | Luke G           | harryg           |   -0.42 |              2 |              15 |
+|    161 | Solsti           | Sam Mit          |   -0.43 |              0 |              12 |
+|    162 | Peter L          | MorbidlyObeseCat |   -0.43 |              5 |              13 |
+|    163 | Fred N           | Fergus M         |   -0.45 |              5 |              14 |
+|    164 | Sam Mil          | harryg           |   -0.47 |              2 |              18 |
+|    165 | Joshua W         | Solsti           |   -0.49 |             -1 |               8 |
+|    166 | Luke G           | Joshua W         |   -0.5  |              4 |              15 |
+|    167 | harryg           | pollyannaw       |   -0.5  |              7 |               6 |
+|    168 | pollyannaw       | Jimbabwe         |   -0.5  |              1 |               1 |
+|    169 | pollyannaw       | Luke G           |   -0.5  |              1 |               1 |
+|    170 | pollyannaw       | Fred N           |   -0.5  |              2 |               2 |
+|    171 | Josh B           | Joe              |   -0.53 |              0 |              12 |
+|    172 | Peter L          | Sam Mil          |   -0.53 |              1 |               6 |
+|    173 | pollyannaw       | Fergus M         |   -0.54 |              2 |               2 |
+|    174 | Josh B           | Joshua W         |   -0.54 |              5 |              14 |
+|    175 | Solsti           | Fred N           |   -0.66 |              2 |              11 |
+|    176 | Joshua W         | Sam Mil          |   -0.69 |             -1 |              12 |
+|    177 | Sam Mit          | pollyannaw       |   -0.75 |              2 |               2 |
+|    178 | Joshua W         | Josh B           |   -0.79 |             -4 |               8 |
+|    179 | pollyannaw       | Josh B           |   -0.79 |              3 |               3 |
+|    180 | pollyannaw       | Peter L          |   -1    |              3 |               3 |

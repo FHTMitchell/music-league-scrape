@@ -27,6 +27,7 @@ _DEFAULT_OUTPUT_HTML = Path("out/analysis.html")
 _DEFAULT_LOG = Path("logs/analyze.log")
 _TOP_N = 10
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
+_FAN_HATER_MIN_ROUNDS = 10  # min shared rounds for the per-player picks to be meaningful
 _LEFT_LEAGUE = "[Left the league]"  # placeholder Music League shows for departed users
 
 
@@ -107,6 +108,7 @@ def _build_sections(df: pl.DataFrame) -> list[Section]:
         _section_repeated_songs(df),
         _section_forfeits(df),
         _section_round_winners(df),
+        _section_all_fans_and_haters(df),
     ]
 
 
@@ -317,8 +319,9 @@ def _vote_z_scores(df: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
-    pairs = (
+def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
+    """Per (submitter, voter) pair: mean z-score, total points, shared rounds."""
+    return (
         _vote_z_scores(df)
         .group_by(["player", "voter"])
         .agg(
@@ -327,6 +330,10 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
             pl.len().alias("shared_rounds"),
         )
     )
+
+
+def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
+    pairs = _pair_z_summary(df).filter(pl.col("shared_rounds") >= _FAN_HATER_MIN_ROUNDS)
     fans = (
         pairs.sort(["player", "avg_z"], descending=[False, True])
         .group_by("player", maintain_order=True)
@@ -349,12 +356,30 @@ def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
     return Section(
         title="Biggest Fans/Haters",
         header=(
-            "Voter whose votes for the player land highest (fan) and lowest (hater) "
-            "relative to that voter's own per-round vote distribution. Metric: mean "
-            "z-score across shared rounds, where z = (vote - voter_round_mean) / "
-            "voter_round_std. Rounds where the voter gave every song the same "
-            "vote are dropped (z is undefined). fan_pts / hater_pts are the raw "
-            "cumulative points for context."
+            "For each submitter, the voter whose votes land highest (fan) and lowest "
+            "(hater) relative to that voter's own per-round vote distribution. Metric: "
+            "mean z-score across shared rounds, where z = (vote - voter_round_mean) / "
+            "voter_round_std. Pairs are required to share at least "
+            f"{_FAN_HATER_MIN_ROUNDS} rounds so a single outlier vote can't crown a "
+            "fan/hater. Rounds where the voter gave every song the same vote are "
+            "dropped (z is undefined). fan_pts / hater_pts are the raw cumulative "
+            "points for context. See the 'Biggest Fans/Haters (everyone)' table at "
+            "the end of the report for the unfiltered pair-by-pair view."
+        ),
+        table=table,
+    )
+
+
+def _section_all_fans_and_haters(df: pl.DataFrame) -> Section:
+    table = _pair_z_summary(df).sort("avg_z", descending=True)
+    return Section(
+        title="Biggest Fans/Haters (everyone)",
+        header=(
+            "Every (submitter, voter) pair sorted by mean z-score, descending. No "
+            "minimum-shared-rounds filter — pairs with shared_rounds=1 or 2 will "
+            "have wildly variable z-scores, so use shared_rounds as your confidence "
+            "guide. Top of the table = strongest net fan signal; bottom = strongest "
+            "net hater signal."
         ),
         table=table,
     )
