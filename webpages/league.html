@@ -1,0 +1,565 @@
+
+<div class="row g-0 mb-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <h3 class="card-title text-fuschia">🎉 This league has ended 🎉</h3>
+                <p class="card-text fs-6">That doesn't mean that the fun has to end!</p>
+                <div class="row gy-3">
+                    <div class="col-12 col-sm">
+                        <a href="standings/" class="btn bg-turquoise text-white w-100 h-100 placeholder-wave">See how you did</a>
+                    </div>
+                    <div class="col-12 col-sm">
+                        <a href="/l/create/" class="btn bg-purple text-white w-100 h-100 placeholder-wave" hx-boost="false">Start a new league</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div>
+    <h5>Completed Rounds</h5>
+    
+    <div class="row mb-3 league-round-item" id="21ce32d19b2645248b84592a99b46655" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 8</span>
+                        <h5 class="card-title">Jamie’s round</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('21ce32d19b2645248b84592a99b46655')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#21ce32d19b2645248b84592a99b46655" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li><button hx-confirm="Are you sure you want to delete Jamie’s round? This round is completed." hx-delete="-/rounds/21ce32d19b2645248b84592a99b46655" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Any song" x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-04-14T21:48:15Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/6ps0T0V2lqu2rp7iGaSnGa" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/21ce32d19b2645248b84592a99b46655/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="6f1421f337aa483f836af8e11b294250" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 7</span>
+                        <h5 class="card-title">Verb</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('6f1421f337aa483f836af8e11b294250')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#6f1421f337aa483f836af8e11b294250" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Verb? This round is completed." hx-delete="-/rounds/6f1421f337aa483f836af8e11b294250" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a verb in" x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-04-09T18:03:06Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/6u2UbQ5JzdJXtO1Lxy2D4C" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/6f1421f337aa483f836af8e11b294250/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="632a0610f977437ea3555da063b40e10" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 6</span>
+                        <h5 class="card-title">Body Part</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('632a0610f977437ea3555da063b40e10')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#632a0610f977437ea3555da063b40e10" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Body Part? This round is completed." hx-delete="-/rounds/632a0610f977437ea3555da063b40e10" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a body part in " x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-04-06T00:02:40Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/0uv053sSDVPjLO3cYLE3gj" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/632a0610f977437ea3555da063b40e10/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="9e14f8f4a39549d2bf077f04884d0cd9" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 5</span>
+                        <h5 class="card-title">Job</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('9e14f8f4a39549d2bf077f04884d0cd9')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#9e14f8f4a39549d2bf077f04884d0cd9" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Job? This round is completed." hx-delete="-/rounds/9e14f8f4a39549d2bf077f04884d0cd9" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a job in " x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-04-01T00:01:56Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/1L3kZdKVGVQKRGqLS7Y0n3" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/9e14f8f4a39549d2bf077f04884d0cd9/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="e2634a31a9d349eb89ad6c82a9132090" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 4</span>
+                        <h5 class="card-title">Colour</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('e2634a31a9d349eb89ad6c82a9132090')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#e2634a31a9d349eb89ad6c82a9132090" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Colour? This round is completed." hx-delete="-/rounds/e2634a31a9d349eb89ad6c82a9132090" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a colour in " x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-03-26T08:04:11Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/0pZaa5izpecyPIra5VZuzV" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/e2634a31a9d349eb89ad6c82a9132090/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="e869b07c84a34ddd821e07264d3a92b9" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 3</span>
+                        <h5 class="card-title">Animal</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('e869b07c84a34ddd821e07264d3a92b9')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#e869b07c84a34ddd821e07264d3a92b9" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Animal? This round is completed." hx-delete="-/rounds/e869b07c84a34ddd821e07264d3a92b9" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have an animal in" x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-03-21T15:02:23Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/5dcgCCYII9tOfKso5Cgqtz" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/e869b07c84a34ddd821e07264d3a92b9/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="afa2092780494a189553d3b8f1c1552d" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 2</span>
+                        <h5 class="card-title">Name</h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('afa2092780494a189553d3b8f1c1552d')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#afa2092780494a189553d3b8f1c1552d" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Name? This round is completed." hx-delete="-/rounds/afa2092780494a189553d3b8f1c1552d" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a name in" x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-03-17T00:02:31Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/2ioW29HAbEPhJ15b4nxQil" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/afa2092780494a189553d3b8f1c1552d/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row mb-3 league-round-item" id="f737a24170ae40d6bee125cc7ad22261" x-data="{status: 'COMPLETE', viewerCanAction: false, viewerHasActioned: false}">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="card-text text-body-tertiary">ROUND 1</span>
+                        <h5 class="card-title">Place </h5>
+                    </div>
+                    <div class="col-auto" x-show="viewerIsAdmin">
+                        <div class="dropdown">
+                            <button class="btn rounded-circle p-2 p-sm-1" type="button" data-bs-toggle="dropdown" :class="{'btn-outline-dark': colorMode === 'light', 'btn-outline-light': colorMode === 'dark'}">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li x-show="viewerIsSystemAdmin"><button type="button" class="dropdown-item" @click="navigator.clipboard.writeText('f737a24170ae40d6bee125cc7ad22261')"><i class="bi bi-copy me-3"></i>Copy Round ID</button></li>
+                                
+                                <li><a href="edit/rounds/#f737a24170ae40d6bee125cc7ad22261" class="dropdown-item" hx-boost="false"><i class="bi bi-pencil me-3"></i>Edit Round</a></li>
+                                
+                                <li x-show="viewerIsSystemAdmin"><button hx-confirm="Are you sure you want to delete Place ? This round is completed." hx-delete="-/rounds/f737a24170ae40d6bee125cc7ad22261" class="dropdown-item text-danger"><i class="bi bi-trash me-3"></i>Delete Round</button></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div x-data="{format: 'D MMM YYYY h:mma'}">
+                    <p class="card-text" data-description="Song or artist must have a place in" x-html="linkifyStr($el.dataset.description || '', {defaultProtocol: 'https', target: '_blank', nl2br: true})"></p>
+                    <p class="card-text text-body-tertiary">
+                        
+                        <span x-data="{ts: dateFns.parse('2026-03-11T17:58:26Z'), showTs: false}">
+                            <button class="btn btn-sm text-start btn-link text-decoration-none p-0 text-body-tertiary" @click="showTs = !showTs">
+                                Completed <span x-text="dateFns.distanceInWordsToNow(ts)"></span> ago
+                                <i class="bi bi-info-circle"></i>
+                                <span x-show="showTs" class="px-2 badge rounded-pill" :class="{'text-bg-dark': colorMode === 'light', 'text-bg-light': colorMode === 'dark'}" x-text="`${dateFns.format(ts, format)} local`"></span>
+                            </button>
+                        </span>
+                        
+                    </p>
+                </div>
+                
+                <div class="row my-3 justify-content-center">
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="https://open.spotify.com/playlist/3yqqCwngfUd6Q8N6yIubd6" class="stretched-link text-body-tertiary text-decoration-none" target="_blank">
+                            <i class="bi bi-boombox flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">LISTEN</p>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-4 text-center position-relative">
+                        <a href="/l/417481c3557c40779d6aa0bcc6e805fb/f737a24170ae40d6bee125cc7ad22261/" class="stretched-link text-body-tertiary text-decoration-none">
+                            <i class="bi bi-trophy flex-stretch-0 fs-1"></i>
+                            <p class="mt-2 mb-0 fw-semibold">RESULTS</p>
+                        </a>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+</div>
+

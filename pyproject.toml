@@ -1,0 +1,44 @@
+[project]
+name = "music-league-scrape"
+version = "0.1.0"
+description = "Scrape app.musicleague.com leagues, rounds, songs and votes into a polars-friendly parquet."
+authors = [{ name = "FHTMitchell" }]
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "polars>=1.40.0,<2",
+    "httpx>=0.28.1,<0.29",
+    "selectolax>=0.4.7,<0.5",
+    "tenacity>=9.1.4,<10",
+    "tabulate>=0.10.0,<0.11",
+    "markdown>=3.10.2,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.3,<10",
+    "pre-commit>=4.6.0,<5",
+    "ruff>=0.15.12,<0.16",
+]
+
+[project.scripts]
+music-league-scrape = "src.scrape:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.uv]
+# uv equivalents of `pixi run app` / `pixi run test`. Invoke with e.g.
+#   uv run --extra dev pytest tests/ -v
+#   uv run python -m src.scrape
+# Real workflow uses pixi; this file exists for portability only.
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

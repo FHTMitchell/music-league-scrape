@@ -1,0 +1,1347 @@
+<div class="row gx-2 mb-4 justify-content-center">
+    
+    <div class="col-6">
+        <button class="btn w-100 px-1" :class="{'btn-dark': colorMode === 'dark', 'btn-light': colorMode === 'light'}" data-bs-target=".collapse" data-bs-toggle="collapse" @click="collapseAll = !collapseAll">
+            <i class="bi flex-stretch-0 me-1 fs-5 align-middle" :class="{'bi-arrows-expand': collapseAll, 'bi-arrows-collapse': !collapseAll}"></i>
+            <span x-text="collapseAll ? 'Show comments' : 'Hide comments'"></span>
+        </button>
+    </div>
+    
+    <div class="col-6">
+        <button class="btn w-100 px-1" :class="{'btn-dark': colorMode === 'dark', 'btn-light': colorMode === 'light'}" @click="onlyMine = !onlyMine">
+            <i class="bi bi-filter flex-stretch-0 me-1 fs-5 align-middle"></i>
+            <span x-text="onlyMine ? 'All song(s)' : 'My song(s)'"></span>
+        </button>
+    </div>
+</div>
+
+
+<div class="card mb-4" id="spotify:track:6G0NzOx2jEPFsSmhr9N8Ys" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02ace3e7aae0b7c78bbe1c4f35" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/6G0NzOx2jEPFsSmhr9N8Ys" target="_blank" class="text-purple text-decoration-none">Nightswimming</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">R.E.M.</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">Automatic For The People</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    6
+                </h3>
+                <p class="text-body-tertiary fw-semibold">6 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-1">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace rank-1">1st</h6>
+                        <i class="bi bi-trophy-fill fs-4 rank-1"></i>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=a05460ef-8ba7-4d67-87a1-3ceae0d1fe24&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Harley Voss</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && true" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap">Great pick.</span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-6G0NzOx2jEPFsSmhr9N8Ys">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f3f4f5dc-ddec-428b-8f54-bfd9b50d5baf&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Blair Nolan</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=9f14117c-cb2d-4d33-9f9d-c91b2ef99861&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Elliot Frey</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Casey Dunn</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Alex Carter</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">amberwave</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f20ea039-6a89-4483-9a8e-dc8c18bc85ea&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">cinderpost</b>
+                <span class="text-break ws-pre-wrap">Not for me but I get it.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:4sX4y9TzP4ReEjHoH7wF0F" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02c962604308a3d80b33c23c7b" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/4sX4y9TzP4ReEjHoH7wF0F" target="_blank" class="text-purple text-decoration-none">Gun</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">CHVRCHES</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">The Bones Of What You Believe (Special Edition)</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    5
+                </h3>
+                <p class="text-body-tertiary fw-semibold">4 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-2">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace rank-2">2nd</h6>
+                        <i class="bi bi-trophy-fill fs-4 rank-2"></i>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f3f4f5dc-ddec-428b-8f54-bfd9b50d5baf&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Blair Nolan</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-4sX4y9TzP4ReEjHoH7wF0F">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=09148901-861a-4a69-b6f6-7b3a34cbcea9&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">bluefox</b>
+                <span class="text-break ws-pre-wrap">Solid choice for the theme.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Alex Carter</b>
+                <span class="text-break ws-pre-wrap">Grew on me by the end.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">amberwave</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8085753a-d1f8-4740-9a6d-c3b9e9b6899c&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Devon Marsh</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">This is nice <br></span>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:7v9Ne4758aGFfFc5avh89h" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02506a7ea3d6224d687b72940c" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/7v9Ne4758aGFfFc5avh89h" target="_blank" class="text-purple text-decoration-none">Let&#39;s Dance to Joy Division</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">The Wombats</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">Proudly Present... A Guide to Love, Loss &amp; Desperation</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    4
+                </h3>
+                <p class="text-body-tertiary fw-semibold">5 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-3">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace rank-3">3rd</h6>
+                        <i class="bi bi-trophy-fill fs-4 rank-3"></i>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Greer Landry</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-7v9Ne4758aGFfFc5avh89h">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8085753a-d1f8-4740-9a6d-c3b9e9b6899c&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Devon Marsh</b>
+                <span class="text-break ws-pre-wrap">Classic.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f20ea039-6a89-4483-9a8e-dc8c18bc85ea&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">cinderpost</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Casey Dunn</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=9f14117c-cb2d-4d33-9f9d-c91b2ef99861&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Elliot Frey</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Bit of a slow burn.</span>
+                
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">amberwave</b>
+                <span class="text-break ws-pre-wrap">Instant upvote.</span>
+                
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=a05460ef-8ba7-4d67-87a1-3ceae0d1fe24&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Harley Voss</b>
+                <span class="text-break ws-pre-wrap">Missed the mark for me.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:05qCCJQJiOwvPQBb7akf1R" x-show="onlyMine ? true : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02f7a58da348455480bf248fd5" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/05qCCJQJiOwvPQBb7akf1R" target="_blank" class="text-purple text-decoration-none">Jamie All Over</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Mayday Parade</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">A Lesson In Romantics</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    4
+                </h3>
+                <p class="text-body-tertiary fw-semibold">3 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-4">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">4th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Alex Carter</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && true" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap">Great pick.</span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-05qCCJQJiOwvPQBb7akf1R">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f3f4f5dc-ddec-428b-8f54-bfd9b50d5baf&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Blair Nolan</b>
+                <span class="text-break ws-pre-wrap">Not for me but I get it.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f20ea039-6a89-4483-9a8e-dc8c18bc85ea&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">cinderpost</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">amberwave</b>
+                <span class="text-break ws-pre-wrap">Solid choice for the theme.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Grew on me by the end.</span>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:5H0VaCe0mkMwG61qYH4Nrs" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02f7378d916e5fc5c64c59551d" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/5H0VaCe0mkMwG61qYH4Nrs" target="_blank" class="text-purple text-decoration-none">Todd and Janelle</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Wolfie&#39;s Just Fine</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">I Remembered but Then I Forgot</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    3
+                </h3>
+                <p class="text-body-tertiary fw-semibold">3 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-5">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">5th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=9f14117c-cb2d-4d33-9f9d-c91b2ef99861&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Elliot Frey</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-5H0VaCe0mkMwG61qYH4Nrs">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Classic.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Casey Dunn</b>
+                <span class="text-break ws-pre-wrap">Bit of a slow burn.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=a05460ef-8ba7-4d67-87a1-3ceae0d1fe24&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Harley Voss</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Alex Carter</b>
+                <span class="text-break ws-pre-wrap">Instant upvote.</span>
+                
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">amberwave</b>
+                <span class="text-break ws-pre-wrap">Missed the mark for me.</span>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:79rDSeSX1tm97qaYDmPSnD" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02a3873d9a6b28f0c77801478d" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/79rDSeSX1tm97qaYDmPSnD" target="_blank" class="text-purple text-decoration-none">Pegasus (ft. Phoebe Bridgers)</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Arlo Parks</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">My Soft Machine</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    3
+                </h3>
+                <p class="text-body-tertiary fw-semibold">3 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-5">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">5th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Casey Dunn</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && true" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap">Great pick.</span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-79rDSeSX1tm97qaYDmPSnD">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Not for me but I get it.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=a05460ef-8ba7-4d67-87a1-3ceae0d1fe24&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Harley Voss</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Alex Carter</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:6iO7kuuJ596VUD8GhRL783" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02f98bef98a1f085fc070d7ef1" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/6iO7kuuJ596VUD8GhRL783" target="_blank" class="text-purple text-decoration-none">PROJECT: Yi</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">League of Legends</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">Warsongs</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    2
+                </h3>
+                <p class="text-body-tertiary fw-semibold">7 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-7">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">7th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=09148901-861a-4a69-b6f6-7b3a34cbcea9&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">bluefox</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-6iO7kuuJ596VUD8GhRL783">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=a05460ef-8ba7-4d67-87a1-3ceae0d1fe24&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Harley Voss</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Solid choice for the theme.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=9f14117c-cb2d-4d33-9f9d-c91b2ef99861&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Elliot Frey</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">amberwave</b>
+                <span class="text-break ws-pre-wrap">Grew on me by the end.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Alex Carter</b>
+                <span class="text-break ws-pre-wrap">Classic.</span>
+                
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Casey Dunn</b>
+                <span class="text-break ws-pre-wrap">Bit of a slow burn.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f3f4f5dc-ddec-428b-8f54-bfd9b50d5baf&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Blair Nolan</b>
+                <span class="text-break ws-pre-wrap">Instant upvote.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8085753a-d1f8-4740-9a6d-c3b9e9b6899c&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Devon Marsh</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:7h2EZbGSzzIGgAFzJXHz99" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02bafcef0262b82dec233717e2" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/7h2EZbGSzzIGgAFzJXHz99" target="_blank" class="text-purple text-decoration-none">Like A Villain</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Bad Omens</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">THE DEATH OF PEACE OF MIND</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    2
+                </h3>
+                <p class="text-body-tertiary fw-semibold">3 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-8">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">8th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">amberwave</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-7h2EZbGSzzIGgAFzJXHz99">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f20ea039-6a89-4483-9a8e-dc8c18bc85ea&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">cinderpost</b>
+                <span class="text-break ws-pre-wrap">Missed the mark for me.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Alex Carter</b>
+                <span class="text-break ws-pre-wrap">Great pick.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Not for me but I get it.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:66ZIs4PA9x6UJFHgFDA0nV" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02eaa0399d79f8fd99f626d379" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/66ZIs4PA9x6UJFHgFDA0nV" target="_blank" class="text-purple text-decoration-none">Good Kind Of Dangerous</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Flight Path</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">Dead End Days</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    2
+                </h3>
+                <p class="text-body-tertiary fw-semibold">1 voter</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-9">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">9th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8085753a-d1f8-4740-9a6d-c3b9e9b6899c&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">Devon Marsh</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && true" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap">Solid choice for the theme.</span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-66ZIs4PA9x6UJFHgFDA0nV">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=09148901-861a-4a69-b6f6-7b3a34cbcea9&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">bluefox</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">2</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">So much American rock in this league <br></span>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+
+<div class="card mb-4" id="spotify:track:0FGtGmz8SVEywhUqNFYWsQ" x-show="onlyMine ? false : true">
+    <div class="card-body sticky-top bg-body rounded">
+        <div class="row gx-3 align-items-start">
+            <div class="col-auto">
+                <a href="/user/00000000000000000000000000000000/" title="Album art">
+                    <img src="https://i.scdn.co/image/ab67616d00001e027e57062cc57739dbaae3ceeb" alt="Album art" height="72">
+                </a>
+            </div>
+            <div class="col text-truncate">
+                <h6 class="card-title m-0 text-truncate">
+                    <a href="https://open.spotify.com/track/0FGtGmz8SVEywhUqNFYWsQ" target="_blank" class="text-purple text-decoration-none">Sheila</a>
+                </h6>
+                <p class="card-text m-0 text-truncate">Jamie T</p>
+                <p class="card-text m-0 text-truncate text-body-secondary">Panic Prevention</p>
+                <p class="card-text m-0 text-truncat text-body-tertiary"><i class="bi bi-spotify flex-shrink-0 me-1"></i>from Spotify</p>
+            </div>
+            <div class="col-auto text-end">
+                <h3 class="m-0">
+                    -1
+                </h3>
+                <p class="text-body-tertiary fw-semibold">7 voters</p>
+            </div>
+        </div>
+        <div class="card mt-3 rank-10">
+            <div class="card-body py-2">
+                <div class="row align-items-center">
+                    <div class="col-auto text-center">
+                        
+                        <h6 class="m-0 font-monospace text-body-secondary">10th</h6>
+                        
+                    </div>
+                    <div class="col-auto pe-0">
+                        <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=f20ea039-6a89-4483-9a8e-dc8c18bc85ea&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+                    </div>
+                    <div class="col text-truncate">
+                        <h6 class="m-0 text-truncate text-body fw-semibold">cinderpost</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body py-0 bg-body rounded">
+        <p x-show="!collapseAll && false" class="bg-body-tertiary border-1 rounded p-2">
+            <i class="bi bi-quote flex-shrink-0 me-1 fs-5"></i>
+            <span class="text-break ws-pre-wrap"></span>
+        </p>
+    </div>
+    <div class="card-footer bg-body collapse show" id="votes-0FGtGmz8SVEywhUqNFYWsQ">
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=0a6f4ecc-dfdb-4d58-8b30-ea61487a4439&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Greer Landry</b>
+                <span class="text-break ws-pre-wrap">Grew on me by the end.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=2d64d105-585f-4aa2-91e8-389c9bb90cd7&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Casey Dunn</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8085753a-d1f8-4740-9a6d-c3b9e9b6899c&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Devon Marsh</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=09148901-861a-4a69-b6f6-7b3a34cbcea9&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">bluefox</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=9f14117c-cb2d-4d33-9f9d-c91b2ef99861&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col  my-auto">
+                
+                <b class="d-block text-truncate text-body">Elliot Frey</b>
+                
+            </div>
+            
+            <div class="col-auto my-auto">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=3920f201-9114-4969-b4b6-9923c1f8aa41&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">Alex Carter</b>
+                <span class="text-break ws-pre-wrap">Classic.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+        <div class="row align-items-start gx-3 my-3">
+            <div class="col-auto pe-0">
+                <img src="https://musicleague-user-assets.b-cdn.net/users/00000000000000000000000000000000/images/profile?aspect_ratio=1%3A1&amp;height=300&amp;optimizer=image&amp;quality=70&amp;v=8faee720-e3da-49b0-bc51-c40233db2fcc&amp;width=300" alt="User avatar" height="32" width="32" class="rounded-circle">
+            </div>
+            <div class="col ">
+                
+                <b class="d-block text-truncate text-body" style="max-width: 100%;">amberwave</b>
+                <span class="text-break ws-pre-wrap">Bit of a slow burn.</span>
+                
+            </div>
+            
+            <div class="col-auto ">
+                <h6 class="m-0">-1</h6>
+            </div>
+            
+        </div>
+        
+    </div>
+    </a>
+</div>
+

@@ -1,0 +1,767 @@
+
+<!-- saved from url=(0038)https://app.musicleague.com/completed/ -->
+<html data-bs-theme="light" data-x-template="results.html"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="theme-color" content="#9e00c4">
+
+<link rel="icon" type="image/x-icon" href="https://musicleague-static-assets.b-cdn.net/icons_2/favicon.ico">
+
+
+
+
+
+<link rel="manifest" href="https://progressier.app/hRHh77g3xd7xRmlk7fMA/progressier.json">
+<script type="text/javascript" src="./landing_files/vendor.4969c740.js.download"></script><script type="text/javascript" src="./landing_files/main.a6cfe222.js.download"></script><script type="text/javascript" async="" src="./landing_files/saved_resource"></script><script type="text/javascript" src="./landing_files/vendor.4969c740.js.download"></script><script type="text/javascript" src="./landing_files/main.a6cfe222.js.download"></script><script type="text/javascript" async="" src="./landing_files/saved_resource"></script><script type="text/javascript" src="./landing_files/vendor.4969c740.js.download"></script><script type="text/javascript" src="./landing_files/main.a6cfe222.js.download"></script><script type="text/javascript" async="" src="./landing_files/saved_resource"></script><script defer="" src="./landing_files/script.js.download"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./landing_files/css2" rel="stylesheet">
+
+<link href="./landing_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="./landing_files/bootstrap.bundle.min.js.download" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="./landing_files/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+<script defer="" src="./landing_files/json-enc.js.download"></script>
+<script src="./landing_files/cdn.min.js.download" defer=""></script>
+<script src="./landing_files/date_fns.min.js.download" integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer="" src="./landing_files/sweetalert2.all.min.js.download" integrity="sha256-SrfCZ78qS4YeGNB8awBuKLepMKtLR86uP4oomyg4pUc=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./landing_files/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
+<link rel="stylesheet" href="./landing_files/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="./landing_files/style-1.1.9.css">
+
+<script src="./landing_files/linkify.min.js.download"></script>
+<script src="./landing_files/linkify-string.min.js.download"></script>
+
+<script>
+    document.addEventListener('htmx:afterRequest', function (evt) {
+        const u = new URL(evt.detail.xhr.responseURL);
+        if ('/login/' === u.pathname) {
+            evt.preventDefault();
+            window.location = u;
+            return false;
+        }
+    });
+</script>
+
+    <title>Music League</title>
+<style id="progressier-theme-settings">
+	 :root{
+		 --progressierBg: #ffffff;
+		 --progressierElement: #fafafa;
+		 --progressierTxt: #142a37;
+		 --progressierBorderColor:#eaeaea;
+		 --progressierHover:#f6f6f6;
+		 --progressierBackdrop:rgba(255, 255, 255, 0.90);
+		 --progressierBoxShadow: 0 2px 8px rgba(15,41,14,.08), 0 3px 35px rgba(7,21,41,.20);
+		 --progressierIconShadow:0 2px 9px 0 rgba(82, 79, 79, 0.15);
+		 --progressierFont:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+		 --progressierLetterSpacing:0.1px;
+		 --progressierTextFontWeight:400;
+		 --progressierHeadingFontWeight:500;
+		 --progressierBtnFontWeight:400;
+	}
+		@media (prefers-color-scheme: dark) {
+			
+			:root {
+			--progressierBg: #202124;
+			--progressierElement: #29292e;
+			--progressierTxt: #bdc1c6;
+			--progressierBorderColor: #313137;
+			--progressierHover: #2e2e34;
+			--progressierBackdrop:rgba(0, 0, 0, 0.9);
+			--progressierIconShadow: none;
+	 	}
+		}</style><style>.swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px rgba(0,0,0,.075),0 1px 2px rgba(0,0,0,.075),1px 2px 4px rgba(0,0,0,.075),1px 3px 8px rgba(0,0,0,.075),2px 4px 16px rgba(0,0,0,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{animation:swal2-toast-hide .1s forwards}div:where(.swal2-container){display:grid;position:fixed;z-index:1060;inset:0;box-sizing:border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}div:where(.swal2-container).swal2-backdrop-show,div:where(.swal2-container).swal2-noanimation{background:rgba(0,0,0,.4)}div:where(.swal2-container).swal2-backdrop-hide{background:rgba(0,0,0,0) !important}div:where(.swal2-container).swal2-top-start,div:where(.swal2-container).swal2-center-start,div:where(.swal2-container).swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}div:where(.swal2-container).swal2-top,div:where(.swal2-container).swal2-center,div:where(.swal2-container).swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}div:where(.swal2-container).swal2-top-end,div:where(.swal2-container).swal2-center-end,div:where(.swal2-container).swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}div:where(.swal2-container).swal2-top-start>.swal2-popup{align-self:start}div:where(.swal2-container).swal2-top>.swal2-popup{grid-column:2;place-self:start center}div:where(.swal2-container).swal2-top-end>.swal2-popup,div:where(.swal2-container).swal2-top-right>.swal2-popup{grid-column:3;place-self:start end}div:where(.swal2-container).swal2-center-start>.swal2-popup,div:where(.swal2-container).swal2-center-left>.swal2-popup{grid-row:2;align-self:center}div:where(.swal2-container).swal2-center>.swal2-popup{grid-column:2;grid-row:2;place-self:center center}div:where(.swal2-container).swal2-center-end>.swal2-popup,div:where(.swal2-container).swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;place-self:center end}div:where(.swal2-container).swal2-bottom-start>.swal2-popup,div:where(.swal2-container).swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}div:where(.swal2-container).swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;place-self:end center}div:where(.swal2-container).swal2-bottom-end>.swal2-popup,div:where(.swal2-container).swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;place-self:end end}div:where(.swal2-container).swal2-grow-row>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}div:where(.swal2-container).swal2-grow-column>.swal2-popup,div:where(.swal2-container).swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}div:where(.swal2-container).swal2-no-transition{transition:none !important}div:where(.swal2-container) div:where(.swal2-popup){display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}div:where(.swal2-container) div:where(.swal2-popup):focus{outline:none}div:where(.swal2-container) div:where(.swal2-popup).swal2-loading{overflow-y:hidden}div:where(.swal2-container) h2:where(.swal2-title){position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}div:where(.swal2-container) div:where(.swal2-actions){display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))}div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))}div:where(.swal2-container) div:where(.swal2-loader){display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}div:where(.swal2-container) button:where(.swal2-styled){margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}div:where(.swal2-container) button:where(.swal2-styled):not([disabled]){cursor:pointer}div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}div:where(.swal2-container) button:where(.swal2-styled).swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled).swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) button:where(.swal2-styled):focus{outline:none}div:where(.swal2-container) button:where(.swal2-styled)::-moz-focus-inner{border:0}div:where(.swal2-container) div:where(.swal2-footer){margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em;text-align:center}div:where(.swal2-container) .swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}div:where(.swal2-container) div:where(.swal2-timer-progress-bar){width:100%;height:.25em;background:rgba(0,0,0,.2)}div:where(.swal2-container) img:where(.swal2-image){max-width:100%;margin:2em auto 1em}div:where(.swal2-container) button:where(.swal2-close){z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:rgba(0,0,0,0);color:#ccc;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}div:where(.swal2-container) button:where(.swal2-close):hover{transform:none;background:rgba(0,0,0,0);color:#f27474}div:where(.swal2-container) button:where(.swal2-close):focus{outline:none;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) button:where(.swal2-close)::-moz-focus-inner{border:0}div:where(.swal2-container) .swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea),div:where(.swal2-container) select:where(.swal2-select),div:where(.swal2-container) div:where(.swal2-radio),div:where(.swal2-container) label:where(.swal2-checkbox){margin:1em 2em 3px}div:where(.swal2-container) input:where(.swal2-input),div:where(.swal2-container) input:where(.swal2-file),div:where(.swal2-container) textarea:where(.swal2-textarea){box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:rgba(0,0,0,0);box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(0,0,0,0);color:inherit;font-size:1.125em}div:where(.swal2-container) input:where(.swal2-input).swal2-inputerror,div:where(.swal2-container) input:where(.swal2-file).swal2-inputerror,div:where(.swal2-container) textarea:where(.swal2-textarea).swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}div:where(.swal2-container) input:where(.swal2-input):focus,div:where(.swal2-container) input:where(.swal2-file):focus,div:where(.swal2-container) textarea:where(.swal2-textarea):focus{border:1px solid #b4dbed;outline:none;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}div:where(.swal2-container) input:where(.swal2-input)::placeholder,div:where(.swal2-container) input:where(.swal2-file)::placeholder,div:where(.swal2-container) textarea:where(.swal2-textarea)::placeholder{color:#ccc}div:where(.swal2-container) .swal2-range{margin:1em 2em 3px;background:#fff}div:where(.swal2-container) .swal2-range input{width:80%}div:where(.swal2-container) .swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}div:where(.swal2-container) .swal2-range input,div:where(.swal2-container) .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}div:where(.swal2-container) .swal2-input{height:2.625em;padding:0 .75em}div:where(.swal2-container) .swal2-file{width:75%;margin-right:auto;margin-left:auto;background:rgba(0,0,0,0);font-size:1.125em}div:where(.swal2-container) .swal2-textarea{height:6.75em;padding:.75em}div:where(.swal2-container) .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:rgba(0,0,0,0);color:inherit;font-size:1.125em}div:where(.swal2-container) .swal2-radio,div:where(.swal2-container) .swal2-checkbox{align-items:center;justify-content:center;background:#fff;color:inherit}div:where(.swal2-container) .swal2-radio label,div:where(.swal2-container) .swal2-checkbox label{margin:0 .6em;font-size:1.125em}div:where(.swal2-container) .swal2-radio input,div:where(.swal2-container) .swal2-checkbox input{flex-shrink:0;margin:0 .4em}div:where(.swal2-container) label:where(.swal2-input-label){display:flex;justify-content:center;margin:1em auto 0}div:where(.swal2-container) div:where(.swal2-validation-message){align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}div:where(.swal2-container) div:where(.swal2-validation-message)::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}div:where(.swal2-container) .swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}div:where(.swal2-container) .swal2-progress-steps li{display:inline-block;position:relative}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}div:where(.swal2-container) .swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}div:where(.swal2-icon){position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:0.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}div:where(.swal2-icon) .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}div:where(.swal2-icon).swal2-error{border-color:#f27474;color:#f27474}div:where(.swal2-icon).swal2-error .swal2-x-mark{position:relative;flex-grow:1}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}div:where(.swal2-icon).swal2-warning{border-color:#facea8;color:#f8bb86}div:where(.swal2-icon).swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}div:where(.swal2-icon).swal2-info{border-color:#9de0f6;color:#3fc3ee}div:where(.swal2-icon).swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}div:where(.swal2-icon).swal2-question{border-color:#c9dae1;color:#87adbd}div:where(.swal2-icon).swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}div:where(.swal2-icon).swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}div:where(.swal2-icon).swal2-success{border-color:#a5dc86;color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;border-radius:50%}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}div:where(.swal2-icon).swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}div:where(.swal2-icon).swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}div:where(.swal2-icon).swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:swal2-show .3s}.swal2-hide{animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-show{0%{transform:scale(0.7)}45%{transform:scale(1.05)}80%{transform:scale(0.95)}100%{transform:scale(1)}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(0.5);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static !important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{inset:0 auto auto 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{inset:0 0 auto auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{inset:0 auto auto 0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{inset:50% auto auto 0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{inset:50% auto auto 50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{inset:50% 0 auto auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{inset:auto auto 0 0}body.swal2-toast-shown .swal2-container.swal2-bottom{inset:auto auto 0 50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{inset:auto 0 0 auto}</style><style>                      .htmx-indicator{opacity:0}                      .htmx-request .htmx-indicator{opacity:1; transition: opacity 200ms ease-in;}                      .htmx-request.htmx-indicator{opacity:1; transition: opacity 200ms ease-in;}                    </style><meta content="true" name="x5-fullscreen"><meta content="app" name="x5-page-mode"><meta content="application" name="browsermode"><meta content="yes" name="full-screen"><meta content="https://app.musicleague.com" property="al:web:url"><meta content="yes" name="mobile-web-app-capable"><meta content="Music League" name="application-name"><meta content="https://app.musicleague.com" name="msapplication-starturl"><meta content="#9e00c4" name="msapplication-navbutton-color"><meta content="https://pwa.xyz/ntqGiBkqwR45AasMA3M5%2FkSPVODGztiWgRmV.png?alt=media&amp;token=79e5967a-7d1c-42bb-82eb-e7db22293cc6" name="msapplication-TileImage"><meta content="#9e00c4" name="msapplication-TileColor"><meta content="yes" name="apple-touch-fullscreen"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="default" name="apple-mobile-web-app-status-bar-style"><meta content="Music League" name="apple-mobile-web-app-title"><link sizes="180x180" href="https://pwa.xyz/ntqGiBkqwR45AasMA3M5%2FVpbstwZfsrYnVAS.png?alt=media&amp;token=8032a19f-309d-4822-bf98-7cab97c6481a" rel="apple-touch-icon"><style hs-beacon="active" data-styled-version="5.1.1"></style><style hs-beacon="active" data-styled-version="5.1.1"></style><style hs-beacon="active" data-styled-version="5.1.1"></style></head>
+<body class="bg-body-tertiary fs-p8em pb-5" hx-boost="true" x-data=""><div data-x-template="completed.html">
+
+<nav class="navbar navbar-dark fixed-top" style="background-color: #9E00C4; z-index: 1030;">
+    <div class="container">
+        <a href="https://app.musicleague.com/" class="navbar-brand" hx-boost="false">
+            <img src="./landing_files/adaptive-icon.png" alt="Music League logo" style="height: 75px; margin: -20px 0 -20px 0;">
+        </a>
+        <div class="d-flex align-items-center">
+            
+            <button class="d-none d-sm-inline-block text-body-light navbar-toggler ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-nav" aria-controls="offcanvas-nav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="offcanvas offcanvas-end" id="offcanvas-nav" tabindex="-1" aria-labelledby="offcanvas-nav-label" hx-boost="false">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvas-nav-label">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body pb-5 pb-sm-3">
+                <div class="mb-3">
+                    <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-auto">
+                            <div class="card bg-body-tertiary">
+                                <div class="card-body">
+                                    <a href="https://app.musicleague.com/completed/#" title="Toggle color mode" hx-put="/settings/-/color-mode" hx-swap="none" class="stretched-link text-body" hx-on::after-settle="{
+                                        const currentTheme = document.querySelector(&#39;html&#39;).getAttribute(&#39;data-bs-theme&#39;);
+                                        if (currentTheme === &#39;dark&#39;)
+                                            document.querySelector(&#39;html&#39;).setAttribute(&#39;data-bs-theme&#39;, &#39;light&#39;);
+                                        else
+                                            document.querySelector(&#39;html&#39;).setAttribute(&#39;data-bs-theme&#39;, &#39;dark&#39;);
+                                    }">
+                                        <i class="bi bi-moon-fill"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/" class="fs-6 nav-link text-body">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/user/2634c1ec37184b9186e32a89e7d452d6/" class="fs-6 nav-link text-body">View Profile</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/l/create/" class="fs-6 nav-link text-body">Create League</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/open/" class="fs-6 nav-link text-body">Open Leagues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/completed/" class="fs-6 nav-link text-body">Completed Leagues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://app.musicleague.com/settings/" class="fs-6 nav-link text-body">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://install.page/musicleague" class="fs-6 nav-link text-body" target="_blank">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <span>Install App</span>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-chevron-right flex-stretch-0"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://store.musicleague.com/" class="fs-6 nav-link text-body" target="_blank">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <span>Store</span>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="bi bi-chevron-right flex-stretch-0"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <li class="card mt-3">
+                        <div class="card-body rounded">
+                            <div class="card-title fw-semibold">
+                                <b class="text-turquoise"><i class="bi bi-chat flex-stretch-0 me-2"></i>Contact Us</b>
+                            </div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="https://app.musicleague.com/completed/#" class="fs-6 nav-link text-body" data-bs-dismiss="offcanvas" x-on:click="console.log(&#39;get support&#39;); Beacon(&#39;prefill&#39;, {subject: &#39;In-App Support&#39;}); Beacon(&#39;session-data&#39;, {&#39;User ID&#39;: &#39;2634c1ec37184b9186e32a89e7d452d6&#39;}); Beacon(&#39;open&#39;); Beacon(&#39;navigate&#39;, &#39;/&#39;);">
+                                        Get Support
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://app.musicleague.com/completed/#" class="fs-6 nav-link text-body" data-bs-dismiss="offcanvas" x-on:click="console.log(&#39;request feature&#39;); Beacon(&#39;prefill&#39;, {subject: &#39;Feature Request&#39;}); Beacon(&#39;session-data&#39;, {&#39;User ID&#39;: &#39;2634c1ec37184b9186e32a89e7d452d6&#39;}); Beacon(&#39;open&#39;); Beacon(&#39;navigate&#39;, &#39;ask/message/&#39;);">Request a Feature</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="card mt-3">
+                        <div class="card-body rounded">
+                            <div class="card-title fw-semibold">
+                                <b class="text-turquoise"><i class="bi bi-megaphone flex-stretch-0 me-2"></i>Ads</b>
+                            </div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <button data-bs-target="#why-ads" data-bs-toggle="collapse" class="fs-6 nav-link text-body">Why are there ads?</button>
+                                    <p id="why-ads" class="text-body-secondary collapse">
+                                        Music League is a small team helping to build a community around music. We use ads to help pay for the costs of running the site and to help us grow.
+                                        If you'd like to support us in our mission and play without ads, you can subscribe to Music League by clicking below.
+                                    </p>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://app.musicleague.com/subscription/about/" target="_blank" class="fs-6 nav-link text-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <span>Subscribe to Remove ads</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="bi bi-chevron-right flex-stretch-0"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://app.musicleague.com/subscription/about/" target="_blank" class="fs-6 nav-link text-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <span>Subscribe to Premium</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="bi bi-chevron-right flex-stretch-0"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item my-3">
+                        <a href="https://app.musicleague.com/logout/" class="fs-6 nav-link text-fuschia fw-semibold" hx-boost="false">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-expand navbar-dark fixed-bottom d-sm-none border-0 text-white safe-bottom" style="background-color: #9E00C4; z-index: 999999;">
+    <div class="container-fluid">
+        <div class="row py-3 align-items-start row-cols-4">
+            <div class="col text-center position-relative">
+                <a href="https://app.musicleague.com/" class="stretched-link text-decoration-none text-white">
+                    <i class="bi bi-house-door fs-3"></i>
+                </a>
+
+            </div>
+            <div class="col text-center position-relative">
+                <a href="https://app.musicleague.com/completed/" class="stretched-link text-decoration-none text-white">
+                    <i class="bi bi-clock-history fs-3"></i>
+                </a>
+
+            </div>
+            <div class="col text-center position-relative">
+                <a href="https://app.musicleague.com/l/create/" class="stretched-link text-decoration-none text-white" hx-boost="false">
+                    <i class="bi bi-plus-lg fs-3"></i>
+                </a>
+
+            </div>
+            <div class="col text-center position-relative">
+                <a href="https://app.musicleague.com/open/" class="stretched-link text-decoration-none text-white">
+                    <i class="bi bi-grid fs-3"></i>
+                </a>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const offcanvasNav = document.getElementById('offcanvas-nav');
+
+    if (offcanvasNav) {
+      
+      let cachedNitroElements = [];
+      let adElementsFound = false;
+
+      
+      const AD_LOAD_TIMEOUT_MS = 5000;
+
+      
+      const findNitroAdElements = () => {
+        
+        const selectors = [
+          '#nitro-anchor',        
+          '#nitro-rail-left',     
+          '#nitro-rail-right',    
+          '[id^="nitro-ad-"]'     
+        ];
+
+        const foundElements = new Set();
+
+        selectors.forEach(selector => {
+          try {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+              
+              const style = window.getComputedStyle(el);
+              if (style.position === 'fixed' || style.position === 'sticky' || style.position === 'absolute') {
+                foundElements.add(el);
+              }
+            });
+          } catch (e) {
+            console.warn('Error finding NitroAds elements:', e);
+          }
+        });
+
+        return Array.from(foundElements);
+      };
+
+      
+      const hideAds = () => {
+        
+        cachedNitroElements = findNitroAdElements();
+        cachedNitroElements.forEach(el => {
+          el.style.setProperty('z-index', '0', 'important');
+        });
+      };
+
+      
+      const restoreAds = () => {
+        cachedNitroElements.forEach(el => {
+          el.style.removeProperty('z-index');
+        });
+      };
+
+      
+      offcanvasNav.addEventListener('show.bs.offcanvas', hideAds);
+      offcanvasNav.addEventListener('hide.bs.offcanvas', restoreAds);
+
+      
+      document.addEventListener('nitroAds.loaded', function() {
+        adElementsFound = true;
+        cachedNitroElements = findNitroAdElements();
+      });
+
+      
+      const observer = new MutationObserver((mutations) => {
+        if (!adElementsFound) {
+          
+          let relevantMutation = false;
+          const nitroSelectors = [
+            'nitro-anchor',
+            'nitro-rail-left',
+            'nitro-rail-right'
+          ];
+          
+          const nitroSelectorIds = nitroSelectors.map(sel => `#${sel}`);
+
+          mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+              if (node.nodeType === 1) { 
+                const id = node.id || '';
+                
+                if (nitroSelectors.includes(id)) {
+                  relevantMutation = true;
+                }
+                
+                if (id.startsWith('nitro-ad-')) {
+                  relevantMutation = true;
+                }
+                
+                if (!relevantMutation && node.querySelector) {
+                  const combinedSelector = nitroSelectorIds.join(',') + ',[id^="nitro-ad-"]';
+                  if (node.querySelector(combinedSelector)) {
+                    relevantMutation = true;
+                  }
+                }
+              }
+            });
+          });
+          if (relevantMutation) {
+            const elements = findNitroAdElements();
+            if (elements.length > 0) {
+              adElementsFound = true;
+              cachedNitroElements = elements;
+
+              
+              if (offcanvasNav.classList.contains('show')) {
+                
+                elements.forEach(el => {
+                  el.style.setProperty('z-index', '0', 'important');
+                });
+              }
+            }
+          }
+        }
+      });
+
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+      
+      setTimeout(() => observer.disconnect(), AD_LOAD_TIMEOUT_MS);
+    }
+
+    
+    const offcanvasElement = document.getElementById('offcanvas-nav');
+    const bottomNav = document.querySelector('.fixed-bottom');
+
+    if (offcanvasElement && bottomNav) {
+      offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+        bottomNav.style.display = 'none';
+      });
+
+      offcanvasElement.addEventListener('hide.bs.offcanvas', function () {
+        bottomNav.style.display = '';
+      });
+    }
+  });
+</script>
+
+
+<div class="has-ads container">
+    
+<div id="nitro-rail-left" class="ad d-none d-lg-block position-fixed top-50 start-0 translate-middle-y"></div>
+
+
+    <div id="main" class="container my-5" hx-ext="json-enc">
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3 class="mb-3">Completed Leagues</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-3" hx-get="-/completedLeagues" hx-trigger="load" hx-indicator="#infinite-scroll-indicator"><div class="col league-tile" x-init="hasContent = true" x-show="typeof showInProgress === &#39;undefined&#39; || showInProgress || &#39;COMPLETE&#39; === &#39;NOT_STARTED&#39;" data-league-status="COMPLETE">
+    <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body text-body-secondary">
+            <div class="row g-0 fs-p7em">
+    <div class="col-4 text-start">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+        </svg>
+        
+        UNLISTED
+    </div>
+    <div class="col-4 text-center">
+        
+        <i class="bi bi-play-fill flex-shrink-0"></i>
+        
+        ACCELERATED
+    </div>
+    <div class="col-4 text-end">
+        
+        <svg width="10" height="10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M22 15h-3V3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zm-5.293 1.293l-6.4 6.4a.5.5 0 0 1-.654.047L8.8 22.1a1.5 1.5 0 0 1-.553-1.57L9.4 16H3a2 2 0 0 1-2-2v-2.104a2 2 0 0 1 .15-.762L4.246 3.62A1 1 0 0 1 5.17 3H16a1 1 0 0 1 1 1v11.586a1 1 0 0 1-.293.707z"></path></g></svg>
+        DOWNVOTES ON
+        
+    </div>
+</div>
+
+        </div>
+        <div class="row g-0">
+            <div class="col-3">
+                <img src="./landing_files/26.png" alt="League image" class="object-fit-cover w-100" style="min-height: 100%">
+            </div>
+            <div class="col-9">
+                <div class="card-body px-2 pt-2 pb-3">
+                    <h6 class="card-title text-truncate"><a href="https://app.musicleague.com/l/417481c3557c40779d6aa0bcc6e805fb/" class="text-decoration-none text-body stretched-link">Basic League</a></h6>
+                    <p class="card-text fw-light" style="line-height: 1.2em; height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        Simple prompts, simple requirements 
+                    </p>
+                    <div class="card-text row fs-p8em">
+                        <div class="col text-center"><strong class="d-block">8</strong><span class="fw-light">ROUNDS</span></div>
+                        <div class="col text-center"><strong class="d-block">1</strong><span class="fw-light">SONG/ROUND</span></div>
+                        <div class="col text-center"><strong class="d-block">11 / 20</strong><span class="fw-light">PLAYERS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-body text-body-secondary">
+
+                <i class="bi bi-patch-check-fill flex-shrink-0 me-1"></i>
+                Completed <span x-text="dateFns.distanceInWordsToNow(dateFns.parse(&#39;2026-04-14T21:48:15Z&#39;))">17 days</span> ago
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col league-tile" x-init="hasContent = true" x-show="typeof showInProgress === &#39;undefined&#39; || showInProgress || &#39;COMPLETE&#39; === &#39;NOT_STARTED&#39;" data-league-status="COMPLETE">
+    <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body text-body-secondary">
+            <div class="row g-0 fs-p7em">
+    <div class="col-4 text-start">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+        </svg>
+        
+        UNLISTED
+    </div>
+    <div class="col-4 text-center">
+        
+        <i class="bi bi-fast-forward-fill flex-shrink-0"></i>
+        
+        SPEEDY
+    </div>
+    <div class="col-4 text-end">
+        
+    </div>
+</div>
+
+        </div>
+        <div class="row g-0">
+            <div class="col-3">
+                <img src="./landing_files/29.png" alt="League image" class="object-fit-cover w-100" style="min-height: 100%">
+            </div>
+            <div class="col-9">
+                <div class="card-body px-2 pt-2 pb-3">
+                    <h6 class="card-title text-truncate"><a href="https://app.musicleague.com/l/fd5f807e870643ab96f99a6ed60822bf/" class="text-decoration-none text-body stretched-link">Song for the Season</a></h6>
+                    <p class="card-text fw-light" style="line-height: 1.2em; height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        
+                    </p>
+                    <div class="card-text row fs-p8em">
+                        <div class="col text-center"><strong class="d-block">4</strong><span class="fw-light">ROUNDS</span></div>
+                        <div class="col text-center"><strong class="d-block">1</strong><span class="fw-light">SONG/ROUND</span></div>
+                        <div class="col text-center"><strong class="d-block">10 / 20</strong><span class="fw-light">PLAYERS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-body text-body-secondary">
+
+                <i class="bi bi-patch-check-fill flex-shrink-0 me-1"></i>
+                Completed <span x-text="dateFns.distanceInWordsToNow(dateFns.parse(&#39;2026-02-15T12:49:40Z&#39;))">2 months</span> ago
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col league-tile" x-init="hasContent = true" x-show="typeof showInProgress === &#39;undefined&#39; || showInProgress || &#39;COMPLETE&#39; === &#39;NOT_STARTED&#39;" data-league-status="COMPLETE">
+    <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body text-body-secondary">
+            <div class="row g-0 fs-p7em">
+    <div class="col-4 text-start">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+        </svg>
+        
+        UNLISTED
+    </div>
+    <div class="col-4 text-center">
+        
+        <i class="bi bi-fast-forward-fill flex-shrink-0"></i>
+        
+        SPEEDY
+    </div>
+    <div class="col-4 text-end">
+        
+    </div>
+</div>
+
+        </div>
+        <div class="row g-0">
+            <div class="col-3">
+                <img src="./landing_files/33.png" alt="League image" class="object-fit-cover w-100" style="min-height: 100%">
+            </div>
+            <div class="col-9">
+                <div class="card-body px-2 pt-2 pb-3">
+                    <h6 class="card-title text-truncate"><a href="https://app.musicleague.com/l/7094ec0d0c404fecb26ef13a3302fc55/" class="text-decoration-none text-body stretched-link">Montage League</a></h6>
+                    <p class="card-text fw-light" style="line-height: 1.2em; height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        All montage, all the time
+                    </p>
+                    <div class="card-text row fs-p8em">
+                        <div class="col text-center"><strong class="d-block">8</strong><span class="fw-light">ROUNDS</span></div>
+                        <div class="col text-center"><strong class="d-block">1</strong><span class="fw-light">SONG/ROUND</span></div>
+                        <div class="col text-center"><strong class="d-block">14 / 20</strong><span class="fw-light">PLAYERS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-body text-body-secondary">
+
+                <i class="bi bi-patch-check-fill flex-shrink-0 me-1"></i>
+                Completed <span x-text="dateFns.distanceInWordsToNow(dateFns.parse(&#39;2026-01-27T21:15:41Z&#39;))">3 months</span> ago
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col league-tile" x-init="hasContent = true" x-show="typeof showInProgress === &#39;undefined&#39; || showInProgress || &#39;COMPLETE&#39; === &#39;NOT_STARTED&#39;" data-league-status="COMPLETE">
+    <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body text-body-secondary">
+            <div class="row g-0 fs-p7em">
+    <div class="col-4 text-start">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+        </svg>
+        
+        UNLISTED
+    </div>
+    <div class="col-4 text-center">
+        
+        <i class="bi bi-fast-forward-fill flex-shrink-0"></i>
+        
+        SPEEDY
+    </div>
+    <div class="col-4 text-end">
+        
+        <svg width="10" height="10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M22 15h-3V3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zm-5.293 1.293l-6.4 6.4a.5.5 0 0 1-.654.047L8.8 22.1a1.5 1.5 0 0 1-.553-1.57L9.4 16H3a2 2 0 0 1-2-2v-2.104a2 2 0 0 1 .15-.762L4.246 3.62A1 1 0 0 1 5.17 3H16a1 1 0 0 1 1 1v11.586a1 1 0 0 1-.293.707z"></path></g></svg>
+        DOWNVOTES ON
+        
+    </div>
+</div>
+
+        </div>
+        <div class="row g-0">
+            <div class="col-3">
+                <img src="./landing_files/25.png" alt="League image" class="object-fit-cover w-100" style="min-height: 100%">
+            </div>
+            <div class="col-9">
+                <div class="card-body px-2 pt-2 pb-3">
+                    <h6 class="card-title text-truncate"><a href="https://app.musicleague.com/l/dc138deb339d49cfbeffc78dd16e7b64/" class="text-decoration-none text-body stretched-link">Jamie is a soft boy</a></h6>
+                    <p class="card-text fw-light" style="line-height: 1.2em; height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        Only the softest boys allowed
+                    </p>
+                    <div class="card-text row fs-p8em">
+                        <div class="col text-center"><strong class="d-block">13</strong><span class="fw-light">ROUNDS</span></div>
+                        <div class="col text-center"><strong class="d-block">1</strong><span class="fw-light">SONG/ROUND</span></div>
+                        <div class="col text-center"><strong class="d-block">13 / 20</strong><span class="fw-light">PLAYERS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-body text-body-secondary">
+
+                <i class="bi bi-patch-check-fill flex-shrink-0 me-1"></i>
+                Completed <span x-text="dateFns.distanceInWordsToNow(dateFns.parse(&#39;2025-11-21T16:43:03Z&#39;))">5 months</span> ago
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col league-tile" x-init="hasContent = true" x-show="typeof showInProgress === &#39;undefined&#39; || showInProgress || &#39;COMPLETE&#39; === &#39;NOT_STARTED&#39;" data-league-status="COMPLETE">
+    <div class="card h-100 shadow-sm">
+        <div class="card-header bg-body text-body-secondary">
+            <div class="row g-0 fs-p7em">
+    <div class="col-4 text-start">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+        </svg>
+        
+        UNLISTED
+    </div>
+    <div class="col-4 text-center">
+        
+        <i class="bi bi-fast-forward-fill flex-shrink-0"></i>
+        
+        SPEEDY
+    </div>
+    <div class="col-4 text-end">
+        
+    </div>
+</div>
+
+        </div>
+        <div class="row g-0">
+            <div class="col-3">
+                <img src="./landing_files/31.png" alt="League image" class="object-fit-cover w-100" style="min-height: 100%">
+            </div>
+            <div class="col-9">
+                <div class="card-body px-2 pt-2 pb-3">
+                    <h6 class="card-title text-truncate"><a href="https://app.musicleague.com/l/0b0857c1ebee4d3bb5d659fa3b20f786/" class="text-decoration-none text-body stretched-link">Show me what you got</a></h6>
+                    <p class="card-text fw-light" style="line-height: 1.2em; height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        
+                    </p>
+                    <div class="card-text row fs-p8em">
+                        <div class="col text-center"><strong class="d-block">10</strong><span class="fw-light">ROUNDS</span></div>
+                        <div class="col text-center"><strong class="d-block">1</strong><span class="fw-light">SONG/ROUND</span></div>
+                        <div class="col text-center"><strong class="d-block">13 / 20</strong><span class="fw-light">PLAYERS</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-body text-body-secondary">
+
+                <i class="bi bi-patch-check-fill flex-shrink-0 me-1"></i>
+                Completed <span x-text="dateFns.distanceInWordsToNow(dateFns.parse(&#39;2025-10-01T12:46:26Z&#39;))">7 months</span> ago
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-12 text-center my-4" x-data="{ get hasHiddenLeagues() { return document.querySelectorAll(&#39;.league-tile[data-league-status=IN_PROGRESS]&#39;).length &gt; 0; } }" x-show="typeof showInProgress !== &#39;undefined&#39; &amp;&amp; !showInProgress &amp;&amp; hasHiddenLeagues" style="display: none;">
+    <button class="btn btn-outline-primary" @click="showInProgress = true; toggleFilter()">
+        <i class="bi bi-eye me-2"></i>Show all leagues to load more
+    </button>
+    <p class="text-muted small mt-2">Some leagues are hidden because they're already in progress</p>
+</div>
+</div>
+            </div>
+        </div>
+        <div id="infinite-scroll-indicator" class="htmx-indicator text-center my-2">
+            <div class="spinner-grow" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    
+<div id="nitro-rail-right" class="ad d-none d-lg-block position-fixed top-50 end-0 translate-middle-y"></div>
+
+</div>
+<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+<script type="text/javascript">
+    window.Beacon('init', 'c91a8d73-f05b-4f0c-8784-580657395c7e');
+    window.Beacon('config', {
+        display: {
+            zIndex: 9999999,
+            style: 'manual'
+        }
+    });
+</script>
+
+</div>
+
+
+
+<div id="beacon-container"><div class="hsds-beacon"><div class="Beacon"><div class="ContainerGradient-sc-62zoy-0 hfZyxn"></div><div class="ContainerFramecss__WrapperUI-sc-d7rzhh-0 jXDJGU BeaconContainer is-configDisplayRight is-manual" role="dialog" aria-label="Help Scout Beacon"><button data-cy="beacon-close-button" class="CloseButtoncss__ButtonUI-sc-1phd8sn-1 bXabeJ c-BeaconCloseButton is-rendered"><div class="CloseButtoncss__ButtonContentUI-sc-1phd8sn-0 TSYHV"><span class="CloseButtoncss__LabelUI-sc-1phd8sn-2 hVAllm c-BeaconCloseButton__label"><span data-cy="Text" class="Textstyles__TextUI-sc-12r9ltf-0 iZYCCv c-Text is-span is-13 is-default">Close</span></span><span aria-hidden="true" role="img" data-cy="Icon" class="Iconstyles__IconUI-sc-mvvcag-0 hLtrfh c-Icon is-noInteract is-iconName-cross-small is-24 c-BeaconCloseButton__iconClose" data-icon-name="cross-small" title="cross-small"><span class="c-Icon__icon"><span data-cy="BaseIcon" class="baseIcon__BaseIconUI-sc-q7zmye-0 izECQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M13.414 12l2.293-2.293a.999.999 0 1 0-1.414-1.414L12 10.586 9.707 8.293a.999.999 0 1 0-1.414 1.414L10.586 12l-2.293 2.293a.999.999 0 1 0 1.414 1.414L12 13.414l2.293 2.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L13.414 12z"></path></svg></span></span><span data-cy="VisuallyHidden" class="VisuallyHiddenstyles__VisuallyHiddenUI-sc-1gleljd-0 hqakpc c-VisuallyHidden">cross-small</span></span></div></button></div></div></div></div></body></html>

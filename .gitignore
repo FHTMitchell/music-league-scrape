@@ -1,0 +1,22 @@
+# pixi (local-only, not used in published workflow)
+.pixi/
+pixi/
+pixi.toml
+pixi.lock
+
+# claude
+.claude/
+CLAUDE.md
+
+# auth
+auth.curl
+
+# debug + logs
+debug/
+logs/
+*.log
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
