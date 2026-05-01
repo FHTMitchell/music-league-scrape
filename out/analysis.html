@@ -353,7 +353,7 @@
 </tbody>
 </table>
 <h2>Biggest Fans/Haters</h2>
-<p><em>For each submitter, the voter whose votes land highest (fan) and lowest (hater) relative to that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). fan_pts / hater_pts are the raw cumulative points for context. See 'Biggest Fans/Haters (full table)' at the end of the report for the unaggregated pair-by-pair view.</em></p>
+<p><em>For each submitter, the voter whose votes land highest (fan) and lowest (hater) relative to that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). fan_pts / hater_pts are the raw cumulative points for context. See 'Fan / Hater Scores' at the end of the report for the unaggregated pair-by-pair view.</em></p>
 <table>
 <thead>
 <tr>
@@ -1481,7 +1481,7 @@
 </tr>
 </tbody>
 </table>
-<h2>Biggest Fans/Haters (full table)</h2>
+<h2>Fan / Hater Scores</h2>
 <p><em>Every (submitter, voter) pair sorted by mean z-score, descending. shared_rounds is the count of rounds where both players participated (implicit zero votes filled in for songs the voter didn't rate). Top of the table = strongest net fan signal; bottom = strongest net hater signal.</em></p>
 <table>
 <thead>
@@ -1505,19 +1505,19 @@
 </tr>
 <tr>
 <td>2</td>
-<td>harryg</td>
-<td>Joe</td>
-<td>0.54</td>
-<td>21</td>
-<td>33</td>
-</tr>
-<tr>
-<td>3</td>
 <td>Sam Mit</td>
 <td>Luke G</td>
 <td>0.54</td>
 <td>30</td>
 <td>36</td>
+</tr>
+<tr>
+<td>3</td>
+<td>harryg</td>
+<td>Joe</td>
+<td>0.54</td>
+<td>21</td>
+<td>33</td>
 </tr>
 <tr>
 <td>4</td>
@@ -1569,14 +1569,6 @@
 </tr>
 <tr>
 <td>10</td>
-<td>Fred N</td>
-<td>Jimbabwe</td>
-<td>0.35</td>
-<td>26</td>
-<td>33</td>
-</tr>
-<tr>
-<td>11</td>
 <td>Sam Mit</td>
 <td>Fergus M</td>
 <td>0.35</td>
@@ -1584,12 +1576,20 @@
 <td>39</td>
 </tr>
 <tr>
-<td>12</td>
+<td>11</td>
 <td>Sam Mit</td>
 <td>Fred N</td>
 <td>0.35</td>
 <td>31</td>
 <td>41</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Fred N</td>
+<td>Jimbabwe</td>
+<td>0.35</td>
+<td>26</td>
+<td>33</td>
 </tr>
 <tr>
 <td>13</td>
@@ -1657,14 +1657,6 @@
 </tr>
 <tr>
 <td>21</td>
-<td>Luke G</td>
-<td>Fred N</td>
-<td>0.24</td>
-<td>23</td>
-<td>38</td>
-</tr>
-<tr>
-<td>22</td>
 <td>Sam Mil</td>
 <td>pollyannaw</td>
 <td>0.24</td>
@@ -1672,15 +1664,15 @@
 <td>18</td>
 </tr>
 <tr>
+<td>22</td>
+<td>Luke G</td>
+<td>Fred N</td>
+<td>0.24</td>
 <td>23</td>
-<td>Sam Mit</td>
-<td>Jimbabwe</td>
-<td>0.23</td>
-<td>19</td>
-<td>33</td>
+<td>38</td>
 </tr>
 <tr>
-<td>24</td>
+<td>23</td>
 <td>Joshua W</td>
 <td>Peter L</td>
 <td>0.23</td>
@@ -1688,7 +1680,23 @@
 <td>35</td>
 </tr>
 <tr>
+<td>24</td>
+<td>Sam Mit</td>
+<td>Jimbabwe</td>
+<td>0.23</td>
+<td>19</td>
+<td>33</td>
+</tr>
+<tr>
 <td>25</td>
+<td>Joe</td>
+<td>Fred N</td>
+<td>0.21</td>
+<td>15</td>
+<td>33</td>
+</tr>
+<tr>
+<td>26</td>
 <td>Peter L</td>
 <td>harryg</td>
 <td>0.21</td>
@@ -1696,23 +1704,7 @@
 <td>37</td>
 </tr>
 <tr>
-<td>26</td>
-<td>Fergus M</td>
-<td>pollyannaw</td>
-<td>0.21</td>
-<td>10</td>
-<td>18</td>
-</tr>
-<tr>
 <td>27</td>
-<td>harryg</td>
-<td>Fergus M</td>
-<td>0.21</td>
-<td>23</td>
-<td>41</td>
-</tr>
-<tr>
-<td>28</td>
 <td>Joe</td>
 <td>Solsti</td>
 <td>0.21</td>
@@ -1720,12 +1712,20 @@
 <td>21</td>
 </tr>
 <tr>
-<td>29</td>
-<td>Joe</td>
-<td>Fred N</td>
+<td>28</td>
+<td>harryg</td>
+<td>Fergus M</td>
 <td>0.21</td>
-<td>15</td>
-<td>33</td>
+<td>23</td>
+<td>41</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Fergus M</td>
+<td>pollyannaw</td>
+<td>0.21</td>
+<td>10</td>
+<td>18</td>
 </tr>
 <tr>
 <td>30</td>
@@ -1737,19 +1737,19 @@
 </tr>
 <tr>
 <td>31</td>
-<td>Solsti</td>
-<td>Joshua W</td>
-<td>0.2</td>
-<td>17</td>
-<td>29</td>
-</tr>
-<tr>
-<td>32</td>
 <td>Jimbabwe</td>
 <td>Sam Mil</td>
 <td>0.2</td>
 <td>17</td>
 <td>30</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Solsti</td>
+<td>Joshua W</td>
+<td>0.2</td>
+<td>17</td>
+<td>29</td>
 </tr>
 <tr>
 <td>33</td>
@@ -1777,14 +1777,6 @@
 </tr>
 <tr>
 <td>36</td>
-<td>harryg</td>
-<td>Joshua W</td>
-<td>0.18</td>
-<td>18</td>
-<td>41</td>
-</tr>
-<tr>
-<td>37</td>
 <td>Fred N</td>
 <td>Solsti</td>
 <td>0.18</td>
@@ -1792,23 +1784,15 @@
 <td>31</td>
 </tr>
 <tr>
-<td>38</td>
-<td>Fred N</td>
-<td>Peter L</td>
-<td>0.17</td>
-<td>20</td>
 <td>37</td>
+<td>harryg</td>
+<td>Joshua W</td>
+<td>0.18</td>
+<td>18</td>
+<td>41</td>
 </tr>
 <tr>
-<td>39</td>
-<td>Fergus M</td>
-<td>Jimbabwe</td>
-<td>0.17</td>
-<td>17</td>
-<td>33</td>
-</tr>
-<tr>
-<td>40</td>
+<td>38</td>
 <td>Joshua W</td>
 <td>Joe</td>
 <td>0.17</td>
@@ -1816,11 +1800,27 @@
 <td>33</td>
 </tr>
 <tr>
-<td>41</td>
-<td>MorbidlyObeseCat</td>
+<td>39</td>
+<td>Fred N</td>
+<td>Peter L</td>
+<td>0.17</td>
+<td>20</td>
+<td>37</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Fergus M</td>
 <td>Jimbabwe</td>
+<td>0.17</td>
+<td>17</td>
+<td>33</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Fred N</td>
+<td>Joe</td>
 <td>0.16</td>
-<td>16</td>
+<td>15</td>
 <td>33</td>
 </tr>
 <tr>
@@ -1833,10 +1833,10 @@
 </tr>
 <tr>
 <td>43</td>
-<td>Fred N</td>
-<td>Joe</td>
+<td>MorbidlyObeseCat</td>
+<td>Jimbabwe</td>
 <td>0.16</td>
-<td>15</td>
+<td>16</td>
 <td>33</td>
 </tr>
 <tr>
@@ -1897,19 +1897,19 @@
 </tr>
 <tr>
 <td>51</td>
-<td>Fergus M</td>
-<td>MorbidlyObeseCat</td>
-<td>0.1</td>
-<td>17</td>
-<td>42</td>
-</tr>
-<tr>
-<td>52</td>
 <td>Fred N</td>
 <td>Fergus M</td>
 <td>0.1</td>
 <td>14</td>
 <td>41</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Fergus M</td>
+<td>MorbidlyObeseCat</td>
+<td>0.1</td>
+<td>17</td>
+<td>42</td>
 </tr>
 <tr>
 <td>53</td>
@@ -1921,11 +1921,11 @@
 </tr>
 <tr>
 <td>54</td>
-<td>Sam Mit</td>
-<td>harryg</td>
+<td>Fergus M</td>
+<td>Joe</td>
 <td>0.08</td>
-<td>20</td>
-<td>41</td>
+<td>10</td>
+<td>33</td>
 </tr>
 <tr>
 <td>55</td>
@@ -1937,22 +1937,14 @@
 </tr>
 <tr>
 <td>56</td>
-<td>Fergus M</td>
-<td>Joe</td>
+<td>Sam Mit</td>
+<td>harryg</td>
 <td>0.08</td>
-<td>10</td>
-<td>33</td>
+<td>20</td>
+<td>41</td>
 </tr>
 <tr>
 <td>57</td>
-<td>Joe</td>
-<td>Peter L</td>
-<td>0.07</td>
-<td>11</td>
-<td>27</td>
-</tr>
-<tr>
-<td>58</td>
 <td>Fergus M</td>
 <td>Joshua W</td>
 <td>0.07</td>
@@ -1960,7 +1952,7 @@
 <td>41</td>
 </tr>
 <tr>
-<td>59</td>
+<td>58</td>
 <td>Josh B</td>
 <td>harryg</td>
 <td>0.07</td>
@@ -1968,20 +1960,28 @@
 <td>35</td>
 </tr>
 <tr>
-<td>60</td>
-<td>Josh B</td>
-<td>Joshua W</td>
-<td>0.06</td>
-<td>10</td>
-<td>35</td>
+<td>59</td>
+<td>Joe</td>
+<td>Peter L</td>
+<td>0.07</td>
+<td>11</td>
+<td>27</td>
 </tr>
 <tr>
-<td>61</td>
+<td>60</td>
 <td>harryg</td>
 <td>MorbidlyObeseCat</td>
 <td>0.06</td>
 <td>18</td>
 <td>42</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Josh B</td>
+<td>Joshua W</td>
+<td>0.06</td>
+<td>10</td>
+<td>35</td>
 </tr>
 <tr>
 <td>62</td>
@@ -2010,45 +2010,13 @@
 <tr>
 <td>65</td>
 <td>Josh B</td>
-<td>Fred N</td>
-<td>0.04</td>
-<td>9</td>
-<td>35</td>
-</tr>
-<tr>
-<td>66</td>
-<td>Josh B</td>
-<td>Jimbabwe</td>
-<td>0.04</td>
-<td>9</td>
-<td>26</td>
-</tr>
-<tr>
-<td>67</td>
-<td>MorbidlyObeseCat</td>
-<td>Sam Mil</td>
-<td>0.04</td>
-<td>14</td>
-<td>38</td>
-</tr>
-<tr>
-<td>68</td>
-<td>Josh B</td>
 <td>Luke G</td>
 <td>0.04</td>
 <td>9</td>
 <td>34</td>
 </tr>
 <tr>
-<td>69</td>
-<td>MorbidlyObeseCat</td>
-<td>Peter L</td>
-<td>0.04</td>
-<td>16</td>
-<td>37</td>
-</tr>
-<tr>
-<td>70</td>
+<td>66</td>
 <td>Fergus M</td>
 <td>Peter L</td>
 <td>0.04</td>
@@ -2056,7 +2024,7 @@
 <td>37</td>
 </tr>
 <tr>
-<td>71</td>
+<td>67</td>
 <td>Josh B</td>
 <td>Peter L</td>
 <td>0.04</td>
@@ -2064,12 +2032,44 @@
 <td>33</td>
 </tr>
 <tr>
-<td>72</td>
+<td>68</td>
+<td>Josh B</td>
+<td>Fred N</td>
+<td>0.04</td>
+<td>9</td>
+<td>35</td>
+</tr>
+<tr>
+<td>69</td>
 <td>Sam Mit</td>
 <td>Joshua W</td>
 <td>0.04</td>
 <td>13</td>
 <td>39</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Josh B</td>
+<td>Jimbabwe</td>
+<td>0.04</td>
+<td>9</td>
+<td>26</td>
+</tr>
+<tr>
+<td>71</td>
+<td>MorbidlyObeseCat</td>
+<td>Peter L</td>
+<td>0.04</td>
+<td>16</td>
+<td>37</td>
+</tr>
+<tr>
+<td>72</td>
+<td>MorbidlyObeseCat</td>
+<td>Sam Mil</td>
+<td>0.04</td>
+<td>14</td>
+<td>38</td>
 </tr>
 <tr>
 <td>73</td>
@@ -2081,6 +2081,14 @@
 </tr>
 <tr>
 <td>74</td>
+<td>Joe</td>
+<td>Fergus M</td>
+<td>0.02</td>
+<td>11</td>
+<td>31</td>
+</tr>
+<tr>
+<td>75</td>
 <td>Luke G</td>
 <td>pollyannaw</td>
 <td>0.02</td>
@@ -2088,20 +2096,12 @@
 <td>13</td>
 </tr>
 <tr>
-<td>75</td>
+<td>76</td>
 <td>Fred N</td>
 <td>Sam Mit</td>
 <td>0.02</td>
 <td>19</td>
 <td>41</td>
-</tr>
-<tr>
-<td>76</td>
-<td>Solsti</td>
-<td>Joe</td>
-<td>0.02</td>
-<td>5</td>
-<td>21</td>
 </tr>
 <tr>
 <td>77</td>
@@ -2113,54 +2113,14 @@
 </tr>
 <tr>
 <td>78</td>
+<td>Solsti</td>
 <td>Joe</td>
-<td>Fergus M</td>
 <td>0.02</td>
-<td>11</td>
-<td>31</td>
+<td>5</td>
+<td>21</td>
 </tr>
 <tr>
 <td>79</td>
-<td>Fergus M</td>
-<td>Sam Mit</td>
-<td>0.01</td>
-<td>15</td>
-<td>41</td>
-</tr>
-<tr>
-<td>80</td>
-<td>Josh B</td>
-<td>Fergus M</td>
-<td>0.01</td>
-<td>11</td>
-<td>33</td>
-</tr>
-<tr>
-<td>81</td>
-<td>Luke G</td>
-<td>Joe</td>
-<td>0.01</td>
-<td>11</td>
-<td>33</td>
-</tr>
-<tr>
-<td>82</td>
-<td>pollyannaw</td>
-<td>MorbidlyObeseCat</td>
-<td>0.01</td>
-<td>7</td>
-<td>18</td>
-</tr>
-<tr>
-<td>83</td>
-<td>Joshua W</td>
-<td>Sam Mit</td>
-<td>0.01</td>
-<td>12</td>
-<td>39</td>
-</tr>
-<tr>
-<td>84</td>
 <td>Josh B</td>
 <td>Solsti</td>
 <td>0.01</td>
@@ -2168,7 +2128,15 @@
 <td>27</td>
 </tr>
 <tr>
-<td>85</td>
+<td>80</td>
+<td>Fergus M</td>
+<td>Sam Mit</td>
+<td>0.01</td>
+<td>15</td>
+<td>41</td>
+</tr>
+<tr>
+<td>81</td>
 <td>MorbidlyObeseCat</td>
 <td>Josh B</td>
 <td>0.01</td>
@@ -2176,23 +2144,39 @@
 <td>34</td>
 </tr>
 <tr>
-<td>86</td>
+<td>82</td>
+<td>Josh B</td>
+<td>Fergus M</td>
+<td>0.01</td>
+<td>11</td>
+<td>33</td>
+</tr>
+<tr>
+<td>83</td>
+<td>pollyannaw</td>
+<td>MorbidlyObeseCat</td>
+<td>0.01</td>
+<td>7</td>
+<td>18</td>
+</tr>
+<tr>
+<td>84</td>
+<td>Joshua W</td>
 <td>Sam Mit</td>
-<td>Solsti</td>
-<td>-0</td>
+<td>0.01</td>
 <td>12</td>
-<td>31</td>
+<td>39</td>
 </tr>
 <tr>
-<td>87</td>
-<td>harryg</td>
-<td>Fred N</td>
-<td>-0</td>
-<td>17</td>
-<td>43</td>
+<td>85</td>
+<td>Luke G</td>
+<td>Joe</td>
+<td>0.01</td>
+<td>11</td>
+<td>33</td>
 </tr>
 <tr>
-<td>88</td>
+<td>86</td>
 <td>Joshua W</td>
 <td>Fred N</td>
 <td>0</td>
@@ -2200,7 +2184,7 @@
 <td>41</td>
 </tr>
 <tr>
-<td>89</td>
+<td>87</td>
 <td>Jimbabwe</td>
 <td>Luke G</td>
 <td>0</td>
@@ -2208,12 +2192,28 @@
 <td>28</td>
 </tr>
 <tr>
-<td>90</td>
+<td>88</td>
+<td>Sam Mit</td>
 <td>Solsti</td>
-<td>Josh B</td>
+<td>-0</td>
+<td>12</td>
+<td>31</td>
+</tr>
+<tr>
+<td>89</td>
+<td>harryg</td>
+<td>Fred N</td>
+<td>-0</td>
+<td>17</td>
+<td>43</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Peter L</td>
+<td>Fergus M</td>
 <td>-0.01</td>
-<td>8</td>
-<td>27</td>
+<td>15</td>
+<td>35</td>
 </tr>
 <tr>
 <td>91</td>
@@ -2225,19 +2225,19 @@
 </tr>
 <tr>
 <td>92</td>
-<td>Peter L</td>
-<td>Fergus M</td>
-<td>-0.01</td>
-<td>15</td>
-<td>35</td>
-</tr>
-<tr>
-<td>93</td>
 <td>Josh B</td>
 <td>MorbidlyObeseCat</td>
 <td>-0.01</td>
 <td>13</td>
 <td>34</td>
+</tr>
+<tr>
+<td>93</td>
+<td>Solsti</td>
+<td>Josh B</td>
+<td>-0.01</td>
+<td>8</td>
+<td>27</td>
 </tr>
 <tr>
 <td>94</td>
@@ -2289,11 +2289,11 @@
 </tr>
 <tr>
 <td>100</td>
-<td>Joshua W</td>
-<td>harryg</td>
+<td>Luke G</td>
+<td>Fergus M</td>
 <td>-0.04</td>
-<td>14</td>
-<td>41</td>
+<td>7</td>
+<td>36</td>
 </tr>
 <tr>
 <td>101</td>
@@ -2305,11 +2305,11 @@
 </tr>
 <tr>
 <td>102</td>
-<td>Luke G</td>
-<td>Fergus M</td>
+<td>Joshua W</td>
+<td>harryg</td>
 <td>-0.04</td>
-<td>7</td>
-<td>36</td>
+<td>14</td>
+<td>41</td>
 </tr>
 <tr>
 <td>103</td>
@@ -2337,6 +2337,14 @@
 </tr>
 <tr>
 <td>106</td>
+<td>Jimbabwe</td>
+<td>Fred N</td>
+<td>-0.06</td>
+<td>10</td>
+<td>33</td>
+</tr>
+<tr>
+<td>107</td>
 <td>Sam Mil</td>
 <td>Luke G</td>
 <td>-0.06</td>
@@ -2344,20 +2352,12 @@
 <td>36</td>
 </tr>
 <tr>
-<td>107</td>
+<td>108</td>
 <td>pollyannaw</td>
 <td>Peter L</td>
 <td>-0.06</td>
 <td>7</td>
 <td>17</td>
-</tr>
-<tr>
-<td>108</td>
-<td>Jimbabwe</td>
-<td>Fred N</td>
-<td>-0.06</td>
-<td>10</td>
-<td>33</td>
 </tr>
 <tr>
 <td>109</td>
@@ -2402,13 +2402,21 @@
 <tr>
 <td>114</td>
 <td>MorbidlyObeseCat</td>
-<td>Sam Mit</td>
+<td>Fred N</td>
 <td>-0.08</td>
-<td>12</td>
-<td>41</td>
+<td>10</td>
+<td>43</td>
 </tr>
 <tr>
 <td>115</td>
+<td>Joe</td>
+<td>Joshua W</td>
+<td>-0.08</td>
+<td>10</td>
+<td>33</td>
+</tr>
+<tr>
+<td>116</td>
 <td>Jimbabwe</td>
 <td>Joe</td>
 <td>-0.08</td>
@@ -2416,28 +2424,20 @@
 <td>23</td>
 </tr>
 <tr>
-<td>116</td>
+<td>117</td>
 <td>MorbidlyObeseCat</td>
-<td>Fred N</td>
+<td>Sam Mit</td>
 <td>-0.08</td>
-<td>10</td>
-<td>43</td>
+<td>12</td>
+<td>41</td>
 </tr>
 <tr>
-<td>117</td>
+<td>118</td>
 <td>Luke G</td>
 <td>Peter L</td>
 <td>-0.08</td>
 <td>7</td>
 <td>32</td>
-</tr>
-<tr>
-<td>118</td>
-<td>Joe</td>
-<td>Joshua W</td>
-<td>-0.08</td>
-<td>10</td>
-<td>33</td>
 </tr>
 <tr>
 <td>119</td>
@@ -2465,11 +2465,11 @@
 </tr>
 <tr>
 <td>122</td>
-<td>Peter L</td>
 <td>MorbidlyObeseCat</td>
+<td>Fergus M</td>
 <td>-0.11</td>
-<td>8</td>
-<td>36</td>
+<td>12</td>
+<td>41</td>
 </tr>
 <tr>
 <td>123</td>
@@ -2481,19 +2481,19 @@
 </tr>
 <tr>
 <td>124</td>
-<td>MorbidlyObeseCat</td>
-<td>Fergus M</td>
-<td>-0.11</td>
-<td>12</td>
-<td>41</td>
-</tr>
-<tr>
-<td>125</td>
 <td>Jimbabwe</td>
 <td>Josh B</td>
 <td>-0.11</td>
 <td>8</td>
 <td>26</td>
+</tr>
+<tr>
+<td>125</td>
+<td>Peter L</td>
+<td>MorbidlyObeseCat</td>
+<td>-0.11</td>
+<td>8</td>
+<td>36</td>
 </tr>
 <tr>
 <td>126</td>
@@ -2505,14 +2505,6 @@
 </tr>
 <tr>
 <td>127</td>
-<td>MorbidlyObeseCat</td>
-<td>Joshua W</td>
-<td>-0.12</td>
-<td>14</td>
-<td>41</td>
-</tr>
-<tr>
-<td>128</td>
 <td>Joshua W</td>
 <td>Jimbabwe</td>
 <td>-0.12</td>
@@ -2520,23 +2512,23 @@
 <td>31</td>
 </tr>
 <tr>
+<td>128</td>
+<td>MorbidlyObeseCat</td>
+<td>Joshua W</td>
+<td>-0.12</td>
+<td>14</td>
+<td>41</td>
+</tr>
+<tr>
 <td>129</td>
+<td>Luke G</td>
 <td>Sam Mil</td>
-<td>Joe</td>
 <td>-0.13</td>
-<td>7</td>
-<td>31</td>
+<td>10</td>
+<td>33</td>
 </tr>
 <tr>
 <td>130</td>
-<td>Jimbabwe</td>
-<td>Joshua W</td>
-<td>-0.13</td>
-<td>8</td>
-<td>31</td>
-</tr>
-<tr>
-<td>131</td>
 <td>Fergus M</td>
 <td>harryg</td>
 <td>-0.13</td>
@@ -2544,12 +2536,20 @@
 <td>43</td>
 </tr>
 <tr>
-<td>132</td>
-<td>Luke G</td>
+<td>131</td>
 <td>Sam Mil</td>
+<td>Joe</td>
 <td>-0.13</td>
-<td>10</td>
-<td>33</td>
+<td>7</td>
+<td>31</td>
+</tr>
+<tr>
+<td>132</td>
+<td>Jimbabwe</td>
+<td>Joshua W</td>
+<td>-0.13</td>
+<td>8</td>
+<td>31</td>
 </tr>
 <tr>
 <td>133</td>
@@ -2577,14 +2577,6 @@
 </tr>
 <tr>
 <td>136</td>
-<td>harryg</td>
-<td>Peter L</td>
-<td>-0.16</td>
-<td>9</td>
-<td>37</td>
-</tr>
-<tr>
-<td>137</td>
 <td>Solsti</td>
 <td>Peter L</td>
 <td>-0.16</td>
@@ -2592,12 +2584,20 @@
 <td>30</td>
 </tr>
 <tr>
-<td>138</td>
-<td>pollyannaw</td>
-<td>Josh B</td>
+<td>137</td>
+<td>harryg</td>
+<td>Peter L</td>
 <td>-0.16</td>
-<td>4</td>
-<td>14</td>
+<td>9</td>
+<td>37</td>
+</tr>
+<tr>
+<td>138</td>
+<td>harryg</td>
+<td>Sam Mil</td>
+<td>-0.16</td>
+<td>8</td>
+<td>38</td>
 </tr>
 <tr>
 <td>139</td>
@@ -2609,19 +2609,19 @@
 </tr>
 <tr>
 <td>140</td>
-<td>harryg</td>
-<td>Sam Mil</td>
+<td>pollyannaw</td>
+<td>Josh B</td>
 <td>-0.16</td>
-<td>8</td>
-<td>38</td>
+<td>4</td>
+<td>14</td>
 </tr>
 <tr>
 <td>141</td>
 <td>Sam Mil</td>
-<td>Peter L</td>
+<td>harryg</td>
 <td>-0.17</td>
-<td>10</td>
-<td>37</td>
+<td>6</td>
+<td>41</td>
 </tr>
 <tr>
 <td>142</td>
@@ -2634,37 +2634,13 @@
 <tr>
 <td>143</td>
 <td>Sam Mil</td>
-<td>harryg</td>
+<td>Peter L</td>
 <td>-0.17</td>
-<td>6</td>
-<td>41</td>
+<td>10</td>
+<td>37</td>
 </tr>
 <tr>
 <td>144</td>
-<td>Fergus M</td>
-<td>Fred N</td>
-<td>-0.18</td>
-<td>9</td>
-<td>43</td>
-</tr>
-<tr>
-<td>145</td>
-<td>Sam Mil</td>
-<td>Jimbabwe</td>
-<td>-0.18</td>
-<td>7</td>
-<td>32</td>
-</tr>
-<tr>
-<td>146</td>
-<td>Joe</td>
-<td>Sam Mit</td>
-<td>-0.18</td>
-<td>6</td>
-<td>31</td>
-</tr>
-<tr>
-<td>147</td>
 <td>MorbidlyObeseCat</td>
 <td>harryg</td>
 <td>-0.18</td>
@@ -2672,7 +2648,15 @@
 <td>43</td>
 </tr>
 <tr>
-<td>148</td>
+<td>145</td>
+<td>Joe</td>
+<td>Sam Mit</td>
+<td>-0.18</td>
+<td>6</td>
+<td>31</td>
+</tr>
+<tr>
+<td>146</td>
 <td>Solsti</td>
 <td>Luke G</td>
 <td>-0.18</td>
@@ -2680,23 +2664,23 @@
 <td>26</td>
 </tr>
 <tr>
-<td>149</td>
+<td>147</td>
 <td>Fergus M</td>
-<td>Solsti</td>
-<td>-0.19</td>
-<td>6</td>
-<td>31</td>
+<td>Fred N</td>
+<td>-0.18</td>
+<td>9</td>
+<td>43</td>
 </tr>
 <tr>
-<td>150</td>
+<td>148</td>
 <td>Sam Mil</td>
-<td>Sam Mit</td>
-<td>-0.19</td>
-<td>6</td>
-<td>40</td>
+<td>Jimbabwe</td>
+<td>-0.18</td>
+<td>7</td>
+<td>32</td>
 </tr>
 <tr>
-<td>151</td>
+<td>149</td>
 <td>Solsti</td>
 <td>Jimbabwe</td>
 <td>-0.19</td>
@@ -2704,20 +2688,36 @@
 <td>30</td>
 </tr>
 <tr>
-<td>152</td>
-<td>Peter L</td>
-<td>Luke G</td>
-<td>-0.2</td>
-<td>7</td>
-<td>32</td>
+<td>150</td>
+<td>Fergus M</td>
+<td>Solsti</td>
+<td>-0.19</td>
+<td>6</td>
+<td>31</td>
 </tr>
 <tr>
-<td>153</td>
+<td>151</td>
+<td>Sam Mil</td>
+<td>Sam Mit</td>
+<td>-0.19</td>
+<td>6</td>
+<td>40</td>
+</tr>
+<tr>
+<td>152</td>
 <td>Fred N</td>
 <td>harryg</td>
 <td>-0.2</td>
 <td>12</td>
 <td>43</td>
+</tr>
+<tr>
+<td>153</td>
+<td>Peter L</td>
+<td>Luke G</td>
+<td>-0.2</td>
+<td>7</td>
+<td>32</td>
 </tr>
 <tr>
 <td>154</td>
@@ -2729,6 +2729,14 @@
 </tr>
 <tr>
 <td>155</td>
+<td>Joe</td>
+<td>Josh B</td>
+<td>-0.21</td>
+<td>3</td>
+<td>28</td>
+</tr>
+<tr>
+<td>156</td>
 <td>Josh B</td>
 <td>Joe</td>
 <td>-0.21</td>
@@ -2736,20 +2744,12 @@
 <td>29</td>
 </tr>
 <tr>
-<td>156</td>
+<td>157</td>
 <td>Sam Mil</td>
 <td>Fergus M</td>
 <td>-0.21</td>
 <td>9</td>
 <td>39</td>
-</tr>
-<tr>
-<td>157</td>
-<td>Joe</td>
-<td>Josh B</td>
-<td>-0.21</td>
-<td>3</td>
-<td>28</td>
 </tr>
 <tr>
 <td>158</td>
@@ -2785,22 +2785,6 @@
 </tr>
 <tr>
 <td>162</td>
-<td>Joshua W</td>
-<td>Josh B</td>
-<td>-0.25</td>
-<td>0</td>
-<td>34</td>
-</tr>
-<tr>
-<td>163</td>
-<td>Solsti</td>
-<td>Sam Mit</td>
-<td>-0.25</td>
-<td>3</td>
-<td>31</td>
-</tr>
-<tr>
-<td>164</td>
 <td>Solsti</td>
 <td>Fred N</td>
 <td>-0.25</td>
@@ -2808,7 +2792,31 @@
 <td>31</td>
 </tr>
 <tr>
+<td>163</td>
+<td>Joshua W</td>
+<td>Josh B</td>
+<td>-0.25</td>
+<td>0</td>
+<td>34</td>
+</tr>
+<tr>
+<td>164</td>
+<td>Solsti</td>
+<td>Sam Mit</td>
+<td>-0.25</td>
+<td>3</td>
+<td>31</td>
+</tr>
+<tr>
 <td>165</td>
+<td>MorbidlyObeseCat</td>
+<td>Solsti</td>
+<td>-0.26</td>
+<td>4</td>
+<td>31</td>
+</tr>
+<tr>
+<td>166</td>
 <td>Luke G</td>
 <td>MorbidlyObeseCat</td>
 <td>-0.26</td>
@@ -2816,15 +2824,15 @@
 <td>37</td>
 </tr>
 <tr>
-<td>166</td>
-<td>MorbidlyObeseCat</td>
+<td>167</td>
 <td>Solsti</td>
-<td>-0.26</td>
-<td>4</td>
+<td>MorbidlyObeseCat</td>
+<td>-0.27</td>
+<td>6</td>
 <td>31</td>
 </tr>
 <tr>
-<td>167</td>
+<td>168</td>
 <td>Joe</td>
 <td>Jimbabwe</td>
 <td>-0.27</td>
@@ -2832,7 +2840,7 @@
 <td>23</td>
 </tr>
 <tr>
-<td>168</td>
+<td>169</td>
 <td>pollyannaw</td>
 <td>Joshua W</td>
 <td>-0.27</td>
@@ -2840,20 +2848,12 @@
 <td>16</td>
 </tr>
 <tr>
-<td>169</td>
+<td>170</td>
 <td>Peter L</td>
 <td>Jimbabwe</td>
 <td>-0.27</td>
 <td>4</td>
 <td>29</td>
-</tr>
-<tr>
-<td>170</td>
-<td>Solsti</td>
-<td>MorbidlyObeseCat</td>
-<td>-0.27</td>
-<td>6</td>
-<td>31</td>
 </tr>
 <tr>
 <td>171</td>
@@ -2865,19 +2865,19 @@
 </tr>
 <tr>
 <td>172</td>
-<td>pollyannaw</td>
-<td>Luke G</td>
-<td>-0.3</td>
-<td>2</td>
-<td>13</td>
-</tr>
-<tr>
-<td>173</td>
 <td>Joshua W</td>
 <td>Fergus M</td>
 <td>-0.3</td>
 <td>4</td>
 <td>39</td>
+</tr>
+<tr>
+<td>173</td>
+<td>pollyannaw</td>
+<td>Luke G</td>
+<td>-0.3</td>
+<td>2</td>
+<td>13</td>
 </tr>
 <tr>
 <td>174</td>
@@ -2929,19 +2929,19 @@
 </tr>
 <tr>
 <td>180</td>
-<td>Joshua W</td>
-<td>Sam Mil</td>
-<td>-0.47</td>
-<td>0</td>
-<td>36</td>
-</tr>
-<tr>
-<td>181</td>
 <td>Sam Mit</td>
 <td>pollyannaw</td>
 <td>-0.47</td>
 <td>2</td>
 <td>18</td>
+</tr>
+<tr>
+<td>181</td>
+<td>Joshua W</td>
+<td>Sam Mil</td>
+<td>-0.47</td>
+<td>0</td>
+<td>36</td>
 </tr>
 <tr>
 <td>182</td>
