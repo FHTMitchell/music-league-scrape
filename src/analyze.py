@@ -99,7 +99,8 @@ def _build_sections(df: pl.DataFrame) -> list[Section]:
         _section_best_players(df),
         _section_league_winners(df),
         _section_medal_table(df),
-        _section_biggest_fan_and_hater(df),
+        _section_biggest_fans(df),
+        _section_biggest_haters(df),
         # song-focused sections grouped together
         _section_top_songs(df),
         _section_bottom_songs(df),
@@ -331,41 +332,43 @@ def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def _section_biggest_fan_and_hater(df: pl.DataFrame) -> Section:
-    pairs = _pair_z_summary(df)
-    fans = (
-        pairs.sort(["player", "avg_z"], descending=[False, True])
+_FAN_HATER_HEADER = (
+    "For each submitter, the voter whose votes land furthest from that voter's own "
+    "per-round vote distribution. Metric: mean z-score across shared rounds, where "
+    "z = (vote - voter_round_mean) / voter_round_std and unrated songs in a "
+    "participated round count as 0. Rounds where the voter gave every song the same "
+    "vote are dropped (z is undefined). pts is the raw cumulative points for "
+    "context. See 'Fan / Hater Scores' at the end of the report for the "
+    "unaggregated pair-by-pair view."
+)
+
+
+def _section_biggest_fans(df: pl.DataFrame) -> Section:
+    table = (
+        _pair_z_summary(df)
+        .sort(["player", "avg_z"], descending=[False, True])
         .group_by("player", maintain_order=True)
         .head(1)
         .select(["player", "voter", "avg_z", "total_points", "shared_rounds"])
-        .rename({"voter": "biggest_fan", "avg_z": "fan_z", "total_points": "fan_pts"})
-    )
-    haters = (
-        pairs.sort(["player", "avg_z"], descending=[False, False])
-        .group_by("player", maintain_order=True)
-        .head(1)
-        .select(["player", "voter", "avg_z", "total_points"])
-        .rename({"voter": "biggest_hater", "avg_z": "hater_z", "total_points": "hater_pts"})
-    )
-    table = (
-        fans.join(haters, on="player", how="inner")
+        .rename({"voter": "biggest_fan", "avg_z": "fan_z", "total_points": "pts"})
         .sort("fan_z", descending=True)
         .head(_FAN_HATER_PLAYERS)
     )
-    return Section(
-        title="Biggest Fans/Haters",
-        header=(
-            "For each submitter, the voter whose votes land highest (fan) and lowest "
-            "(hater) relative to that voter's own per-round vote distribution. Metric: "
-            "mean z-score across shared rounds, where z = (vote - voter_round_mean) / "
-            "voter_round_std and unrated songs in a participated round count as 0. "
-            "Rounds where the voter gave every song the same vote are dropped (z is "
-            "undefined). fan_pts / hater_pts are the raw cumulative points for context. "
-            "See 'Fan / Hater Scores' at the end of the report for the unaggregated "
-            "pair-by-pair view."
-        ),
-        table=table,
+    return Section(title="Biggest Fans", header=_FAN_HATER_HEADER, table=table)
+
+
+def _section_biggest_haters(df: pl.DataFrame) -> Section:
+    table = (
+        _pair_z_summary(df)
+        .sort(["player", "avg_z"], descending=[False, False])
+        .group_by("player", maintain_order=True)
+        .head(1)
+        .select(["player", "voter", "avg_z", "total_points", "shared_rounds"])
+        .rename({"voter": "biggest_hater", "avg_z": "hater_z", "total_points": "pts"})
+        .sort("hater_z")
+        .head(_FAN_HATER_PLAYERS)
     )
+    return Section(title="Biggest Haters", header=_FAN_HATER_HEADER, table=table)
 
 
 def _section_all_fans_and_haters(df: pl.DataFrame) -> Section:
