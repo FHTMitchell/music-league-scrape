@@ -51,7 +51,8 @@ uv run python -m src.scrape                    # full scrape, writes out/music_l
 uv run python -m src.scrape --league <league_id>   # restrict to one or more leagues (repeat)
 uv run python -m src.scrape --sleep 1.0            # be nicer to the server
 uv run python -m src.scrape --debug                # verbose logging + dump every fetched HTML to debug/
-uv run python -m src.analyze                   # build out/analysis.md from out/music_league.parquet
+uv run python -m src.analyze                   # build out/analysis.{md,html} from out/music_league.parquet
+uv run python -m src.songs_page                # build out/songs.html (every song + JS title filter)
 ```
 
 Requires `./auth.curl` in the repo root (gitignored). See below.
@@ -117,6 +118,3 @@ webpages/
 out/
   music_league.parquet — scraper output (gitignored)
 ```
-
-See `CLAUDE.md` for full design notes (selectors, schema rationale, sandbox
-caveats).
