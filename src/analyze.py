@@ -569,17 +569,20 @@ def _section_repeated_songs(df: pl.DataFrame) -> Section:
             pl.col("artist").first(),
             pl.len().alias("plays"),
             pl.col("player").unique().sort().str.join(", ").alias("players"),
-            pl.col("score").sum().alias("total_score"),
+            # scores in the order the track was played (oldest round first)
+            pl.col("score").sort_by("round_time").cast(pl.Utf8).str.join(", ").alias("scores"),
+            pl.col("score").sum().alias("_total"),
         )
         .filter(pl.col("plays") > 1)
-        .sort(["plays", "total_score"], descending=[True, True])
-        .select(["plays", "song", "artist", "players", "total_score"])
+        .sort(["plays", "_total"], descending=[True, True])
+        .select(["plays", "song", "artist", "players", "scores"])
     )
     return Section(
         title="Repeats",
         header=(
             "Tracks (matched by Spotify track ID) submitted in more than one round, "
-            "either by the same player or by different players."
+            "either by the same player or by different players. scores lists the "
+            "points each submission earned, oldest round first."
         ),
         table=table,
     )
