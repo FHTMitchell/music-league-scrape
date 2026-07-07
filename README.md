@@ -41,13 +41,17 @@ newest first.
 | song              | str                                        |
 | artist            | str                                        |
 | spotify_track_id  | str                                        |
-| score             | i64  (the displayed score)                 |
-| votes             | list[struct{voter: str \| null, votes: i64}] |
+| score             | i64  (points the song earned from voters)  |
+| received          | i64  (points the submitter actually banked)|
+| forfeited         | bool (submitter missed the voting deadline)|
+| votes             | list[struct{voter: str, votes: i64}]       |
 
-`votes` includes a row with `voter = null` whenever the displayed score exceeds
-the sum of explicit voter rows — this is the **forfeit bucket** (Music League
-discards votes from players who missed the voting deadline). With the bucket
-present, `sum(votes.votes) == score` always holds.
+`score` is what the *song* earned and always equals `sum(votes.votes)`.
+`received` is what the *submitter* banked: equal to `score` normally, but if the
+submitter misses the voting deadline Music League zeroes their received points
+(downvotes against them still count, so `received` can be negative). `forfeited`
+flags that case — it is read directly from the struck-through score on the card,
+not inferred from `score != received`.
 
 ### Anonymisation
 

@@ -45,7 +45,7 @@ class League:
 
 @dataclass(frozen=True)
 class Vote:
-    voter: str | None  # None marks the forfeit bucket (score - sum(explicit))
+    voter: str
     votes: int
 
 
@@ -61,7 +61,9 @@ class SongRow:
     artist: str
     player: str
     submitter_user_id: str | None
-    score: int
+    score: int  # points the song earned from voters (== sum of explicit votes)
+    received: int  # points the submitter actually banked (0/negative on forfeit)
+    forfeited: bool  # submitter missed the voting deadline (struck-through score)
     votes: list[Vote] = field(default_factory=list)
 
 
@@ -166,10 +168,6 @@ def parse_round(
     If ``round_name`` is supplied (caller already knows it from the rounds
     list), the header lookup is skipped — necessary for the fragment, where
     the round-header card is not present.
-
-    Adds ``Vote(voter=None, votes=score - sum(explicit))`` whenever the
-    displayed score does not equal the sum of explicit voter rows. This
-    captures vote-forfeit penalties without hiding them.
     """
     tree = HTMLParser(html)
     if round_name is None:
@@ -202,13 +200,9 @@ def _parse_song(
     track_id = (card.attributes.get("id") or "").removeprefix("spotify:track:")
     title_node = card.css_first("h6.card-title a")
     artist = _first_card_text(card)
-    score = _parse_score(card)
+    score, received, forfeited = _parse_score(card)
     submitter_user_id, player = _parse_submitter(card)
     votes = _parse_votes(card)
-
-    forfeit = score - sum(v.votes for v in votes)
-    if forfeit:
-        votes.append(Vote(voter=None, votes=forfeit))
 
     return SongRow(
         league=league,
@@ -222,6 +216,8 @@ def _parse_song(
         player=player,
         submitter_user_id=submitter_user_id,
         score=score,
+        received=received,
+        forfeited=forfeited,
         votes=votes,
     )
 
@@ -235,14 +231,44 @@ def _first_card_text(card: Node) -> str:
     return _text(first)
 
 
-def _parse_score(card: Node) -> int:
+def _parse_score(card: Node) -> tuple[int, int, bool]:
+    """Return ``(score, received, forfeited)`` from a song card's score column.
+
+    The ``<h3>`` holds two facts. Normally it is a bare number: the song's
+    earned points, which the submitter also banks. On a submitter forfeit
+    (missed voting deadline) the earned score is struck through and the banked
+    total shown beside it::
+
+        <h3 class="m-0"><s class="text-danger">5</s> 0</h3>
+
+    Here ``score`` is the struck value (points the song earned from voters),
+    ``received`` is the h3's own text (what the submitter actually banked — 0,
+    or negative when downvotes still apply), and ``forfeited`` is True.
+    """
     node = card.css_first("div.col-auto.text-end h3.m-0")
     if node is None:
-        return 0
+        return 0, 0, False
+
+    struck = node.css_first("s")
+    forfeited = struck is not None
+    # received: the h3's own direct text, excluding any nested struck score.
+    received = _parse_int(node.text(deep=False), card, "received")
+    # score: the struck value when forfeited, otherwise the received value.
+    score = _parse_int(struck.text(), card, "score") if forfeited else received
+    return score, received, forfeited
+
+
+def _parse_int(raw: str | None, card: Node, field_name: str) -> int:
+    text = (raw or "").strip().replace(",", "")
     try:
-        return int(_text(node))
+        return int(text)
     except ValueError:
-        logger.warning("non-integer score on card id=%s", card.attributes.get("id"))
+        logger.warning(
+            "non-integer %s %r on card id=%s",
+            field_name,
+            raw,
+            card.attributes.get("id"),
+        )
         return 0
 
 

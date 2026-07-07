@@ -472,21 +472,22 @@ def _section_polarising_songs(df: pl.DataFrame) -> Section:
 
 def _section_forfeits(df: pl.DataFrame) -> Section:
     table = (
-        _explode_votes(df)
-        .filter(pl.col("voter").is_null())
+        df.filter(pl.col("forfeited"))
+        .with_columns((pl.col("score") - pl.col("received")).alias("points_lost"))
         .group_by("player")
         .agg(
-            pl.len().alias("songs_with_forfeit"),
-            pl.col("vote_count").sum().alias("total_forfeit_points"),
+            pl.len().alias("songs_forfeited"),
+            pl.col("points_lost").sum().alias("total_points_lost"),
         )
-        .sort("total_forfeit_points", descending=True)
+        .sort("total_points_lost", descending=True)
     )
     return Section(
         title="Forfeits",
         header=(
-            "Points lost on a player's songs when voters in that round failed to "
-            "cast a ballot. Music League discards votes given by anyone who missed "
-            "the voting deadline."
+            "Points a player's songs earned but the player never banked, because "
+            "they missed the voting deadline. Music League zeroes the points you "
+            "receive if you don't cast your own ballot (downvotes against you still "
+            "count). points_lost = score the song earned − points actually received."
         ),
         table=table,
     )
@@ -577,16 +578,13 @@ def _explode_votes(df: pl.DataFrame) -> pl.DataFrame:
     overlap, and a z-score-based fan/hater is too easy to mint.
 
     This function rebuilds the full ballot:
-      - ``participants[round]`` = the union of non-null voters across every
-        song in that round (anyone who showed up at all).
+      - ``participants[round]`` = the union of voters across every song in that
+        round (anyone who showed up at all).
       - For each (round, voter), every song in that round becomes a row,
         excluding the voter's own song (you cannot vote for yourself).
       - vote_count is whatever the scrape recorded, else 0.
-
-    The forfeit-bucket ``None`` voter rows are passed through unchanged —
-    they are aggregate accounting, not ballots.
     """
-    base = (
+    real = (
         df.select(["league", "round", "player", "score", "votes"])
         .explode("votes")
         .with_columns(
@@ -595,14 +593,12 @@ def _explode_votes(df: pl.DataFrame) -> pl.DataFrame:
         )
         .drop("votes")
         .filter(pl.col("vote_count").is_not_null())
-        .filter((pl.col("voter") != _LEFT_LEAGUE) | pl.col("voter").is_null())
+        .filter(pl.col("voter") != _LEFT_LEAGUE)
     )
-    forfeits = base.filter(pl.col("voter").is_null())
-    real = base.filter(pl.col("voter").is_not_null())
 
     songs = df.select(["league", "round", "player", "score"]).unique()
     participants = real.select(["league", "round", "voter"]).unique()
-    filled = (
+    return (
         participants.join(songs, on=["league", "round"], how="inner")
         .filter(pl.col("voter") != pl.col("player"))
         .join(
@@ -613,7 +609,6 @@ def _explode_votes(df: pl.DataFrame) -> pl.DataFrame:
         .with_columns(pl.col("vote_count").fill_null(0))
         .select(["league", "round", "player", "score", "voter", "vote_count"])
     )
-    return pl.concat([filled, forfeits], how="vertical")
 
 
 def _with_rank(df: pl.DataFrame) -> pl.DataFrame:

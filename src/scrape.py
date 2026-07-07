@@ -2,8 +2,13 @@
 
 Schema (one row per song):
     league, league_id, round, round_id, player, submitter_user_id,
-    song, artist, spotify_track_id, score,
-    votes: list[struct{voter: str | null, votes: int}]
+    song, artist, spotify_track_id, score, received, forfeited,
+    votes: list[struct{voter: str, votes: int}]
+
+``score`` is the points the song earned from voters (== sum of the votes).
+``received`` is what the submitter actually banked — equal to ``score`` unless
+they forfeited (missed the voting deadline), in which case it is 0 or negative
+(downvotes still apply). ``forfeited`` is the boolean flag for that case.
 """
 
 from __future__ import annotations
@@ -101,16 +106,39 @@ def _print_league_summary(df: pl.DataFrame) -> None:
 
 
 def _parse_args() -> Args:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--auth", type=Path, default=_DEFAULT_AUTH)
-    p.add_argument("--out", type=Path, default=_DEFAULT_OUT)
-    p.add_argument("--csv", type=Path, default=_DEFAULT_CSV)
-    p.add_argument("--log", type=Path, default=_DEFAULT_LOG)
-    p.add_argument("--sleep", type=float, default=0.5, help="seconds between requests")
+    p = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    p.add_argument(
+        "--auth",
+        type=Path,
+        default=_DEFAULT_AUTH,
+        help="cURL export holding the session cookie and headers to replay",
+    )
+    p.add_argument(
+        "--out",
+        type=Path,
+        default=_DEFAULT_OUT,
+        help="parquet output path (one row per league/round/song)",
+    )
+    p.add_argument(
+        "--csv",
+        type=Path,
+        default=_DEFAULT_CSV,
+        help="CSV output path (a human-readable subset of columns)",
+    )
+    p.add_argument(
+        "--log",
+        type=Path,
+        default=_DEFAULT_LOG,
+        help="log file path (also mirrored to stderr)",
+    )
+    p.add_argument("--sleep", type=float, default=0.5, help="seconds to wait between requests")
     p.add_argument(
         "--league",
         action="append",
         dest="leagues",
+        metavar="LEAGUE_ID",
         help="limit to one or more league IDs (repeat the flag); default = all",
     )
     p.add_argument(
@@ -118,7 +146,12 @@ def _parse_args() -> Args:
         action="store_true",
         help="DEBUG-level logs and dump every fetched HTML to --debug-dir",
     )
-    p.add_argument("--debug-dir", type=Path, default=Path("debug"))
+    p.add_argument(
+        "--debug-dir",
+        type=Path,
+        default=Path("debug"),
+        help="directory for dumped HTML when --debug is set",
+    )
     ns = p.parse_args()
     return Args(
         auth=ns.auth,
@@ -233,6 +266,8 @@ def _to_dataframe(rows: list[SongRow]) -> pl.DataFrame:
             "artist": [r.artist for r in rows],
             "spotify_track_id": [r.spotify_track_id for r in rows],
             "score": [r.score for r in rows],
+            "received": [r.received for r in rows],
+            "forfeited": [r.forfeited for r in rows],
             "votes": [[{"voter": v.voter, "votes": v.votes} for v in r.votes] for r in rows],
         },
         schema_overrides={"votes": _VOTES_DTYPE, "round_time": pl.Datetime("us", "UTC")},
@@ -251,6 +286,8 @@ _SCHEMA: dict[str, pl.DataType] = {
     "artist": pl.Utf8,
     "spotify_track_id": pl.Utf8,
     "score": pl.Int64,
+    "received": pl.Int64,
+    "forfeited": pl.Boolean,
 }
 
 

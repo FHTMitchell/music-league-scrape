@@ -67,18 +67,15 @@ def test_explode_votes_does_not_create_self_votes() -> None:
     assert self_votes.height == 0
 
 
-def test_explode_votes_preserves_forfeit_bucket() -> None:
+def test_explode_votes_produces_only_real_voters() -> None:
     df = _build_df(
         [
             {
                 "league": "L",
                 "round": "R1",
                 "player": "alice",
-                "score": 5,
-                "votes": [
-                    {"voter": "bob", "votes": 3},
-                    {"voter": None, "votes": 2},  # forfeit
-                ],
+                "score": 3,
+                "votes": [{"voter": "bob", "votes": 3}],
             },
             {
                 "league": "L",
@@ -90,9 +87,7 @@ def test_explode_votes_preserves_forfeit_bucket() -> None:
         ]
     )
     out = _explode_votes(df)
-    forfeits = out.filter(pl.col("voter").is_null())
-    assert forfeits.height == 1
-    assert forfeits["vote_count"].item() == 2
+    assert out.filter(pl.col("voter").is_null()).height == 0
 
 
 def test_vote_z_scores_uses_implicit_zeros_in_voter_round_stats() -> None:
