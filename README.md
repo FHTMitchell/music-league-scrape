@@ -64,6 +64,23 @@ is idempotent — re-running on already-anonymised data is a no-op.
 Implementation: `src/names.py::anonymise_dataframe`, applied inside
 `src/scrape.py` before parquet/CSV are written.
 
+### Name overrides
+
+To rename specific players/voters in the reports (e.g. map an opaque handle
+to a real name), create a gitignored `name-overrides.json` in the repo root:
+
+```json
+{
+  "handleone": "Real Name",
+  "AnotherHandle": "Someone Else"
+}
+```
+
+Keys are the raw names as scraped; values are the display names. The map is
+applied to both submitters and voters by `src/analyze.py` and
+`src/songs_page.py` when they load the parquet. If the file is missing, no
+overrides are applied. Override the path with `--name-overrides PATH`.
+
 ## Usage
 
 ```bash
@@ -72,6 +89,7 @@ uv run python -m src.scrape                # full scrape (default 0.5s sleep bet
 uv run python -m src.scrape --league <id>  # restrict to one or more leagues (repeatable)
 uv run python -m src.scrape --debug        # verbose logs + dump every fetched HTML to debug/
 uv run python -m src.analyze               # build out/analysis.{md,html}
+uv run python -m src.analyze --name-overrides name-overrides.json  # rename players/voters
 uv run python -m src.songs_page            # build out/songs.html
 ```
 

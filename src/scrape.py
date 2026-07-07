@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -165,7 +166,7 @@ def _parse_args() -> Args:
     )
 
 
-def _wrap_dump(get_html, debug_dir: Path):
+def _wrap_dump(get_html: Callable[[str], str], debug_dir: Path) -> Callable[[str], str]:
     """Wrap a ``client.get_html`` call to also persist the response to disk."""
 
     def wrapped(path: str) -> str:

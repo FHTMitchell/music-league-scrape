@@ -17,12 +17,14 @@ from pathlib import Path
 import polars as pl
 
 from src.log import install as install_logger
+from src.names import apply_name_overrides, load_name_overrides
 
 logger = logging.getLogger(__name__)
 
 _DEFAULT_INPUT = Path("out/music_league.parquet")
 _DEFAULT_OUTPUT = Path("out/songs.html")
 _DEFAULT_LOG = Path("logs/songs_page.log")
+_DEFAULT_NAME_OVERRIDES = Path("name-overrides.json")
 _LEFT_LEAGUE = "[Left the league]"
 _COLUMNS = ("score", "song", "artist", "player", "league", "round", "round_time")
 
@@ -32,6 +34,7 @@ class Args:
     parquet: Path
     out: Path
     log: Path
+    name_overrides: Path
 
 
 def main() -> None:
@@ -43,10 +46,10 @@ def main() -> None:
             f"{args.parquet} not found. Run the scraper first:\n    uv run python -m src.scrape\n"
         )
 
+    df = pl.read_parquet(args.parquet).filter(pl.col("player") != _LEFT_LEAGUE)
+    df = apply_name_overrides(df, load_name_overrides(args.name_overrides))
     df = (
-        pl.read_parquet(args.parquet)
-        .filter(pl.col("player") != _LEFT_LEAGUE)
-        .sort("round_time", descending=True)
+        df.sort("round_time", descending=True)
         .with_columns(pl.col("round_time").dt.strftime("%Y-%m-%d").alias("round_time"))
         .select(_COLUMNS)
     )
@@ -62,8 +65,15 @@ def _parse_args() -> Args:
     p.add_argument("--parquet", type=Path, default=_DEFAULT_INPUT)
     p.add_argument("--out", type=Path, default=_DEFAULT_OUTPUT)
     p.add_argument("--log", type=Path, default=_DEFAULT_LOG)
+    p.add_argument(
+        "--name-overrides",
+        type=Path,
+        default=_DEFAULT_NAME_OVERRIDES,
+        help="JSON {raw_name: display_name} map applied to players/voters; "
+        "ignored if the file is missing",
+    )
     ns = p.parse_args()
-    return Args(parquet=ns.parquet, out=ns.out, log=ns.log)
+    return Args(parquet=ns.parquet, out=ns.out, log=ns.log, name_overrides=ns.name_overrides)
 
 
 def _render_html(rows: list[dict]) -> str:

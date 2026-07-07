@@ -6,6 +6,11 @@ repos:
         entry: ruff check --select=I --fix
         language: system
         types: [python]
+      - id: ruff-annotations
+        name: ruff-annotations
+        entry: ruff check --force-exclude --select=ANN --ignore=ANN101,ANN102,ANN401 --fix --unsafe-fixes
+        language: system
+        types: [python]
       - id: ruff-format
         name: ruff-format
         entry: ruff format

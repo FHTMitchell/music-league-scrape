@@ -21,6 +21,7 @@ from matplotlib.colors import TwoSlopeNorm
 from tabulate import tabulate
 
 from src.log import install as install_logger
+from src.names import apply_name_overrides, load_name_overrides
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,7 @@ _DEFAULT_OUTPUT_MD = Path("out/analysis.md")
 _DEFAULT_OUTPUT_HTML = Path("out/analysis.html")
 _DEFAULT_HEATMAP = Path("out/fan_hater_heatmap.png")
 _DEFAULT_LOG = Path("logs/analyze.log")
+_DEFAULT_NAME_OVERRIDES = Path("name-overrides.json")
 _TOP_N = 10
 _Z_DP = 3  # decimal places for displayed z-scores (2dp collapses many ties)
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
@@ -69,6 +71,7 @@ class Args:
     html_out: Path
     heatmap_out: Path
     log: Path
+    name_overrides: Path
 
 
 def main() -> None:
@@ -80,7 +83,7 @@ def main() -> None:
             f"{args.parquet} not found. Run the scraper first:\n    uv run python -m src.scrape\n"
         )
 
-    df = _with_round_zscores(_load(args.parquet))
+    df = _with_round_zscores(_load(args.parquet, args.name_overrides))
     args.heatmap_out.parent.mkdir(parents=True, exist_ok=True)
     _render_fan_hater_heatmap(df, args.heatmap_out)
     logger.info("wrote heatmap to %s", args.heatmap_out)
@@ -97,7 +100,7 @@ def main() -> None:
     print(f"wrote {args.md_out} and {args.html_out}")
 
 
-def _load(parquet: Path) -> pl.DataFrame:
+def _load(parquet: Path, name_overrides: Path) -> pl.DataFrame:
     df = pl.read_parquet(parquet)
     before = df.height
     df = df.filter(pl.col("player") != _LEFT_LEAGUE)
@@ -108,7 +111,7 @@ def _load(parquet: Path) -> pl.DataFrame:
         before - df.height,
         _LEFT_LEAGUE,
     )
-    return df
+    return apply_name_overrides(df, load_name_overrides(name_overrides))
 
 
 def _build_sections(df: pl.DataFrame, *, heatmap: Path) -> list[Section]:
@@ -142,6 +145,13 @@ def _parse_args() -> Args:
     p.add_argument("--html", dest="html_out", type=Path, default=_DEFAULT_OUTPUT_HTML)
     p.add_argument("--heatmap", dest="heatmap_out", type=Path, default=_DEFAULT_HEATMAP)
     p.add_argument("--log", type=Path, default=_DEFAULT_LOG)
+    p.add_argument(
+        "--name-overrides",
+        type=Path,
+        default=_DEFAULT_NAME_OVERRIDES,
+        help="JSON {raw_name: display_name} map applied to players/voters; "
+        "ignored if the file is missing",
+    )
     ns = p.parse_args()
     return Args(
         parquet=ns.parquet,
@@ -149,6 +159,7 @@ def _parse_args() -> Args:
         html_out=ns.html_out,
         heatmap_out=ns.heatmap_out,
         log=ns.log,
+        name_overrides=ns.name_overrides,
     )
 
 
