@@ -181,7 +181,7 @@ def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
         .agg(
             pl.col("z_in_round").mean().round(2).alias("avg_z"),
             pl.col("z_in_round").sum().round(2).alias("total_z"),
-            pl.col("score").sum().alias("total_score"),
+            pl.col("received").sum().alias("total_received"),
             pl.len().alias("songs"),
         )
         .filter(pl.col("songs") >= 2)  # one-shot submitters skew the leaderboard
@@ -192,7 +192,8 @@ def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
 _PLAYER_AVG_HEADER = (
     "Players with at least 2 songs submitted, ranked by mean within-round z-score "
     "(score normalised against the other songs in the same round). avg_z > 0 means "
-    "the player typically beats the round average; total_score is the raw points sum."
+    "the player typically beats the round average; total_received is the points the "
+    "player actually banked (forfeits count as 0)."
 )
 
 
@@ -281,7 +282,7 @@ def _section_top_artists(df: pl.DataFrame) -> Section:
 
 def _section_league_winners(df: pl.DataFrame) -> Section:
     totals = df.group_by(["league", "player"]).agg(
-        pl.col("score").sum().alias("total"),
+        pl.col("received").sum().alias("total"),
         pl.len().alias("songs"),
     )
     table = (
@@ -292,7 +293,10 @@ def _section_league_winners(df: pl.DataFrame) -> Section:
     )
     return Section(
         title="League Winners",
-        header="Player with the highest total score in each league.",
+        header=(
+            "Player with the highest total points banked in each league. Uses "
+            "received points (forfeits count as 0), matching the real standings."
+        ),
         table=table,
         rank=False,
     )
@@ -479,7 +483,7 @@ def _section_forfeits(df: pl.DataFrame) -> Section:
             pl.len().alias("songs_forfeited"),
             pl.col("points_lost").sum().alias("total_points_lost"),
         )
-        .sort("total_points_lost", descending=True)
+        .sort("total_points_lost", descending=False)
     )
     return Section(
         title="Forfeits",
@@ -503,7 +507,7 @@ def _section_medal_table(df: pl.DataFrame) -> Section:
     points; the next song slots in at rank 3 (bronze).
     """
     ranked = df.with_columns(
-        pl.col("score")
+        pl.col("received")
         .rank(method="min", descending=True)
         .over(["league", "round"])
         .alias("round_rank")

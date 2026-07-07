@@ -10,6 +10,9 @@ _VOTES_DTYPE = pl.List(pl.Struct({"voter": pl.Utf8, "votes": pl.Int64}))
 
 
 def _build_df(rows: list[dict]) -> pl.DataFrame:
+    # Default received = score and forfeited = False so tests that only care
+    # about votes/score need not spell out the forfeit columns on every row.
+    rows = [{"received": r["score"], "forfeited": False, **r} for r in rows]
     return pl.DataFrame(rows, schema_overrides={"votes": _VOTES_DTYPE})
 
 

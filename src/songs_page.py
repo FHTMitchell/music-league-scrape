@@ -1,5 +1,5 @@
 """Render every song in ``out/music_league.parquet`` as a self-contained
-``out/songs.html`` page with a client-side search-by-title box.
+``out/songs.html`` page with a client-side search box (song title or artist).
 
 The data is embedded inline as JSON so the page works from ``file://`` (no
 server needed). For ~500 rows the resulting HTML is well under 200 KB.
@@ -108,7 +108,7 @@ _PAGE = """<!doctype html>
 <body>
 <h1>Music League songs</h1>
 <div class="toolbar">
-  <input id="search" type="search" placeholder="Filter by song title…" autofocus>
+  <input id="search" type="search" placeholder="Filter by song title or artist…" autofocus>
   <span id="count"></span>
 </div>
 <table>
@@ -138,7 +138,9 @@ _PAGE = """<!doctype html>
    const html = [];
    let shown = 0;
    for (const r of SONGS) {
-     if (q && !r.song.toLowerCase().includes(q)) continue;
+     if (q &&
+         !r.song.toLowerCase().includes(q) &&
+         !r.artist.toLowerCase().includes(q)) continue;
      shown++;
      html.push(
        "<tr>" +
