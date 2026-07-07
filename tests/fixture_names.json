@@ -1,0 +1,41 @@
+{
+  "landing.html": {
+    "n_comments": 0,
+    "names": []
+  },
+  "league.html": {
+    "n_comments": 0,
+    "names": []
+  },
+  "round.html": {
+    "n_comments": 30,
+    "names": [
+      "Alex Carter",
+      "Blair Nolan",
+      "Casey Dunn",
+      "Devon Marsh",
+      "Elliot Frey",
+      "Greer Landry",
+      "Harley Voss",
+      "amberwave",
+      "bluefox",
+      "cinderpost"
+    ]
+  },
+  "round_forfeit.html": {
+    "n_comments": 30,
+    "names": [
+      "Alex Carter",
+      "Blair Nolan",
+      "Casey Dunn",
+      "Devon Marsh",
+      "Elliot Frey",
+      "Frankie Hale",
+      "Greer Landry",
+      "Harley Voss",
+      "amberwave",
+      "bluefox",
+      "cinderpost"
+    ]
+  }
+}

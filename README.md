@@ -95,6 +95,22 @@ uv run python -m src.songs_page            # build out/songs.html
 
 Requires `./auth.curl` in the repo root (gitignored). See below.
 
+### Test fixtures
+
+The parser tests run against anonymised HTML in `webpages/`. To (re)generate a
+fixture from a real page dumped by `--debug` (the `debug/` dir is gitignored so
+raw pages never land in git), run the anonymiser, which scrubs names, vote
+comments and user IDs and writes the fake-name manifest tests assert against:
+
+```bash
+uv run python -m src.anonymise_fixtures \
+  debug/<in>.html:webpages/round.html \
+  # ... repeat input:output pairs; pass them together for a consistent name map
+```
+
+It aborts if any real name survives the scrub, so a fixture is never shipped
+with leaked personal data.
+
 ## Getting `auth.curl`
 
 The site is auth-gated (Spotify OAuth → session cookie). The scraper does not

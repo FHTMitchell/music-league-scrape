@@ -25,6 +25,7 @@ dev = [
 music-league-scrape = "src.scrape:main"
 music-league-analyze = "src.analyze:main"
 music-league-songs = "src.songs_page:main"
+music-league-anonymise-fixtures = "src.anonymise_fixtures:main"
 
 [build-system]
 requires = ["hatchling"]
