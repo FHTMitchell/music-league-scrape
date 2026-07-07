@@ -14,22 +14,22 @@
 
 _Players with at least 2 songs submitted, ranked by mean within-round z-score of the points they banked (received normalised against the other songs in the same round). avg_z_received > 0 means the player typically beats the round average; forfeits pull it down since a forfeited song banks 0. total_received is the raw points the player banked._
 
-| rank   | player           | avg_z_received   | total_z_received   | total_received   | songs   |
-|--------|------------------|------------------|--------------------|------------------|---------|
-| 1      | Sam Mit          | +0.464           | +24.603            | 314              | 53      |
-| 2      | Fred N           | +0.242           | +13.337            | 268              | 55      |
-| 3      | harryg           | +0.204           | +11.207            | 266              | 55      |
-| 4      | Jimbabwe         | +0.19            | +6.276             | 179              | 33      |
-| 5      | Josh B           | +0.088           | +4.128             | 186              | 47      |
-| 6      | Fergus M         | +0.082           | +4.506             | 227              | 55      |
-| 7      | pollyannaw       | +0.049           | +0.878             | 82               | 18      |
-| 8      | Joe              | -0.035           | -1.58              | 163              | 45      |
-| 9      | Joshua W         | -0.135           | -7.159             | 179              | 53      |
-| 10     | Solsti           | -0.178           | -7.66              | 159              | 43      |
-| 11     | MorbidlyObeseCat | -0.181           | -9.978             | 200              | 55      |
-| 12     | Luke G           | -0.187           | -9.352             | 164              | 50      |
-| 13     | Peter L          | -0.276           | -13.51             | 176              | 49      |
-| 14     | Sam Mil          | -0.302           | -15.696            | 169              | 52      |
+| rank   | player           | avg_z_received   | total_received   | songs   |
+|--------|------------------|------------------|------------------|---------|
+| 1      | Sam Mit          | +0.464           | 314              | 53      |
+| 2      | Fred N           | +0.242           | 268              | 55      |
+| 3      | harryg           | +0.204           | 266              | 55      |
+| 4      | Jimbabwe         | +0.19            | 179              | 33      |
+| 5      | Josh B           | +0.088           | 186              | 47      |
+| 6      | Fergus M         | +0.082           | 227              | 55      |
+| 7      | pollyannaw       | +0.049           | 82               | 18      |
+| 8      | Joe              | -0.035           | 163              | 45      |
+| 9      | Joshua W         | -0.135           | 179              | 53      |
+| 10     | Solsti           | -0.178           | 159              | 43      |
+| 11     | MorbidlyObeseCat | -0.181           | 200              | 55      |
+| 12     | Luke G           | -0.187           | 164              | 50      |
+| 13     | Peter L          | -0.276           | 176              | 49      |
+| 14     | Sam Mil          | -0.302           | 169              | 52      |
 
 ## League Winners
 
@@ -57,8 +57,8 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 |      5 | Joe              |        6 |          2 |          4 |             26 |
 |      6 | Joshua W         |        6 |          0 |          8 |             26 |
 |      7 | Josh B           |        2 |          7 |          5 |             25 |
-|      8 | Solsti           |        3 |          5 |          4 |             23 |
-|      9 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      8 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      9 | Solsti           |        3 |          5 |          4 |             23 |
 |     10 | Luke G           |        1 |          8 |          4 |             23 |
 |     11 | Jimbabwe         |        3 |          3 |          5 |             20 |
 |     12 | Sam Mil          |        2 |          4 |          6 |             20 |
@@ -205,13 +205,13 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 |      1 |       2 | Fairytale of New York (feat. Kirsty MacColl) | The Pogues                   | MorbidlyObeseCat, Solsti     | 15, 3    | 1.652, -0.693  |
 |      2 |       2 | This Girl (Kungs Vs. Cookin' On 3 Burners)   | Kungs                        | Luke G, Peter L              | 8, 6     | 0.814, 0.387   |
 |      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             | 7, 6     | 0.309, 0.369   |
-|      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     | 1.131, -0.562  |
-|      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    | 1.546, -1.018  |
-|      6 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     | -0.466, 1.673  |
+|      4 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    | 1.546, -1.018  |
+|      5 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     | 1.131, -0.562  |
+|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     | 0.567, -0.395  |
 |      7 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     | 0.697, -0.843  |
-|      8 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     | 0.567, -0.395  |
-|      9 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     | -0.264, -0.739 |
-|     10 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     | -0.707, 0.781  |
+|      8 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     | -0.466, 1.673  |
+|      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     | -0.707, 0.781  |
+|     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     | -0.264, -0.739 |
 |     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            | 4, 1     | -0.245, -1.093 |
 |     12 |       2 | Turn                                         | The Wombats                  | Sam Mil                      | 1, 3     | -1.018, 0.0    |
 |     13 |       2 | Jack Sparrow                                 | The Lonely Island            | Fergus M, Solsti             | 2, 1     | -0.734, -1.124 |
@@ -228,6 +228,6 @@ _Points a player's songs earned but the player never banked, because they missed
 |--------|------------------|-------------------|---------------------|
 |      1 | Sam Mil          |                 4 |                 -11 |
 |      2 | Peter L          |                 1 |                  -7 |
-|      3 | Fergus M         |                 2 |                  -7 |
-|      4 | Josh B           |                 1 |                  -7 |
+|      3 | Josh B           |                 1 |                  -7 |
+|      4 | Fergus M         |                 2 |                  -7 |
 |      5 | MorbidlyObeseCat |                 1 |                  -3 |

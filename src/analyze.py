@@ -192,7 +192,6 @@ def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
         .group_by("player")
         .agg(
             pl.col("z_received_in_round").mean().alias("avg_z_received"),
-            pl.col("z_received_in_round").sum().alias("total_z_received"),
             pl.col("received").sum().alias("total_received"),
             pl.len().alias("songs"),
         )
@@ -689,9 +688,7 @@ _Z_COLUMNS = frozenset(
         "z",
         "z_in_round",
         "avg_z",
-        "total_z",
         "avg_z_received",
-        "total_z_received",
         "fan_z",
         "hater_z",
     }
