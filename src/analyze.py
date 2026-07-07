@@ -263,28 +263,30 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
 
 
 def _section_top_artists(df: pl.DataFrame) -> Section:
-    # plays/total_score from the full frame; avg_z from the z-score frame, which
-    # drops songs in zero-variance rounds where z is undefined.
-    counts = df.group_by("artist").agg(
-        pl.len().alias("plays"),
-        pl.col("score").sum().alias("total_score"),
-    )
+    # plays from the full frame; avg_z from the z-score frame, which drops songs
+    # in zero-variance rounds where z is undefined.
+    counts = df.group_by("artist").agg(pl.len().alias("plays"))
     avg_z = (
         _songs_with_round_zscore(df)
         .group_by("artist")
         .agg(pl.col("z_in_round").mean().round(2).alias("avg_z"))
     )
+    # Cutoff = the play count of the 10th-most-played artist; keep everyone at or
+    # above it so artists tied on that count aren't arbitrarily dropped.
+    play_counts = counts["plays"].sort(descending=True)
+    min_plays = play_counts[min(_TOP_N, len(play_counts)) - 1] if len(play_counts) else 0
     table = (
         counts.join(avg_z, on="artist", how="left")
-        .sort(["plays", "total_score"], descending=[True, True])
-        .head(_TOP_N)
-        .select(["artist", "plays", "total_score", "avg_z"])
+        .filter(pl.col("plays") >= min_plays)
+        .sort(["plays", "avg_z"], descending=[True, True], nulls_last=True)
+        .select(["artist", "plays", "avg_z"])
     )
     return Section(
         title="Most Played Artists",
         header=(
-            f"Top {_TOP_N} artists by number of songs submitted across all rounds. "
-            "avg_z is the mean within-round z-score of the artist's songs (how far "
+            "Artists by number of songs submitted across all rounds. Shows the top "
+            f"{_TOP_N} plus anyone tied with the {_TOP_N}th on play count. avg_z is "
+            "the mean within-round z-score of the artist's songs (how far "
             "above/below the round average they landed); it is blank when every one "
             "of the artist's songs fell in a round where all songs scored the same."
         ),

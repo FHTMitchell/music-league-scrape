@@ -20,8 +20,8 @@ _Players with at least 2 songs submitted, ranked by mean within-round z-score (s
 |      2 | Fred N           |    0.23 |     12.75 |              268 |      55 |
 |      3 | harryg           |    0.18 |      9.83 |              266 |      55 |
 |      4 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
-|      5 | Josh B           |    0.12 |      5.46 |              186 |      47 |
-|      6 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
+|      5 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
+|      6 | Josh B           |    0.12 |      5.46 |              186 |      47 |
 |      7 | pollyannaw       |    0.05 |      0.87 |               82 |      18 |
 |      8 | Joe              |   -0.07 |     -2.99 |              163 |      45 |
 |      9 | Joshua W         |   -0.16 |     -8.35 |              179 |      53 |
@@ -57,8 +57,8 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 |      5 | Joe              |        6 |          2 |          4 |             26 |
 |      6 | Joshua W         |        6 |          0 |          8 |             26 |
 |      7 | Josh B           |        2 |          7 |          5 |             25 |
-|      8 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
-|      9 | Solsti           |        3 |          5 |          4 |             23 |
+|      8 | Solsti           |        3 |          5 |          4 |             23 |
+|      9 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
 |     10 | Luke G           |        1 |          8 |          4 |             23 |
 |     11 | Jimbabwe         |        3 |          3 |          5 |             20 |
 |     12 | Sam Mil          |        2 |          4 |          6 |             20 |
@@ -83,7 +83,7 @@ _For each submitter, the voter whose votes land furthest from that voter's own p
 |     10 | Sam Mil          | MorbidlyObeseCat |    0.29 |    30 |              51 |
 |     11 | Joe              | harryg           |    0.26 |    24 |              45 |
 |     12 | MorbidlyObeseCat | pollyannaw       |    0.21 |     9 |              18 |
-|     13 | Luke G           | Fred N           |    0.19 |    29 |              50 |
+|     13 | Luke G           | Sam Mit          |    0.19 |    23 |              48 |
 |     14 | Peter L          | Joshua W         |    0.16 |    24 |              47 |
 
 ## Biggest Haters
@@ -166,20 +166,35 @@ _Top 10 songs that genuinely split the room. Metric: per song, the std of its ex
 
 ## Most Played Artists
 
-_Top 10 artists by number of songs submitted across all rounds. avg_z is the mean within-round z-score of the artist's songs (how far above/below the round average they landed); it is blank when every one of the artist's songs fell in a round where all songs scored the same._
+_Artists by number of songs submitted across all rounds. Shows the top 10 plus anyone tied with the 10th on play count. avg_z is the mean within-round z-score of the artist's songs (how far above/below the round average they landed); it is blank when every one of the artist's songs fell in a round where all songs scored the same._
 
-|   rank | artist                |   plays |   total_score |   avg_z |
-|--------|-----------------------|---------|---------------|---------|
-|      1 | The Wombats           |      12 |            28 |   -0.31 |
-|      2 | Green Day             |       6 |            36 |    0.71 |
-|      3 | System Of A Down      |       6 |            23 |   -0.32 |
-|      4 | Gorillaz              |       4 |            29 |    0.54 |
-|      5 | Muse                  |       4 |            26 |    0.54 |
-|      6 | Red Hot Chili Peppers |       4 |            17 |   -0.03 |
-|      7 | Queen                 |       3 |            27 |    0.8  |
-|      8 | JAŸ-Z                 |       3 |            20 |    0.2  |
-|      9 | Fall Out Boy          |       3 |            20 |    0.33 |
-|     10 | The Offspring         |       3 |            19 |    0.29 |
+|   rank | artist                   |   plays |   avg_z |
+|--------|--------------------------|---------|---------|
+|      1 | The Wombats              |      12 |   -0.31 |
+|      2 | Green Day                |       6 |    0.71 |
+|      3 | System Of A Down         |       6 |   -0.32 |
+|      4 | Gorillaz                 |       4 |    0.54 |
+|      5 | Muse                     |       4 |    0.54 |
+|      6 | Red Hot Chili Peppers    |       4 |   -0.03 |
+|      7 | Queen                    |       3 |    0.8  |
+|      8 | Dizzee Rascal            |       3 |    0.72 |
+|      9 | Kid Kapichi              |       3 |    0.72 |
+|     10 | blink-182                |       3 |    0.65 |
+|     11 | Eminem                   |       3 |    0.49 |
+|     12 | Max Richter              |       3 |    0.39 |
+|     13 | Good Charlotte           |       3 |    0.35 |
+|     14 | Fall Out Boy             |       3 |    0.33 |
+|     15 | The Offspring            |       3 |    0.29 |
+|     16 | My Chemical Romance      |       3 |    0.21 |
+|     17 | JAŸ-Z                    |       3 |    0.2  |
+|     18 | half•alive               |       3 |    0.1  |
+|     19 | DON BROCO                |       3 |    0.1  |
+|     20 | The Prodigy              |       3 |   -0.35 |
+|     21 | Limp Bizkit              |       3 |   -0.37 |
+|     22 | The Police               |       3 |   -0.39 |
+|     23 | Nirvana                  |       3 |   -0.59 |
+|     24 | Rage Against The Machine |       3 |   -1.2  |
+|     25 | Bob Marley & The Wailers |       3 |   -1.34 |
 
 ## Repeats
 
@@ -192,9 +207,9 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 |      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             | 7, 6     |
 |      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     |
 |      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    |
-|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     |
-|      7 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     |
-|      8 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     |
+|      6 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     |
+|      7 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     |
+|      8 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     |
 |      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     |
 |     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     |
 |     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            | 4, 1     |
@@ -212,7 +227,7 @@ _Points a player's songs earned but the player never banked, because they missed
 |   rank | player           |   songs_forfeited |   total_points_lost |
 |--------|------------------|-------------------|---------------------|
 |      1 | Sam Mil          |                 4 |                 -11 |
-|      2 | Fergus M         |                 2 |                  -7 |
+|      2 | Peter L          |                 1 |                  -7 |
 |      3 | Josh B           |                 1 |                  -7 |
-|      4 | Peter L          |                 1 |                  -7 |
+|      4 | Fergus M         |                 2 |                  -7 |
 |      5 | MorbidlyObeseCat |                 1 |                  -3 |
