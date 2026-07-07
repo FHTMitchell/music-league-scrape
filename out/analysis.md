@@ -20,13 +20,13 @@ _Players with at least 2 songs submitted, ranked by mean within-round z-score (s
 |      2 | Fred N           |    0.23 |     12.75 |              268 |      55 |
 |      3 | harryg           |    0.18 |      9.83 |              266 |      55 |
 |      4 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
-|      5 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
-|      6 | Josh B           |    0.12 |      5.46 |              186 |      47 |
+|      5 | Josh B           |    0.12 |      5.46 |              186 |      47 |
+|      6 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
 |      7 | pollyannaw       |    0.05 |      0.87 |               82 |      18 |
 |      8 | Joe              |   -0.07 |     -2.99 |              163 |      45 |
 |      9 | Joshua W         |   -0.16 |     -8.35 |              179 |      53 |
-|     10 | MorbidlyObeseCat |   -0.19 |    -10.18 |              200 |      55 |
-|     11 | Solsti           |   -0.19 |     -8.17 |              159 |      43 |
+|     10 | Solsti           |   -0.19 |     -8.17 |              159 |      43 |
+|     11 | MorbidlyObeseCat |   -0.19 |    -10.18 |              200 |      55 |
 |     12 | Luke G           |   -0.22 |    -10.75 |              164 |      50 |
 |     13 | Peter L          |   -0.24 |    -11.59 |              176 |      49 |
 |     14 | Sam Mil          |   -0.24 |    -12.6  |              169 |      52 |
@@ -57,8 +57,8 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 |      5 | Joe              |        6 |          2 |          4 |             26 |
 |      6 | Joshua W         |        6 |          0 |          8 |             26 |
 |      7 | Josh B           |        2 |          7 |          5 |             25 |
-|      8 | Solsti           |        3 |          5 |          4 |             23 |
-|      9 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      8 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      9 | Solsti           |        3 |          5 |          4 |             23 |
 |     10 | Luke G           |        1 |          8 |          4 |             23 |
 |     11 | Jimbabwe         |        3 |          3 |          5 |             20 |
 |     12 | Sam Mil          |        2 |          4 |          6 |             20 |
@@ -83,7 +83,7 @@ _For each submitter, the voter whose votes land furthest from that voter's own p
 |     10 | Sam Mil          | MorbidlyObeseCat |    0.29 |    30 |              51 |
 |     11 | Joe              | harryg           |    0.26 |    24 |              45 |
 |     12 | MorbidlyObeseCat | pollyannaw       |    0.21 |     9 |              18 |
-|     13 | Luke G           | Sam Mit          |    0.19 |    23 |              48 |
+|     13 | Luke G           | Fred N           |    0.19 |    29 |              50 |
 |     14 | Peter L          | Joshua W         |    0.16 |    24 |              47 |
 
 ## Biggest Haters
@@ -102,7 +102,7 @@ _For each submitter, the voter whose votes land furthest from that voter's own p
 |      8 | Solsti           | Sam Mit          |     -0.32 |     5 |              43 |
 |      9 | MorbidlyObeseCat | Joe              |     -0.29 |     7 |              45 |
 |     10 | Josh B           | Joe              |     -0.26 |     6 |              41 |
-|     11 | Sam Mil          | Fergus M         |     -0.26 |    11 |              50 |
+|     11 | Sam Mil          | Josh B           |     -0.26 |     8 |              45 |
 |     12 | harryg           | Sam Mil          |     -0.17 |    11 |              47 |
 |     13 | Fergus M         | Fred N           |     -0.13 |    15 |              55 |
 |     14 | Jimbabwe         | Joshua W         |     -0.13 |     8 |              31 |
@@ -177,8 +177,8 @@ _Artists by number of songs submitted across all rounds. Shows the top 10 plus a
 |      5 | Muse                     |       4 |    0.54 |
 |      6 | Red Hot Chili Peppers    |       4 |   -0.03 |
 |      7 | Queen                    |       3 |    0.8  |
-|      8 | Dizzee Rascal            |       3 |    0.72 |
-|      9 | Kid Kapichi              |       3 |    0.72 |
+|      8 | Kid Kapichi              |       3 |    0.72 |
+|      9 | Dizzee Rascal            |       3 |    0.72 |
 |     10 | blink-182                |       3 |    0.65 |
 |     11 | Eminem                   |       3 |    0.49 |
 |     12 | Max Richter              |       3 |    0.39 |
@@ -198,27 +198,27 @@ _Artists by number of songs submitted across all rounds. Shows the top 10 plus a
 
 ## Repeats
 
-_Tracks (matched by Spotify track ID) submitted in more than one round, either by the same player or by different players. scores lists the points each submission earned, oldest round first._
+_Tracks (matched by Spotify track ID) submitted in more than one round, either by the same player or by different players. scores lists the points each submission earned, oldest round first; z_scores gives the matching within-round z-score (— where the round had no score variance)._
 
-|   rank |   plays | song                                         | artist                       | players                      | scores   |
-|--------|---------|----------------------------------------------|------------------------------|------------------------------|----------|
-|      1 |       2 | Fairytale of New York (feat. Kirsty MacColl) | The Pogues                   | MorbidlyObeseCat, Solsti     | 15, 3    |
-|      2 |       2 | This Girl (Kungs Vs. Cookin' On 3 Burners)   | Kungs                        | Luke G, Peter L              | 8, 6     |
-|      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             | 7, 6     |
-|      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     |
-|      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    |
-|      6 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     |
-|      7 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     |
-|      8 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     |
-|      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     |
-|     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     |
-|     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            | 4, 1     |
-|     12 |       2 | Turn                                         | The Wombats                  | Sam Mil                      | 1, 3     |
-|     13 |       2 | Jack Sparrow                                 | The Lonely Island            | Fergus M, Solsti             | 2, 1     |
-|     14 |       2 | Heat Waves                                   | Glass Animals                | Sam Mil, Solsti              | 1, 0     |
-|     15 |       2 | Get Low                                      | Lil Jon & The East Side Boyz | Josh B, Solsti               | -5, 5    |
-|     16 |       2 | Get Up, Stand Up                             | Bob Marley & The Wailers     | MorbidlyObeseCat, Solsti     | -2, 0    |
-|     17 |       2 | 21 Seconds                                   | So Solid Crew                | Josh B, Peter L              | -5, 2    |
+|   rank |   plays | song                                         | artist                       | players                      | scores   | z_scores     |
+|--------|---------|----------------------------------------------|------------------------------|------------------------------|----------|--------------|
+|      1 |       2 | Fairytale of New York (feat. Kirsty MacColl) | The Pogues                   | MorbidlyObeseCat, Solsti     | 15, 3    | 1.65, -0.69  |
+|      2 |       2 | This Girl (Kungs Vs. Cookin' On 3 Burners)   | Kungs                        | Luke G, Peter L              | 8, 6     | 0.81, 0.39   |
+|      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             | 7, 6     | 0.31, 0.37   |
+|      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     | 1.13, -0.56  |
+|      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    | 1.55, -1.02  |
+|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     | 0.57, -0.4   |
+|      7 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     | -0.47, 1.67  |
+|      8 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     | 0.7, -0.84   |
+|      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     | -0.71, 0.78  |
+|     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     | -0.26, -0.74 |
+|     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            | 4, 1     | -0.24, -1.09 |
+|     12 |       2 | Turn                                         | The Wombats                  | Sam Mil                      | 1, 3     | -1.02, 0.0   |
+|     13 |       2 | Jack Sparrow                                 | The Lonely Island            | Fergus M, Solsti             | 2, 1     | -0.73, -1.12 |
+|     14 |       2 | Heat Waves                                   | Glass Animals                | Sam Mil, Solsti              | 1, 0     | -1.02, -1.42 |
+|     15 |       2 | Get Low                                      | Lil Jon & The East Side Boyz | Josh B, Solsti               | -5, 5    | -1.35, 1.42  |
+|     16 |       2 | Get Up, Stand Up                             | Bob Marley & The Wailers     | MorbidlyObeseCat, Solsti     | -2, 0    | -1.46, -1.4  |
+|     17 |       2 | 21 Seconds                                   | So Solid Crew                | Josh B, Peter L              | -5, 2    | -2.04, -0.79 |
 
 ## Forfeits
 
@@ -227,7 +227,7 @@ _Points a player's songs earned but the player never banked, because they missed
 |   rank | player           |   songs_forfeited |   total_points_lost |
 |--------|------------------|-------------------|---------------------|
 |      1 | Sam Mil          |                 4 |                 -11 |
-|      2 | Peter L          |                 1 |                  -7 |
-|      3 | Josh B           |                 1 |                  -7 |
-|      4 | Fergus M         |                 2 |                  -7 |
+|      2 | Josh B           |                 1 |                  -7 |
+|      3 | Fergus M         |                 2 |                  -7 |
+|      4 | Peter L          |                 1 |                  -7 |
 |      5 | MorbidlyObeseCat |                 1 |                  -3 |

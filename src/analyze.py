@@ -564,27 +564,44 @@ def _section_medal_table(df: pl.DataFrame) -> Section:
 
 def _section_repeated_songs(df: pl.DataFrame) -> Section:
     """Tracks submitted to more than one round (across all leagues)."""
+    # per-row within-round z-score, kept null where the round had zero variance
+    round_stats = df.group_by(["league", "round"]).agg(
+        pl.col("score").mean().alias("_ravg"),
+        pl.col("score").std(ddof=0).alias("_rstd"),
+    )
+    with_z = df.join(round_stats, on=["league", "round"], how="left").with_columns(
+        pl.when(pl.col("_rstd") > 0)
+        .then(((pl.col("score") - pl.col("_ravg")) / pl.col("_rstd")).round(2))
+        .alias("z_in_round")
+    )
     table = (
-        df.group_by("spotify_track_id")
+        with_z.group_by("spotify_track_id")
         .agg(
             pl.col("song").first(),
             pl.col("artist").first(),
             pl.len().alias("plays"),
             pl.col("player").unique().sort().str.join(", ").alias("players"),
-            # scores in the order the track was played (oldest round first)
+            # scores and z-scores in the order the track was played (oldest first)
             pl.col("score").sort_by("round_time").cast(pl.Utf8).str.join(", ").alias("scores"),
+            pl.col("z_in_round")
+            .sort_by("round_time")
+            .cast(pl.Utf8)
+            .fill_null("—")
+            .str.join(", ")
+            .alias("z_scores"),
             pl.col("score").sum().alias("_total"),
         )
         .filter(pl.col("plays") > 1)
         .sort(["plays", "_total"], descending=[True, True])
-        .select(["plays", "song", "artist", "players", "scores"])
+        .select(["plays", "song", "artist", "players", "scores", "z_scores"])
     )
     return Section(
         title="Repeats",
         header=(
             "Tracks (matched by Spotify track ID) submitted in more than one round, "
             "either by the same player or by different players. scores lists the "
-            "points each submission earned, oldest round first."
+            "points each submission earned, oldest round first; z_scores gives the "
+            "matching within-round z-score (— where the round had no score variance)."
         ),
         table=table,
     )
