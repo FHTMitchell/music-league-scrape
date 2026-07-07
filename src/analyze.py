@@ -34,6 +34,7 @@ _DEFAULT_NAME_OVERRIDES = Path("name-overrides.json")
 _TOP_N = 10
 _Z_DP = 3  # decimal places for displayed z-scores (2dp collapses many ties)
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
+_FAN_HATER_MIN_ROUNDS = 20  # min shared rounds for a fan/hater pair to count
 _LEFT_LEAGUE = "[Left the league]"  # placeholder Music League shows for departed users
 
 
@@ -191,21 +192,22 @@ def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
         df.filter(pl.col("z_received_in_round").is_not_null())
         .group_by("player")
         .agg(
-            pl.col("z_received_in_round").mean().alias("avg_z_received"),
-            pl.col("received").sum().alias("total_received"),
+            pl.col("z_received_in_round").mean().alias("avg_z"),
+            pl.col("z_in_round").mean().alias("avg_z_no_forfeit"),
             pl.len().alias("songs"),
         )
         .filter(pl.col("songs") >= 2)  # one-shot submitters skew the leaderboard
-        .sort("avg_z_received", descending=True)
+        .sort("avg_z", descending=True)
     )
 
 
 _PLAYER_AVG_HEADER = (
     "Players with at least 2 songs submitted, ranked by mean within-round z-score "
-    "of the points they banked (received normalised against the other songs in the "
-    "same round). avg_z_received > 0 means the player typically beats the round "
-    "average; forfeits pull it down since a forfeited song banks 0. total_received "
-    "is the raw points the player banked."
+    "of the points they banked (normalised against the other songs in the same "
+    "round). avg_z > 0 means the player typically beats the round average; forfeits "
+    "pull it down since a forfeited song banks 0. avg_z_no_forfeit is the same "
+    "measure on the song's earned score (ignoring the forfeit penalty), so a gap "
+    "between the two shows how much forfeiting cost the player."
 )
 
 
@@ -380,7 +382,11 @@ def _vote_z_scores(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
-    """Per (submitter, voter) pair: mean z-score, total points, shared rounds."""
+    """Per (submitter, voter) pair: mean z-score, total points, shared rounds.
+
+    Pairs with fewer than ``_FAN_HATER_MIN_ROUNDS`` shared rounds are dropped —
+    a fan/hater verdict on a handful of rounds is noise, not a pattern.
+    """
     return (
         _vote_z_scores(df)
         .group_by(["player", "voter"])
@@ -389,6 +395,7 @@ def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
             pl.col("vote_count").sum().alias("total_points"),
             pl.len().alias("shared_rounds"),
         )
+        .filter(pl.col("shared_rounds") >= _FAN_HATER_MIN_ROUNDS)
     )
 
 
@@ -397,8 +404,10 @@ _FAN_HATER_HEADER = (
     "per-round vote distribution. Metric: mean z-score across shared rounds, where "
     "z = (vote - voter_round_mean) / voter_round_std and unrated songs in a "
     "participated round count as 0. Rounds where the voter gave every song the same "
-    "vote are dropped (z is undefined). pts is the raw cumulative points for "
-    "context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view."
+    "vote are dropped (z is undefined). Pairs sharing fewer than "
+    f"{_FAN_HATER_MIN_ROUNDS} rounds are excluded (too little overlap to judge). "
+    "pts is the raw cumulative points for context. See the 'Fan / Hater Heatmap' "
+    "for the full pair-by-pair view."
 )
 
 
@@ -688,7 +697,7 @@ _Z_COLUMNS = frozenset(
         "z",
         "z_in_round",
         "avg_z",
-        "avg_z_received",
+        "avg_z_no_forfeit",
         "fan_z",
         "hater_z",
     }

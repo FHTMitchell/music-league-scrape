@@ -12,24 +12,24 @@
 
 ## Player Ranking
 
-_Players with at least 2 songs submitted, ranked by mean within-round z-score of the points they banked (received normalised against the other songs in the same round). avg_z_received > 0 means the player typically beats the round average; forfeits pull it down since a forfeited song banks 0. total_received is the raw points the player banked._
+_Players with at least 2 songs submitted, ranked by mean within-round z-score of the points they banked (normalised against the other songs in the same round). avg_z > 0 means the player typically beats the round average; forfeits pull it down since a forfeited song banks 0. avg_z_no_forfeit is the same measure on the song's earned score (ignoring the forfeit penalty), so a gap between the two shows how much forfeiting cost the player._
 
-| rank   | player           | avg_z_received   | total_received   | songs   |
-|--------|------------------|------------------|------------------|---------|
-| 1      | Sam Mit          | +0.464           | 314              | 53      |
-| 2      | Fred N           | +0.242           | 268              | 55      |
-| 3      | harryg           | +0.204           | 266              | 55      |
-| 4      | Jimbabwe         | +0.19            | 179              | 33      |
-| 5      | Josh B           | +0.088           | 186              | 47      |
-| 6      | Fergus M         | +0.082           | 227              | 55      |
-| 7      | pollyannaw       | +0.049           | 82               | 18      |
-| 8      | Joe              | -0.035           | 163              | 45      |
-| 9      | Joshua W         | -0.135           | 179              | 53      |
-| 10     | Solsti           | -0.178           | 159              | 43      |
-| 11     | MorbidlyObeseCat | -0.181           | 200              | 55      |
-| 12     | Luke G           | -0.187           | 164              | 50      |
-| 13     | Peter L          | -0.276           | 176              | 49      |
-| 14     | Sam Mil          | -0.302           | 169              | 52      |
+| rank   | player           | avg_z   | avg_z_no_forfeit   | songs   |
+|--------|------------------|---------|--------------------|---------|
+| 1      | Sam Mit          | +0.464  | +0.434             | 53      |
+| 2      | Fred N           | +0.242  | +0.232             | 55      |
+| 3      | harryg           | +0.204  | +0.178             | 55      |
+| 4      | Jimbabwe         | +0.19   | +0.184             | 33      |
+| 5      | Josh B           | +0.088  | +0.116             | 47      |
+| 6      | Fergus M         | +0.082  | +0.124             | 55      |
+| 7      | pollyannaw       | +0.049  | +0.049             | 18      |
+| 8      | Joe              | -0.035  | -0.067             | 45      |
+| 9      | Joshua W         | -0.135  | -0.158             | 53      |
+| 10     | Solsti           | -0.178  | -0.19              | 43      |
+| 11     | MorbidlyObeseCat | -0.181  | -0.186             | 55      |
+| 12     | Luke G           | -0.187  | -0.215             | 50      |
+| 13     | Peter L          | -0.276  | -0.237             | 49      |
+| 14     | Sam Mil          | -0.302  | -0.243             | 52      |
 
 ## League Winners
 
@@ -67,45 +67,43 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 
 ## Biggest Fans
 
-_For each submitter, the voter whose votes land furthest from that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). pts is the raw cumulative points for context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view._
+_For each submitter, the voter whose votes land furthest from that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). Pairs sharing fewer than 20 rounds are excluded (too little overlap to judge). pts is the raw cumulative points for context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view._
 
 | rank   | player           | biggest_fan      | fan_z   | pts   | shared_rounds   |
 |--------|------------------|------------------|---------|-------|-----------------|
-| 1      | pollyannaw       | harryg           | +0.867  | 16    | 18              |
-| 2      | Sam Mit          | Luke G           | +0.676  | 44    | 48              |
-| 3      | harryg           | Joe              | +0.525  | 30    | 45              |
-| 4      | Josh B           | Sam Mil          | +0.464  | 30    | 43              |
-| 5      | Fergus M         | Josh B           | +0.367  | 29    | 46              |
-| 6      | Solsti           | Sam Mil          | +0.363  | 27    | 40              |
-| 7      | Fred N           | Jimbabwe         | +0.352  | 26    | 33              |
-| 8      | Jimbabwe         | Sam Mit          | +0.314  | 22    | 33              |
-| 9      | Joshua W         | Peter L          | +0.295  | 26    | 46              |
-| 10     | Sam Mil          | MorbidlyObeseCat | +0.294  | 30    | 51              |
-| 11     | Joe              | harryg           | +0.261  | 24    | 45              |
-| 12     | MorbidlyObeseCat | pollyannaw       | +0.212  | 9     | 18              |
-| 13     | Luke G           | Sam Mit          | +0.193  | 23    | 48              |
-| 14     | Peter L          | Joshua W         | +0.164  | 24    | 47              |
+| 1      | Sam Mit          | Luke G           | +0.676  | 44    | 48              |
+| 2      | harryg           | Joe              | +0.525  | 30    | 45              |
+| 3      | Josh B           | Sam Mil          | +0.464  | 30    | 43              |
+| 4      | Fergus M         | Josh B           | +0.367  | 29    | 46              |
+| 5      | Solsti           | Sam Mil          | +0.363  | 27    | 40              |
+| 6      | Fred N           | Jimbabwe         | +0.352  | 26    | 33              |
+| 7      | Jimbabwe         | Sam Mit          | +0.314  | 22    | 33              |
+| 8      | Joshua W         | Peter L          | +0.295  | 26    | 46              |
+| 9      | Sam Mil          | MorbidlyObeseCat | +0.294  | 30    | 51              |
+| 10     | Joe              | harryg           | +0.261  | 24    | 45              |
+| 11     | Luke G           | Sam Mit          | +0.193  | 23    | 48              |
+| 12     | Peter L          | Joshua W         | +0.164  | 24    | 47              |
+| 13     | MorbidlyObeseCat | Jimbabwe         | +0.159  | 16    | 33              |
 
 ## Biggest Haters
 
-_For each submitter, the voter whose votes land furthest from that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). pts is the raw cumulative points for context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view._
+_For each submitter, the voter whose votes land furthest from that voter's own per-round vote distribution. Metric: mean z-score across shared rounds, where z = (vote - voter_round_mean) / voter_round_std and unrated songs in a participated round count as 0. Rounds where the voter gave every song the same vote are dropped (z is undefined). Pairs sharing fewer than 20 rounds are excluded (too little overlap to judge). pts is the raw cumulative points for context. See the 'Fan / Hater Heatmap' for the full pair-by-pair view._
 
 | rank   | player           | biggest_hater    | hater_z   | pts   | shared_rounds   |
 |--------|------------------|------------------|-----------|-------|-----------------|
-| 1      | Joe              | pollyannaw       | -0.518    | 0     | 8               |
-| 2      | Sam Mit          | pollyannaw       | -0.471    | 2     | 18              |
-| 3      | Fred N           | pollyannaw       | -0.458    | 2     | 18              |
-| 4      | Joshua W         | Solsti           | -0.451    | 1     | 41              |
-| 5      | pollyannaw       | Fred N           | -0.421    | 3     | 18              |
-| 6      | Peter L          | Sam Mil          | -0.386    | 5     | 45              |
-| 7      | Luke G           | MorbidlyObeseCat | -0.381    | 5     | 49              |
-| 8      | Solsti           | Sam Mit          | -0.317    | 5     | 43              |
-| 9      | MorbidlyObeseCat | Joe              | -0.295    | 7     | 45              |
-| 10     | Sam Mil          | Josh B           | -0.261    | 8     | 45              |
-| 11     | Josh B           | Joe              | -0.257    | 6     | 41              |
-| 12     | harryg           | Sam Mil          | -0.168    | 11    | 47              |
-| 13     | Fergus M         | Fred N           | -0.133    | 15    | 55              |
-| 14     | Jimbabwe         | Joshua W         | -0.132    | 8     | 31              |
+| 1      | Joshua W         | Solsti           | -0.451    | 1     | 41              |
+| 2      | Peter L          | Sam Mil          | -0.386    | 5     | 45              |
+| 3      | Luke G           | MorbidlyObeseCat | -0.381    | 5     | 49              |
+| 4      | Solsti           | Sam Mit          | -0.317    | 5     | 43              |
+| 5      | MorbidlyObeseCat | Joe              | -0.295    | 7     | 45              |
+| 6      | Joe              | Jimbabwe         | -0.273    | 2     | 23              |
+| 7      | Sam Mil          | Josh B           | -0.261    | 8     | 45              |
+| 8      | Josh B           | Joe              | -0.257    | 6     | 41              |
+| 9      | harryg           | Sam Mil          | -0.168    | 11    | 47              |
+| 10     | Fergus M         | Fred N           | -0.133    | 15    | 55              |
+| 11     | Jimbabwe         | Joshua W         | -0.132    | 8     | 31              |
+| 12     | Fred N           | harryg           | -0.095    | 19    | 55              |
+| 13     | Sam Mit          | Peter L          | -0.037    | 16    | 47              |
 
 ## Fan / Hater Heatmap
 
@@ -205,13 +203,13 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 |      1 |       2 | Fairytale of New York (feat. Kirsty MacColl) | The Pogues                   | MorbidlyObeseCat, Solsti     | 15, 3    | 1.652, -0.693  |
 |      2 |       2 | This Girl (Kungs Vs. Cookin' On 3 Burners)   | Kungs                        | Luke G, Peter L              | 8, 6     | 0.814, 0.387   |
 |      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             | 7, 6     | 0.309, 0.369   |
-|      4 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    | 1.546, -1.018  |
-|      5 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     | 1.131, -0.562  |
-|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     | 0.567, -0.395  |
+|      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             | 9, 3     | 1.131, -0.562  |
+|      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               | 11, 1    | 1.546, -1.018  |
+|      6 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     | -0.466, 1.673  |
 |      7 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              | 8, 2     | 0.697, -0.843  |
-|      8 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw | 5, 5     | -0.466, 1.673  |
-|      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     | -0.707, 0.781  |
-|     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     | -0.264, -0.739 |
+|      8 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         | 8, 2     | 0.567, -0.395  |
+|      9 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     | 3, 3     | -0.264, -0.739 |
+|     10 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      | 2, 4     | -0.707, 0.781  |
 |     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            | 4, 1     | -0.245, -1.093 |
 |     12 |       2 | Turn                                         | The Wombats                  | Sam Mil                      | 1, 3     | -1.018, 0.0    |
 |     13 |       2 | Jack Sparrow                                 | The Lonely Island            | Fergus M, Solsti             | 2, 1     | -0.734, -1.124 |
@@ -227,7 +225,7 @@ _Points a player's songs earned but the player never banked, because they missed
 |   rank | player           |   songs_forfeited |   total_points_lost |
 |--------|------------------|-------------------|---------------------|
 |      1 | Sam Mil          |                 4 |                 -11 |
-|      2 | Peter L          |                 1 |                  -7 |
-|      3 | Josh B           |                 1 |                  -7 |
-|      4 | Fergus M         |                 2 |                  -7 |
+|      2 | Fergus M         |                 2 |                  -7 |
+|      3 | Peter L          |                 1 |                  -7 |
+|      4 | Josh B           |                 1 |                  -7 |
 |      5 | MorbidlyObeseCat |                 1 |                  -3 |
