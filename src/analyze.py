@@ -302,9 +302,10 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
 
 
 def _section_top_artists(df: pl.DataFrame) -> Section:
-    # plays from the full frame; avg_z from the z-score frame, which drops songs
-    # in zero-variance rounds where z is undefined.
-    counts = df.group_by("artist").agg(pl.len().alias("plays"))
+    # plays counts DISTINCT tracks (a song resubmitted in another round counts
+    # once); avg_z averages ALL submissions from the z-score frame, which drops
+    # songs in zero-variance rounds where z is undefined.
+    counts = df.group_by("artist").agg(pl.col("spotify_track_id").n_unique().alias("plays"))
     avg_z = (
         _songs_with_round_zscore(df)
         .group_by("artist")
@@ -323,11 +324,11 @@ def _section_top_artists(df: pl.DataFrame) -> Section:
     return Section(
         title="Most Played Artists",
         header=(
-            "Artists by number of songs submitted across all rounds. Shows the top "
-            f"{_TOP_N} plus anyone tied with the {_TOP_N}th on play count. avg_z is "
-            "the mean within-round z-score of the artist's songs (how far "
-            "above/below the round average they landed); it is blank when every one "
-            "of the artist's songs fell in a round where all songs scored the same."
+            "Artists by number of distinct tracks submitted (a song resubmitted in "
+            f"another round counts once). Shows the top {_TOP_N} plus anyone tied "
+            f"with the {_TOP_N}th on play count. avg_z is the mean within-round "
+            "z-score across all the artist's submissions (repeats included); it is "
+            "blank when every one fell in a round where all songs scored the same."
         ),
         table=table,
     )
