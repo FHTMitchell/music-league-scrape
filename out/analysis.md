@@ -18,18 +18,18 @@ _Players with at least 2 songs submitted, ranked by mean within-round z-score (s
 |--------|------------------|---------|-----------|------------------|---------|
 |      1 | Sam Mit          |    0.43 |     23.01 |              314 |      53 |
 |      2 | Fred N           |    0.23 |     12.75 |              268 |      55 |
-|      3 | harryg           |    0.18 |      9.83 |              266 |      55 |
-|      4 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
-|      5 | Josh B           |    0.12 |      5.46 |              186 |      47 |
-|      6 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
+|      3 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
+|      4 | harryg           |    0.18 |      9.83 |              266 |      55 |
+|      5 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
+|      6 | Josh B           |    0.12 |      5.46 |              186 |      47 |
 |      7 | pollyannaw       |    0.05 |      0.87 |               82 |      18 |
 |      8 | Joe              |   -0.07 |     -2.99 |              163 |      45 |
 |      9 | Joshua W         |   -0.16 |     -8.35 |              179 |      53 |
 |     10 | MorbidlyObeseCat |   -0.19 |    -10.18 |              200 |      55 |
 |     11 | Solsti           |   -0.19 |     -8.17 |              159 |      43 |
 |     12 | Luke G           |   -0.22 |    -10.75 |              164 |      50 |
-|     13 | Peter L          |   -0.24 |    -11.59 |              176 |      49 |
-|     14 | Sam Mil          |   -0.24 |    -12.6  |              169 |      52 |
+|     13 | Sam Mil          |   -0.24 |    -12.6  |              169 |      52 |
+|     14 | Peter L          |   -0.24 |    -11.59 |              176 |      49 |
 
 ## League Winners
 
@@ -83,7 +83,7 @@ _For each submitter, the voter whose votes land furthest from that voter's own p
 |     10 | Sam Mil          | MorbidlyObeseCat |    0.29 |    30 |              51 |
 |     11 | Joe              | harryg           |    0.26 |    24 |              45 |
 |     12 | MorbidlyObeseCat | pollyannaw       |    0.21 |     9 |              18 |
-|     13 | Luke G           | Fred N           |    0.19 |    29 |              50 |
+|     13 | Luke G           | Sam Mit          |    0.19 |    23 |              48 |
 |     14 | Peter L          | Joshua W         |    0.16 |    24 |              47 |
 
 ## Biggest Haters
@@ -166,20 +166,20 @@ _Top 10 songs that genuinely split the room. Metric: per song, the std of its ex
 
 ## Most Played Artists
 
-_Top 10 artists by number of songs submitted across all rounds._
+_Top 10 artists by number of songs submitted across all rounds. avg_z is the mean within-round z-score of the artist's songs (how far above/below the round average they landed); it is blank when every one of the artist's songs fell in a round where all songs scored the same._
 
-|   rank | artist                |   plays |   total_score |   avg_score |
-|--------|-----------------------|---------|---------------|-------------|
-|      1 | The Wombats           |      12 |            28 |        2.33 |
-|      2 | Green Day             |       6 |            36 |        6    |
-|      3 | System Of A Down      |       6 |            23 |        3.83 |
-|      4 | Gorillaz              |       4 |            29 |        7.25 |
-|      5 | Muse                  |       4 |            26 |        6.5  |
-|      6 | Red Hot Chili Peppers |       4 |            17 |        4.25 |
-|      7 | Queen                 |       3 |            27 |        9    |
-|      8 | Fall Out Boy          |       3 |            20 |        6.67 |
-|      9 | JAŸ-Z                 |       3 |            20 |        6.67 |
-|     10 | Dizzee Rascal         |       3 |            19 |        6.33 |
+|   rank | artist                |   plays |   total_score |   avg_z |
+|--------|-----------------------|---------|---------------|---------|
+|      1 | The Wombats           |      12 |            28 |   -0.31 |
+|      2 | Green Day             |       6 |            36 |    0.71 |
+|      3 | System Of A Down      |       6 |            23 |   -0.32 |
+|      4 | Gorillaz              |       4 |            29 |    0.54 |
+|      5 | Muse                  |       4 |            26 |    0.54 |
+|      6 | Red Hot Chili Peppers |       4 |            17 |   -0.03 |
+|      7 | Queen                 |       3 |            27 |    0.8  |
+|      8 | JAŸ-Z                 |       3 |            20 |    0.2  |
+|      9 | Fall Out Boy          |       3 |            20 |    0.33 |
+|     10 | Eminem                |       3 |            19 |    0.49 |
 
 ## Repeats
 
@@ -192,11 +192,11 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 |      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             |            13 |
 |      4 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               |            12 |
 |      5 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             |            12 |
-|      6 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw |            10 |
-|      7 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         |            10 |
+|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         |            10 |
+|      7 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw |            10 |
 |      8 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              |            10 |
-|      9 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      |             6 |
-|     10 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     |             6 |
+|      9 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     |             6 |
+|     10 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      |             6 |
 |     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            |             5 |
 |     12 |       2 | Turn                                         | The Wombats                  | Sam Mil                      |             4 |
 |     13 |       2 | Jack Sparrow                                 | The Lonely Island            | Fergus M, Solsti             |             3 |

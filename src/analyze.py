@@ -263,19 +263,31 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
 
 
 def _section_top_artists(df: pl.DataFrame) -> Section:
+    # plays/total_score from the full frame; avg_z from the z-score frame, which
+    # drops songs in zero-variance rounds where z is undefined.
+    counts = df.group_by("artist").agg(
+        pl.len().alias("plays"),
+        pl.col("score").sum().alias("total_score"),
+    )
+    avg_z = (
+        _songs_with_round_zscore(df)
+        .group_by("artist")
+        .agg(pl.col("z_in_round").mean().round(2).alias("avg_z"))
+    )
     table = (
-        df.group_by("artist")
-        .agg(
-            pl.len().alias("plays"),
-            pl.col("score").sum().alias("total_score"),
-            pl.col("score").mean().round(2).alias("avg_score"),
-        )
+        counts.join(avg_z, on="artist", how="left")
         .sort(["plays", "total_score"], descending=[True, True])
         .head(_TOP_N)
+        .select(["artist", "plays", "total_score", "avg_z"])
     )
     return Section(
         title="Most Played Artists",
-        header=f"Top {_TOP_N} artists by number of songs submitted across all rounds.",
+        header=(
+            f"Top {_TOP_N} artists by number of songs submitted across all rounds. "
+            "avg_z is the mean within-round z-score of the artist's songs (how far "
+            "above/below the round average they landed); it is blank when every one "
+            "of the artist's songs fell in a round where all songs scored the same."
+        ),
         table=table,
     )
 
