@@ -489,7 +489,7 @@ def _section_polarising_songs(df: pl.DataFrame) -> Section:
 def _section_forfeits(df: pl.DataFrame) -> Section:
     table = (
         df.filter(pl.col("forfeited"))
-        .with_columns((pl.col("score") - pl.col("received")).alias("points_lost"))
+        .with_columns((pl.col("received") - pl.col("score")).alias("points_lost"))
         .group_by("player")
         .agg(
             pl.len().alias("songs_forfeited"),
@@ -503,7 +503,8 @@ def _section_forfeits(df: pl.DataFrame) -> Section:
             "Points a player's songs earned but the player never banked, because "
             "they missed the voting deadline. Music League zeroes the points you "
             "receive if you don't cast your own ballot (downvotes against you still "
-            "count). points_lost = score the song earned − points actually received."
+            "count). points_lost = points actually received − score the song earned "
+            "(negative: the bigger the loss, the more negative)."
         ),
         table=table,
     )

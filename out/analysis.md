@@ -18,8 +18,8 @@ _Players with at least 2 songs submitted, ranked by mean within-round z-score (s
 |--------|------------------|---------|-----------|------------------|---------|
 |      1 | Sam Mit          |    0.43 |     23.01 |              314 |      53 |
 |      2 | Fred N           |    0.23 |     12.75 |              268 |      55 |
-|      3 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
-|      4 | harryg           |    0.18 |      9.83 |              266 |      55 |
+|      3 | harryg           |    0.18 |      9.83 |              266 |      55 |
+|      4 | Jimbabwe         |    0.18 |      6.08 |              179 |      33 |
 |      5 | Fergus M         |    0.12 |      6.82 |              227 |      55 |
 |      6 | Josh B           |    0.12 |      5.46 |              186 |      47 |
 |      7 | pollyannaw       |    0.05 |      0.87 |               82 |      18 |
@@ -28,8 +28,8 @@ _Players with at least 2 songs submitted, ranked by mean within-round z-score (s
 |     10 | MorbidlyObeseCat |   -0.19 |    -10.18 |              200 |      55 |
 |     11 | Solsti           |   -0.19 |     -8.17 |              159 |      43 |
 |     12 | Luke G           |   -0.22 |    -10.75 |              164 |      50 |
-|     13 | Sam Mil          |   -0.24 |    -12.6  |              169 |      52 |
-|     14 | Peter L          |   -0.24 |    -11.59 |              176 |      49 |
+|     13 | Peter L          |   -0.24 |    -11.59 |              176 |      49 |
+|     14 | Sam Mil          |   -0.24 |    -12.6  |              169 |      52 |
 
 ## League Winners
 
@@ -57,8 +57,8 @@ _Olympic-style: 3 points for finishing 1st in a round, 2 for 2nd, 1 for 3rd. Tie
 |      5 | Joe              |        6 |          2 |          4 |             26 |
 |      6 | Joshua W         |        6 |          0 |          8 |             26 |
 |      7 | Josh B           |        2 |          7 |          5 |             25 |
-|      8 | Solsti           |        3 |          5 |          4 |             23 |
-|      9 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      8 | MorbidlyObeseCat |        3 |          5 |          4 |             23 |
+|      9 | Solsti           |        3 |          5 |          4 |             23 |
 |     10 | Luke G           |        1 |          8 |          4 |             23 |
 |     11 | Jimbabwe         |        3 |          3 |          5 |             20 |
 |     12 | Sam Mil          |        2 |          4 |          6 |             20 |
@@ -102,7 +102,7 @@ _For each submitter, the voter whose votes land furthest from that voter's own p
 |      8 | Solsti           | Sam Mit          |     -0.32 |     5 |              43 |
 |      9 | MorbidlyObeseCat | Joe              |     -0.29 |     7 |              45 |
 |     10 | Josh B           | Joe              |     -0.26 |     6 |              41 |
-|     11 | Sam Mil          | Fergus M         |     -0.26 |    11 |              50 |
+|     11 | Sam Mil          | Josh B           |     -0.26 |     8 |              45 |
 |     12 | harryg           | Sam Mil          |     -0.17 |    11 |              47 |
 |     13 | Fergus M         | Fred N           |     -0.13 |    15 |              55 |
 |     14 | Jimbabwe         | Joshua W         |     -0.13 |     8 |              31 |
@@ -177,8 +177,8 @@ _Top 10 artists by number of songs submitted across all rounds. avg_z is the mea
 |      5 | Muse                  |       4 |            26 |    0.54 |
 |      6 | Red Hot Chili Peppers |       4 |            17 |   -0.03 |
 |      7 | Queen                 |       3 |            27 |    0.8  |
-|      8 | JAŸ-Z                 |       3 |            20 |    0.2  |
-|      9 | Fall Out Boy          |       3 |            20 |    0.33 |
+|      8 | Fall Out Boy          |       3 |            20 |    0.33 |
+|      9 | JAŸ-Z                 |       3 |            20 |    0.2  |
 |     10 | Eminem                |       3 |            19 |    0.49 |
 
 ## Repeats
@@ -190,11 +190,11 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 |      1 |       2 | Fairytale of New York (feat. Kirsty MacColl) | The Pogues                   | MorbidlyObeseCat, Solsti     |            18 |
 |      2 |       2 | This Girl (Kungs Vs. Cookin' On 3 Burners)   | Kungs                        | Luke G, Peter L              |            14 |
 |      3 |       2 | Dear Maria, Count Me In                      | All Time Low                 | Joshua W, Solsti             |            13 |
-|      4 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               |            12 |
-|      5 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             |            12 |
-|      6 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         |            10 |
-|      7 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw |            10 |
-|      8 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              |            10 |
+|      4 |       2 | The Bad Touch                                | Bloodhound Gang              | Jimbabwe, Josh B             |            12 |
+|      5 |       2 | Snacky In My Packy                           | Gabby's Dollhouse            | Fred N, harryg               |            12 |
+|      6 |       2 | back to friends                              | sombr                        | MorbidlyObeseCat, pollyannaw |            10 |
+|      7 |       2 | Ni**as In Paris                              | JAŸ-Z                        | Josh B, Sam Mil              |            10 |
+|      8 |       2 | Supermassive Black Hole                      | Muse                         | Joshua W, pollyannaw         |            10 |
 |      9 |       2 | Misery Business                              | Paramore                     | MorbidlyObeseCat, Solsti     |             6 |
 |     10 |       2 | Invaders Must Die                            | The Prodigy                  | Sam Mit                      |             6 |
 |     11 |       2 | The Times They Are A-Changin'                | Bob Dylan                    | Joshua W, Sam Mil            |             5 |
@@ -207,12 +207,12 @@ _Tracks (matched by Spotify track ID) submitted in more than one round, either b
 
 ## Forfeits
 
-_Points a player's songs earned but the player never banked, because they missed the voting deadline. Music League zeroes the points you receive if you don't cast your own ballot (downvotes against you still count). points_lost = score the song earned − points actually received._
+_Points a player's songs earned but the player never banked, because they missed the voting deadline. Music League zeroes the points you receive if you don't cast your own ballot (downvotes against you still count). points_lost = points actually received − score the song earned (negative: the bigger the loss, the more negative)._
 
 |   rank | player           |   songs_forfeited |   total_points_lost |
 |--------|------------------|-------------------|---------------------|
-|      1 | MorbidlyObeseCat |                 1 |                   3 |
-|      2 | Josh B           |                 1 |                   7 |
-|      3 | Fergus M         |                 2 |                   7 |
-|      4 | Peter L          |                 1 |                   7 |
-|      5 | Sam Mil          |                 4 |                  11 |
+|      1 | Sam Mil          |                 4 |                 -11 |
+|      2 | Fergus M         |                 2 |                  -7 |
+|      3 | Josh B           |                 1 |                  -7 |
+|      4 | Peter L          |                 1 |                  -7 |
+|      5 | MorbidlyObeseCat |                 1 |                  -3 |
