@@ -16,6 +16,7 @@ from pathlib import Path
 
 import polars as pl
 
+from src.analyze import _with_round_zscores
 from src.log import install as install_logger
 from src.names import apply_name_overrides, load_name_overrides
 
@@ -26,7 +27,8 @@ _DEFAULT_OUTPUT = Path("out/songs.html")
 _DEFAULT_LOG = Path("logs/songs_page.log")
 _DEFAULT_NAME_OVERRIDES = Path("name-overrides.json")
 _LEFT_LEAGUE = "[Left the league]"
-_COLUMNS = ("score", "song", "artist", "player", "league", "round", "round_time")
+_Z_DP = 3  # decimal places for the displayed song z-score
+_COLUMNS = ("score", "z_in_round", "song", "artist", "player", "league", "round", "round_time")
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,7 @@ def main() -> None:
 
     df = pl.read_parquet(args.parquet).filter(pl.col("player") != _LEFT_LEAGUE)
     df = apply_name_overrides(df, load_name_overrides(args.name_overrides))
+    df = _with_round_zscores(df).with_columns(pl.col("z_in_round").round(_Z_DP))
     df = (
         df.sort("round_time", descending=True)
         .with_columns(pl.col("round_time").dt.strftime("%Y-%m-%d").alias("round_time"))
@@ -108,9 +111,11 @@ _PAGE = """<!doctype html>
  #count { color: #666; font-variant-numeric: tabular-nums; }
  table { border-collapse: collapse; width: 100%; }
  th, td { border: 1px solid #ccc; padding: .35rem .6rem; text-align: left; vertical-align: top; }
- th { background: #f4f4f4; position: sticky; top: 0; }
+ th { background: #f4f4f4; position: sticky; top: 0; cursor: pointer; user-select: none; }
+ th:hover { background: #eaeaea; }
+ th .arrow { color: #999; font-size: .8em; }
  tr:nth-child(even) td { background: #fafafa; }
- td.score { text-align: right; font-variant-numeric: tabular-nums; width: 4rem; }
+ td.num { text-align: right; font-variant-numeric: tabular-nums; }
  td.date { white-space: nowrap; color: #666; }
  .hidden { display: none; }
 </style>
@@ -122,20 +127,32 @@ _PAGE = """<!doctype html>
   <span id="count"></span>
 </div>
 <table>
-  <thead>
-    <tr>
-      <th>Score</th><th>Song</th><th>Artist</th><th>Player</th>
-      <th>League</th><th>Round</th><th>Date</th>
-    </tr>
-  </thead>
+  <thead><tr id="head"></tr></thead>
   <tbody id="rows"></tbody>
 </table>
 <script>
  const SONGS = __SONGS_JSON__;
  const TOTAL = __COUNT__;
+ // column key, header label, whether it sorts numerically
+ const COLUMNS = [
+   ["score", "Score", true],
+   ["z_in_round", "z-score", true],
+   ["song", "Song", false],
+   ["artist", "Artist", false],
+   ["player", "Player", false],
+   ["league", "League", false],
+   ["round", "Round", false],
+   ["round_time", "Date", false],
+ ];
+ const NUMERIC = new Set(COLUMNS.filter(c => c[2]).map(c => c[0]));
+
+ const head = document.getElementById("head");
  const tbody = document.getElementById("rows");
  const search = document.getElementById("search");
  const counter = document.getElementById("count");
+
+ let sortKey = "round_time";
+ let sortDir = -1;  // 1 asc, -1 desc
 
  function escapeHtml(s) {
    return String(s ?? "").replace(/[&<>"]/g, c => (
@@ -143,35 +160,67 @@ _PAGE = """<!doctype html>
    ));
  }
 
- function render(filter) {
-   const q = filter.trim().toLowerCase();
-   const html = [];
-   let shown = 0;
-   for (const r of SONGS) {
-     if (q &&
-         !r.song.toLowerCase().includes(q) &&
-         !r.artist.toLowerCase().includes(q)) continue;
-     shown++;
-     html.push(
-       "<tr>" +
-       `<td class="score">${escapeHtml(r.score)}</td>` +
-       `<td>${escapeHtml(r.song)}</td>` +
-       `<td>${escapeHtml(r.artist)}</td>` +
-       `<td>${escapeHtml(r.player)}</td>` +
-       `<td>${escapeHtml(r.league)}</td>` +
-       `<td>${escapeHtml(r.round)}</td>` +
-       `<td class="date">${escapeHtml(r.round_time)}</td>` +
-       "</tr>"
-     );
-   }
-   tbody.innerHTML = html.join("");
-   counter.textContent = q
-     ? `${shown} / ${TOTAL} songs`
-     : `${TOTAL} songs`;
+ // Signed display: prefix a + on non-negative numbers so direction reads at a glance.
+ function signed(v) {
+   if (v == null) return "";
+   return v >= 0 ? "+" + v : String(v);
  }
 
- search.addEventListener("input", e => render(e.target.value));
- render("");
+ function renderHead() {
+   head.innerHTML = COLUMNS.map(([key, label]) => {
+     const arrow = key === sortKey ? (sortDir === 1 ? " ▲" : " ▼") : "";
+     return `<th data-key="${key}">${escapeHtml(label)}<span class="arrow">${arrow}</span></th>`;
+   }).join("");
+ }
+
+ function compare(a, b) {
+   let x = a[sortKey], y = b[sortKey];
+   if (NUMERIC.has(sortKey)) {
+     x = x == null ? -Infinity : x;
+     y = y == null ? -Infinity : y;
+     return (x - y) * sortDir;
+   }
+   return String(x ?? "").localeCompare(String(y ?? "")) * sortDir;
+ }
+
+ function render() {
+   const q = search.value.trim().toLowerCase();
+   const rows = SONGS
+     .filter(r => !q ||
+       r.song.toLowerCase().includes(q) ||
+       r.artist.toLowerCase().includes(q))
+     .sort(compare);
+   tbody.innerHTML = rows.map(r =>
+     "<tr>" +
+     `<td class="num">${escapeHtml(r.score)}</td>` +
+     `<td class="num">${escapeHtml(signed(r.z_in_round))}</td>` +
+     `<td>${escapeHtml(r.song)}</td>` +
+     `<td>${escapeHtml(r.artist)}</td>` +
+     `<td>${escapeHtml(r.player)}</td>` +
+     `<td>${escapeHtml(r.league)}</td>` +
+     `<td>${escapeHtml(r.round)}</td>` +
+     `<td class="date">${escapeHtml(r.round_time)}</td>` +
+     "</tr>"
+   ).join("");
+   counter.textContent = q ? `${rows.length} / ${TOTAL} songs` : `${TOTAL} songs`;
+   renderHead();
+ }
+
+ head.addEventListener("click", e => {
+   const th = e.target.closest("th");
+   if (!th) return;
+   const key = th.dataset.key;
+   if (key === sortKey) {
+     sortDir = -sortDir;  // toggle direction on re-click
+   } else {
+     sortKey = key;
+     sortDir = NUMERIC.has(key) ? -1 : 1;  // numbers default high→low, text A→Z
+   }
+   render();
+ });
+
+ search.addEventListener("input", render);
+ render();
 </script>
 </body>
 </html>

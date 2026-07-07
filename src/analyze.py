@@ -198,10 +198,6 @@ def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
         )
         .filter(pl.col("songs") >= 2)  # one-shot submitters skew the leaderboard
         .sort("avg_z_received", descending=True)
-        .with_columns(
-            pl.col("avg_z_received").round(_Z_DP),
-            pl.col("total_z_received").round(_Z_DP),
-        )
     )
 
 
@@ -271,7 +267,7 @@ def _section_top_songs(df: pl.DataFrame) -> Section:
         _songs_with_round_zscore(df)
         .sort("z_in_round", descending=True)
         .head(_TOP_N)
-        .with_columns(pl.col("z_in_round").round(_Z_DP), pl.col("round_avg").round(2))
+        .with_columns(pl.col("round_avg").round(2))
         .select(["z_in_round", "score", "round_avg", "song", "artist", "player", "league", "round"])
     )
     return Section(
@@ -290,7 +286,7 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
         _songs_with_round_zscore(df)
         .sort("z_in_round")
         .head(_TOP_N)
-        .with_columns(pl.col("z_in_round").round(_Z_DP), pl.col("round_avg").round(2))
+        .with_columns(pl.col("round_avg").round(2))
         .select(["z_in_round", "score", "round_avg", "song", "artist", "player", "league", "round"])
     )
     return Section(
@@ -321,7 +317,6 @@ def _section_top_artists(df: pl.DataFrame) -> Section:
         counts.join(avg_z, on="artist", how="left")
         .filter(pl.col("plays") >= min_plays)
         .sort(["plays", "avg_z"], descending=[True, True], nulls_last=True)
-        .with_columns(pl.col("avg_z").round(_Z_DP))
         .select(["artist", "plays", "avg_z"])
     )
     return Section(
@@ -418,7 +413,6 @@ def _section_biggest_fans(df: pl.DataFrame) -> Section:
         .rename({"voter": "biggest_fan", "avg_z": "fan_z", "total_points": "pts"})
         .sort("fan_z", descending=True)
         .head(_FAN_HATER_PLAYERS)
-        .with_columns(pl.col("fan_z").round(_Z_DP))
     )
     return Section(title="Biggest Fans", header=_FAN_HATER_HEADER, table=table)
 
@@ -433,7 +427,6 @@ def _section_biggest_haters(df: pl.DataFrame) -> Section:
         .rename({"voter": "biggest_hater", "avg_z": "hater_z", "total_points": "pts"})
         .sort("hater_z")
         .head(_FAN_HATER_PLAYERS)
-        .with_columns(pl.col("hater_z").round(_Z_DP))
     )
     return Section(title="Biggest Haters", header=_FAN_HATER_HEADER, table=table)
 
@@ -498,7 +491,6 @@ def _section_polarising_songs(df: pl.DataFrame) -> Section:
         .join(songs, on=keys, how="inner")
         .sort("z", descending=True)
         .head(_TOP_N)
-        .with_columns(pl.col("z").round(_Z_DP))
         .select(
             [
                 "z",
@@ -689,10 +681,43 @@ def _with_rank(df: pl.DataFrame) -> pl.DataFrame:
     return df.with_row_index("rank", offset=1)
 
 
+# z-score columns are rounded and given a leading "+" on positive values here
+# (one place), so sections need not round them and direction reads at a glance.
+# The sign/rounding is cosmetic — sorting already happened on the raw value.
+_Z_COLUMNS = frozenset(
+    {
+        "z",
+        "z_in_round",
+        "avg_z",
+        "total_z",
+        "avg_z_received",
+        "total_z_received",
+        "fan_z",
+        "hater_z",
+    }
+)
+
+
+def _signed_z(col: str) -> pl.Expr:
+    rounded = pl.col(col).round(_Z_DP)
+    return (
+        pl.when(rounded >= 0)
+        .then("+" + rounded.cast(pl.Utf8))
+        .otherwise(rounded.cast(pl.Utf8))
+        .alias(col)
+    )
+
+
 def _md_table(df: pl.DataFrame) -> str:
     if df.height == 0:
         return "_(no rows)_"
-    return tabulate(df.iter_rows(), headers=df.columns, tablefmt="github")
+    z_cols = [c for c in df.columns if c in _Z_COLUMNS]
+    if z_cols:
+        df = df.with_columns(_signed_z(c) for c in z_cols)
+    # disable_numparse so tabulate keeps our "+" signs instead of reparsing them.
+    return tabulate(
+        df.iter_rows(), headers=df.columns, tablefmt="github", disable_numparse=bool(z_cols)
+    )
 
 
 def _render_fan_hater_heatmap(df: pl.DataFrame, out_path: Path) -> None:
@@ -733,7 +758,15 @@ def _render_fan_hater_heatmap(df: pl.DataFrame, out_path: Path) -> None:
             rgba = img.cmap(img.norm(value))
             luminance = 0.2126 * rgba[0] + 0.7152 * rgba[1] + 0.0722 * rgba[2]
             colour = "white" if luminance < 0.5 else "black"
-            ax.text(j, i, f"{value:.{_Z_DP}f}", ha="center", va="center", color=colour, fontsize=8)
+            ax.text(
+                j,
+                i,
+                f"{value:+.{_Z_DP}f}",  # leading + on positive z, matching the tables
+                ha="center",
+                va="center",
+                color=colour,
+                fontsize=8,
+            )
 
     fig.colorbar(img, ax=ax, shrink=0.7, label="avg z-score")
     fig.tight_layout()
