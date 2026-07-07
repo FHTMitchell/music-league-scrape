@@ -30,6 +30,7 @@ _DEFAULT_OUTPUT_HTML = Path("out/analysis.html")
 _DEFAULT_HEATMAP = Path("out/fan_hater_heatmap.png")
 _DEFAULT_LOG = Path("logs/analyze.log")
 _TOP_N = 10
+_Z_DP = 3  # decimal places for displayed z-scores (2dp collapses many ties)
 _FAN_HATER_PLAYERS = 20  # cap the per-player table so the report stays readable
 _LEFT_LEAGUE = "[Left the league]"  # placeholder Music League shows for departed users
 
@@ -79,7 +80,7 @@ def main() -> None:
             f"{args.parquet} not found. Run the scraper first:\n    uv run python -m src.scrape\n"
         )
 
-    df = _load(args.parquet)
+    df = _with_round_zscores(_load(args.parquet))
     args.heatmap_out.parent.mkdir(parents=True, exist_ok=True)
     _render_fan_hater_heatmap(df, args.heatmap_out)
     logger.info("wrote heatmap to %s", args.heatmap_out)
@@ -176,24 +177,29 @@ def _section_overview(df: pl.DataFrame) -> Section:
 
 def _player_averages(df: pl.DataFrame) -> pl.DataFrame:
     return (
-        _songs_with_round_zscore(df)
+        df.filter(pl.col("z_received_in_round").is_not_null())
         .group_by("player")
         .agg(
-            pl.col("z_in_round").mean().round(2).alias("avg_z"),
-            pl.col("z_in_round").sum().round(2).alias("total_z"),
+            pl.col("z_received_in_round").mean().alias("avg_z_received"),
+            pl.col("z_received_in_round").sum().alias("total_z_received"),
             pl.col("received").sum().alias("total_received"),
             pl.len().alias("songs"),
         )
         .filter(pl.col("songs") >= 2)  # one-shot submitters skew the leaderboard
-        .sort("avg_z", descending=True)
+        .sort("avg_z_received", descending=True)
+        .with_columns(
+            pl.col("avg_z_received").round(_Z_DP),
+            pl.col("total_z_received").round(_Z_DP),
+        )
     )
 
 
 _PLAYER_AVG_HEADER = (
     "Players with at least 2 songs submitted, ranked by mean within-round z-score "
-    "(score normalised against the other songs in the same round). avg_z > 0 means "
-    "the player typically beats the round average; total_received is the points the "
-    "player actually banked (forfeits count as 0)."
+    "of the points they banked (received normalised against the other songs in the "
+    "same round). avg_z_received > 0 means the player typically beats the round "
+    "average; forfeits pull it down since a forfeited song banks 0. total_received "
+    "is the raw points the player banked."
 )
 
 
@@ -205,25 +211,48 @@ def _section_best_players(df: pl.DataFrame) -> Section:
     )
 
 
-def _songs_with_round_zscore(df: pl.DataFrame) -> pl.DataFrame:
-    """One row per song with ``z_in_round = (score - round_mean) / round_std``.
+def _with_round_zscores(df: pl.DataFrame) -> pl.DataFrame:
+    """Add per-song within-round z-score columns to ``df`` (computed once).
 
-    Rounds where every song scored identically (``round_std == 0``) are
-    dropped — z-score is undefined and the row carries no information.
+    Adds, for each song, how far its points sit from the round mean in round
+    standard deviations, on two bases:
+
+    - ``z_in_round``          — from ``score`` (the points the song earned)
+    - ``z_received_in_round`` — from ``received`` (the points the player banked)
+
+    Both are ``null`` in rounds where every song's score (resp. received) is
+    identical — the standard deviation is 0 and the z-score is undefined. Values
+    are stored at full precision; sections round only when building their display
+    tables. ``round_avg`` / ``round_std`` (score basis) are kept for display.
+    Downstream sections read these columns instead of recomputing the round
+    statistics.
     """
     round_stats = df.group_by(["league", "round"]).agg(
-        pl.col("score").mean().round(2).alias("round_avg"),
+        pl.col("score").mean().alias("round_avg"),
         pl.col("score").std(ddof=0).alias("round_std"),
+        pl.col("received").mean().alias("_recv_avg"),
+        pl.col("received").std(ddof=0).alias("_recv_std"),
     )
     return (
-        df.join(round_stats, on=["league", "round"], how="inner")
-        .filter(pl.col("round_std") > 0)
+        df.join(round_stats, on=["league", "round"], how="left")
         .with_columns(
-            ((pl.col("score") - pl.col("round_avg")) / pl.col("round_std"))
-            .round(2)
+            pl.when(pl.col("round_std") > 0)
+            .then((pl.col("score") - pl.col("round_avg")) / pl.col("round_std"))
             .alias("z_in_round"),
+            pl.when(pl.col("_recv_std") > 0)
+            .then((pl.col("received") - pl.col("_recv_avg")) / pl.col("_recv_std"))
+            .alias("z_received_in_round"),
         )
+        .drop("_recv_avg", "_recv_std")
     )
+
+
+def _songs_with_round_zscore(df: pl.DataFrame) -> pl.DataFrame:
+    """Songs that have a defined score z-score (drops zero-variance rounds).
+
+    Assumes :func:`_with_round_zscores` has already populated ``z_in_round``.
+    """
+    return df.filter(pl.col("z_in_round").is_not_null())
 
 
 def _section_top_songs(df: pl.DataFrame) -> Section:
@@ -231,6 +260,7 @@ def _section_top_songs(df: pl.DataFrame) -> Section:
         _songs_with_round_zscore(df)
         .sort("z_in_round", descending=True)
         .head(_TOP_N)
+        .with_columns(pl.col("z_in_round").round(_Z_DP), pl.col("round_avg").round(2))
         .select(["z_in_round", "score", "round_avg", "song", "artist", "player", "league", "round"])
     )
     return Section(
@@ -249,6 +279,7 @@ def _section_bottom_songs(df: pl.DataFrame) -> Section:
         _songs_with_round_zscore(df)
         .sort("z_in_round")
         .head(_TOP_N)
+        .with_columns(pl.col("z_in_round").round(_Z_DP), pl.col("round_avg").round(2))
         .select(["z_in_round", "score", "round_avg", "song", "artist", "player", "league", "round"])
     )
     return Section(
@@ -269,7 +300,7 @@ def _section_top_artists(df: pl.DataFrame) -> Section:
     avg_z = (
         _songs_with_round_zscore(df)
         .group_by("artist")
-        .agg(pl.col("z_in_round").mean().round(2).alias("avg_z"))
+        .agg(pl.col("z_in_round").mean().alias("avg_z"))
     )
     # Cutoff = the play count of the 10th-most-played artist; keep everyone at or
     # above it so artists tied on that count aren't arbitrarily dropped.
@@ -279,6 +310,7 @@ def _section_top_artists(df: pl.DataFrame) -> Section:
         counts.join(avg_z, on="artist", how="left")
         .filter(pl.col("plays") >= min_plays)
         .sort(["plays", "avg_z"], descending=[True, True], nulls_last=True)
+        .with_columns(pl.col("avg_z").round(_Z_DP))
         .select(["artist", "plays", "avg_z"])
     )
     return Section(
@@ -348,7 +380,7 @@ def _pair_z_summary(df: pl.DataFrame) -> pl.DataFrame:
         _vote_z_scores(df)
         .group_by(["player", "voter"])
         .agg(
-            pl.col("z").mean().round(2).alias("avg_z"),
+            pl.col("z").mean().alias("avg_z"),  # raw; sections round for display
             pl.col("vote_count").sum().alias("total_points"),
             pl.len().alias("shared_rounds"),
         )
@@ -375,6 +407,7 @@ def _section_biggest_fans(df: pl.DataFrame) -> Section:
         .rename({"voter": "biggest_fan", "avg_z": "fan_z", "total_points": "pts"})
         .sort("fan_z", descending=True)
         .head(_FAN_HATER_PLAYERS)
+        .with_columns(pl.col("fan_z").round(_Z_DP))
     )
     return Section(title="Biggest Fans", header=_FAN_HATER_HEADER, table=table)
 
@@ -389,6 +422,7 @@ def _section_biggest_haters(df: pl.DataFrame) -> Section:
         .rename({"voter": "biggest_hater", "avg_z": "hater_z", "total_points": "pts"})
         .sort("hater_z")
         .head(_FAN_HATER_PLAYERS)
+        .with_columns(pl.col("hater_z").round(_Z_DP))
     )
     return Section(title="Biggest Haters", header=_FAN_HATER_HEADER, table=table)
 
@@ -448,13 +482,12 @@ def _section_polarising_songs(df: pl.DataFrame) -> Section:
     table = (
         song_stats.join(round_stats, on=["league", "round"], how="inner")
         .with_columns(
-            ((pl.col("s") - pl.col("round_mean_std")) / pl.col("round_std_of_std"))
-            .round(2)
-            .alias("z")
+            ((pl.col("s") - pl.col("round_mean_std")) / pl.col("round_std_of_std")).alias("z")
         )
         .join(songs, on=keys, how="inner")
         .sort("z", descending=True)
         .head(_TOP_N)
+        .with_columns(pl.col("z").round(_Z_DP))
         .select(
             [
                 "z",
@@ -564,18 +597,8 @@ def _section_medal_table(df: pl.DataFrame) -> Section:
 
 def _section_repeated_songs(df: pl.DataFrame) -> Section:
     """Tracks submitted to more than one round (across all leagues)."""
-    # per-row within-round z-score, kept null where the round had zero variance
-    round_stats = df.group_by(["league", "round"]).agg(
-        pl.col("score").mean().alias("_ravg"),
-        pl.col("score").std(ddof=0).alias("_rstd"),
-    )
-    with_z = df.join(round_stats, on=["league", "round"], how="left").with_columns(
-        pl.when(pl.col("_rstd") > 0)
-        .then(((pl.col("score") - pl.col("_ravg")) / pl.col("_rstd")).round(2))
-        .alias("z_in_round")
-    )
     table = (
-        with_z.group_by("spotify_track_id")
+        df.group_by("spotify_track_id")
         .agg(
             pl.col("song").first(),
             pl.col("artist").first(),
@@ -584,6 +607,7 @@ def _section_repeated_songs(df: pl.DataFrame) -> Section:
             # scores and z-scores in the order the track was played (oldest first)
             pl.col("score").sort_by("round_time").cast(pl.Utf8).str.join(", ").alias("scores"),
             pl.col("z_in_round")
+            .round(_Z_DP)
             .sort_by("round_time")
             .cast(pl.Utf8)
             .fill_null("—")
@@ -698,7 +722,7 @@ def _render_fan_hater_heatmap(df: pl.DataFrame, out_path: Path) -> None:
             rgba = img.cmap(img.norm(value))
             luminance = 0.2126 * rgba[0] + 0.7152 * rgba[1] + 0.0722 * rgba[2]
             colour = "white" if luminance < 0.5 else "black"
-            ax.text(j, i, f"{value:.2f}", ha="center", va="center", color=colour, fontsize=8)
+            ax.text(j, i, f"{value:.{_Z_DP}f}", ha="center", va="center", color=colour, fontsize=8)
 
     fig.colorbar(img, ax=ax, shrink=0.7, label="avg z-score")
     fig.tight_layout()
