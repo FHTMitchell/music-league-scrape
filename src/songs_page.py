@@ -173,14 +173,21 @@ _PAGE = """<!doctype html>
    }).join("");
  }
 
- function compare(a, b) {
-   let x = a[sortKey], y = b[sortKey];
-   if (NUMERIC.has(sortKey)) {
+ function cmpKey(a, b, key, dir) {
+   let x = a[key], y = b[key];
+   if (NUMERIC.has(key)) {
      x = x == null ? -Infinity : x;
      y = y == null ? -Infinity : y;
-     return (x - y) * sortDir;
+     return (x - y) * dir;
    }
-   return String(x ?? "").localeCompare(String(y ?? "")) * sortDir;
+   return String(x ?? "").localeCompare(String(y ?? "")) * dir;
+ }
+
+ function compare(a, b) {
+   const primary = cmpKey(a, b, sortKey, sortDir);
+   if (primary !== 0 || sortKey === "z_in_round") return primary;
+   // Secondary sort is always by z-score, highest first.
+   return cmpKey(a, b, "z_in_round", -1);
  }
 
  function render() {
